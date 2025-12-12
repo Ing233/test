@@ -1,0 +1,185 @@
+
+
+<style>
+  #ql-remomend-color-box{
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    padding: 0px 30px;
+    max-width: 100%;
+    margin-bottom: 0;
+}
+section.section-{{ section.id }} {
+  padding-bottom: 20px;
+}
+.shop-all-btn{
+  line-height: 1;
+  padding: 12px 20px;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  outline: 0;
+  background-color: #1b1b1b;
+  color: #fff;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  border-radius: 30px;
+}
+
+#ql-remomend-color-box .text-area .heading {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#ql-remomend-color-box .text-area .price {
+  font-size: 16px;
+}
+.text-area {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+#ql-remomend-color-box{
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+  grid-template-rows: repeat(2, 50%);
+  grid-row-gap: 20px;
+  padding: 0px 15px;
+}
+#ql-remomend-color-box .text-area .heading{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19.6px;
+  }
+}
+
+/* 折扣活动 */
+.ql-discount {
+  display: inline-block;
+}
+</style>
+
+<section class="section-{{ section.id }}">
+
+  {% for block in section.blocks %}
+      {% assign collection = block.settings.collection %}
+      {% assign handle = 'shop-all' %}
+      {% if collection != nil %}
+          {% assign handle = collection.handle %}
+      {% endif %}
+      
+      {% assign btn_text = block.settings.btn_text %}
+      {% assign show_pic = block.settings.show_pic %}
+      {% assign color_name = block.settings.color_name %}
+      {% assign num = block.settings.num %}
+      {% assign parame = block.settings.parame %}
+      {% assign collection_image = block.settings.pic %}
+      {% if collection_image == blank %}
+          {% assign collection_image = collection.image %}
+      {% endif %}
+
+      <div style="margin-bottom: 3rem;">
+
+      
+
+      {% if show_pic == true and collection_image != blank %}
+          <div class="rimage-outer-wrapper rimage-background lazyload fade-in"
+              data-cc-animate="cc-zoom-out"
+              data-bgset="{% render 'bgset', image: collection_image %}"
+              data-sizes="auto"
+              data-parent-fit="cover">
+              <div class="rimage-wrapper" style="padding-top:{{ 1 | divided_by: collection_image.aspect_ratio | times: 100 }}%"></div>
+          <noscript>
+              <div class="rimage-wrapper" style="padding-top:{{ 1 | divided_by: collection_image.aspect_ratio | times: 100 }}%">
+              <img src="{{ collection_image | img_url: '1024x1024' }}" alt="{{ collection_image.alt | escape }}" class="rimage__image">
+              </div>
+          </noscript>
+          </div>
+      {% endif %}
+
+      <shop-by-color data-handle="{{handle}}" id="ql-remomend-color-box"
+          data-color_name="{{color_name}}" 
+          data-num="{{num}}" 
+          data-btn_text="{{btn_text}}" 
+          data-parame="{{parame}}">
+
+      </shop-by-color>
+    </div>
+
+
+  {% endfor %}
+  
+
+</section>
+
+{% schema %}
+{
+  "name": "Shop by color",
+  "settings": [],
+  "blocks": [
+      {
+         "type": "item",
+         "name": "Shop by color",
+         "settings": [
+         {
+         "type": "text",
+         "id": "title",
+         "label": "Title",
+         "default": "Title"
+         },
+         {
+            "type": "checkbox",
+            "id": "show_pic",
+            "label": "是否显示展示图(选中后，如未设展示图，则默认系列页展示图)",
+            "default": true
+         },
+         {
+            "type": "image_picker",
+            "id": "pic",
+            "label": "展示图"
+         },
+         {
+            "type": "collection",
+            "id": "collection",
+            "label":"系列页"
+         },
+         {
+            "type": "text",
+            "id": "color_name",
+            "label":"颜色名"
+         },
+         {
+            "type": "range",
+            "id" : "num",
+            "min": 1,
+            "max": 28,
+            "step": 1,
+            "unit": "个",
+            "default": 4,
+            "label": "最多展示同色产品数量"
+         },
+         {
+            "type": "text",
+            "id": "btn_text",
+            "label": "按钮名称",
+            "default": "Shop All"
+         },
+         {
+            "type": "text",
+            "id": "parame",
+            "label": "参数名",
+            "default":"uff_d8qrj5_option%3AColor"
+         }
+         ]
+      }
+  ]
+  ,
+  "presets": [
+   {
+     "name": "Shop by color"
+     
+   }
+ ]
+}
+{% endschema %}

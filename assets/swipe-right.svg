@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="arrowRightIconTitle" fill="#93150D">
+  <!-- 背景矩形 -->
+  <rect width="24" height="24" fill="#93150D"/>
+  <!-- 箭头路径（白色描边） -->
+  <path d="M15 6l6 6" stroke="#ffffff" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M3 12h17" stroke="#ffffff" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M21 12h-1" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+</svg>

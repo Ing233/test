@@ -1,0 +1,13 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-labelledby="chevronRightIconTitle" style="
+    width: 25px;
+    height: 25px;
+    stroke: #808080;
+    stroke-width: 0.96;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    fill: none;
+    color: #808080;
+">
+          <title id="chevronRightIconTitle">Chevron Right</title>
+          <polyline points="10 6 16 12 10 18 10 18"></polyline>
+        </svg>

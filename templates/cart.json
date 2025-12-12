@@ -1,0 +1,60 @@
+{
+  "sections": {
+    "image_with_text_overlay_JFHxXA": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Butterluxe_8aa3f6e3-190a-4164-9be7-0df7e9c5d96d.jpg",
+        "desktop_image_position": "center center",
+        "mobile_image_position": "center center",
+        "height": "fixed",
+        "height_desktop": 450,
+        "height_mobile": 400,
+        "subheading": "DON'T MISS OUT ON THE DISCOUNT!",
+        "title": "Buy 2 get 10% OFF with \"CRZ10\"",
+        "title_size": 38,
+        "heading_h1": false,
+        "text": "<p><a href=\"\/pages\/subscribe\" title=\"Subscribe\">Subscribe<\/a> to our email and enjoy 15% OFF on your <em>first order<\/em> with code \"MAIL15\"<\/p>",
+        "enlarge_text": true,
+        "button_label": "",
+        "image_link": "",
+        "overlay_position": "position--hcenter position--vcenter",
+        "full_width": true,
+        "mobile_overlay_under": false,
+        "overlay_style_tint": true
+      }
+    },
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "cart_show_title": true,
+        "cart_terms_show": false,
+        "cart_terms_page": "",
+        "continue_shopping_page": "",
+        "cart_note_show": false,
+        "show_tax_and_shipping": true,
+        "show_additional_checkout_buttons": true,
+        "show_backorder_text": true
+      }
+    },
+    "125b53fe-f033-428c-b7f9-dc3c7fc88f60": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "You may also like",
+        "collection": "butterluxe-e",
+        "layout": "rows",
+        "show_vendor": false,
+        "grid": 4,
+        "rows": 1,
+        "grid_mobile": "2",
+        "hide_swatches": false,
+        "alternate_bg_color": false,
+        "show_view_all": true
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_JFHxXA",
+    "main",
+    "125b53fe-f033-428c-b7f9-dc3c7fc88f60"
+  ]
+}

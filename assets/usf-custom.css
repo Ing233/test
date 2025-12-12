@@ -1,0 +1,42 @@
+.usf-sr-summary .pretty-select {
+	white-space: nowrap;
+}
+
+.usf-sr-config .pretty-select {
+	width: 200px;
+}
+
+.usf-sr-config .pretty-select .usf-dropdown{
+	width: 100%;
+}
+
+.usf-sr-config .usf-dropdown {
+	background: #fff;
+	color: #363636;
+	border: 1px solid #cdcdcd;
+}
+
+body:not(.usf-mobile) .usf-dropdown {
+	height: 40px;
+	padding: 3px 0 3px 15px;
+}
+body:not(.usf-mobile) .usf-results.usf-grid {
+	padding-left: 30px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+body:not(.usf-collections-page) .usf-sr-inputbox {
+	display: none;
+}
+
+.jdgm-widget.jdgm-widget {
+    display: block;
+    text-align: left;
+}
+body:not(.usf-mobile) .usf-facet-values--Box .usf-facet-value{
+        min-width: calc(20% - 8px);
+}
+.usf-sr-more .usf-progress div {
+    background: #fa6920;
+}

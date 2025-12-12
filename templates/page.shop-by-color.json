@@ -1,0 +1,466 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_content": true
+      }
+    },
+    "main_list_images_Le7QUt": {
+      "type": "main-list-images",
+      "blocks": {
+        "item_YfLmLT": {
+          "type": "item",
+          "settings": {
+            "title": "Deep Red",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Deep%20Red",
+            "image": "shopify:\/\/shop_images\/Deep_Red.jpg"
+          }
+        },
+        "item_hApQL4": {
+          "type": "item",
+          "settings": {
+            "title": "Hot Fudge Brown",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Hot%20Fudge%20Brown",
+            "image": "shopify:\/\/shop_images\/Hot_Fudge_Brown.jpg"
+          }
+        },
+        "item_jWjfD7": {
+          "type": "item",
+          "settings": {
+            "title": "Mojave Tan",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Mojave%20Tan",
+            "image": "shopify:\/\/shop_images\/Mojave_Tan.jpg"
+          }
+        },
+        "item_bXD7Vq": {
+          "type": "item",
+          "settings": {
+            "title": "Red Merlot",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Red%20Merlot",
+            "image": "shopify:\/\/shop_images\/Red_Merlot.jpg"
+          }
+        },
+        "item_frdtzr": {
+          "type": "item",
+          "settings": {
+            "title": "Sparkle Blue",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Sparkle%20Blue",
+            "image": "shopify:\/\/shop_images\/Sparkle_Blue.jpg"
+          }
+        },
+        "item_pUbWR7": {
+          "type": "item",
+          "settings": {
+            "title": "Black Tie Dye Flowers",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Black%20Tie%20Dye%20Flowers",
+            "image": "shopify:\/\/shop_images\/Black_Tie_Dye_Flowers.jpg"
+          }
+        },
+        "item_rKYtTa": {
+          "type": "item",
+          "settings": {
+            "title": "Black Classic",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Black%20Classic",
+            "image": "shopify:\/\/shop_images\/Black_Classic.jpg"
+          }
+        },
+        "item_CGb8AT": {
+          "type": "item",
+          "settings": {
+            "title": "Olive Green",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Olive%20Green",
+            "image": "shopify:\/\/shop_images\/Olive_Green.jpg"
+          }
+        },
+        "item_6HNJRF": {
+          "type": "item",
+          "settings": {
+            "title": "Red Chili",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Red%20Chili",
+            "image": "shopify:\/\/shop_images\/Red_Chili.jpg"
+          }
+        },
+        "item_7YwXa9": {
+          "type": "item",
+          "settings": {
+            "title": "Taupe",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Taupe",
+            "image": "shopify:\/\/shop_images\/Taupe_a2500e9f-cc55-4b1a-9d69-8cb282901989.jpg"
+          }
+        },
+        "item_UUCjAH": {
+          "type": "item",
+          "settings": {
+            "title": "Deep Purple",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Deep%20Purple",
+            "image": "shopify:\/\/shop_images\/Deep_Purple.jpg"
+          }
+        },
+        "item_NeCqnU": {
+          "type": "item",
+          "settings": {
+            "title": "Larkspur Blue",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Larkspur%20Blue",
+            "image": "shopify:\/\/shop_images\/Larkspur_Blue.jpg"
+          }
+        },
+        "item_T3q8NY": {
+          "type": "item",
+          "settings": {
+            "title": "Hibiscus Purple",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Hibiscus%20Purple",
+            "image": "shopify:\/\/shop_images\/Hibiscus_Purple.jpg"
+          }
+        },
+        "item_eLQr7G": {
+          "type": "item",
+          "settings": {
+            "title": "French Navy",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=French%20Navy",
+            "image": "shopify:\/\/shop_images\/French_Navy.jpg"
+          }
+        },
+        "item_GEyyKa": {
+          "type": "item",
+          "settings": {
+            "title": "Dark Lavender Purple",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Dark%20Lavender%20Purple",
+            "image": "shopify:\/\/shop_images\/Dark_Lavender_Purple.jpg"
+          }
+        },
+        "item_4Ff4JA": {
+          "type": "item",
+          "settings": {
+            "title": "Grey Sage",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Grey%20Sage",
+            "image": "shopify:\/\/shop_images\/Grey_Sage.jpg"
+          }
+        },
+        "item_3yfRFE": {
+          "type": "item",
+          "settings": {
+            "title": "Dark Forest Green",
+            "url": "https:\/\/shop.crzyoga.com\/collections\/shop-all?uff_d8qrj5_option%3AColor=Dark%20Forest%20Green",
+            "image": "shopify:\/\/shop_images\/Dark_Forest_Green.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "item_YfLmLT",
+        "item_hApQL4",
+        "item_jWjfD7",
+        "item_bXD7Vq",
+        "item_frdtzr",
+        "item_pUbWR7",
+        "item_rKYtTa",
+        "item_CGb8AT",
+        "item_6HNJRF",
+        "item_7YwXa9",
+        "item_UUCjAH",
+        "item_NeCqnU",
+        "item_T3q8NY",
+        "item_eLQr7G",
+        "item_GEyyKa",
+        "item_4Ff4JA",
+        "item_3yfRFE"
+      ],
+      "settings": {
+        "fixed": true,
+        "grid": 8,
+        "grid_mobile": 4
+      }
+    },
+    "slideshow_hqhwh9": {
+      "type": "slideshow",
+      "blocks": {
+        "image_hNQjTi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/banner-pc_4eecc97a-b338-4534-93f4-8223737ab59d.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/banner-mb_1219f2ca-b433-4ced-8226-3bf3eca159f6.jpg",
+            "desktop_image_position": "center center",
+            "mobile_image_position": "center center",
+            "slide_link": "",
+            "subheading": "",
+            "title": "",
+            "title_size": 60,
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": true,
+            "button_label": "",
+            "overlay_position": "position--hcenter position--vcenter"
+          }
+        }
+      },
+      "block_order": [
+        "image_hNQjTi"
+      ],
+      "settings": {
+        "height": "adapt",
+        "height_desktop": 600,
+        "height_mobile": 500,
+        "full_width": true,
+        "mobile_overlay_under": false,
+        "overlay_style_tint": true,
+        "slide_transition": "slide",
+        "slide_navigation": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "section_shopbycolor_cPpRCy": {
+      "type": "section-shopbycolor",
+      "blocks": {
+        "item_LQ3r6A": {
+          "type": "item",
+          "settings": {
+            "title": "Deep Red",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Deep-Red.jpg",
+            "collection": "",
+            "color_name": "Deep Red",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_PHrjn7": {
+          "type": "item",
+          "settings": {
+            "title": "Hot Fudge Brown",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Hot-Fudge-Brown_322d765a-6eb9-447a-8ab1-688353f60d42.jpg",
+            "collection": "",
+            "color_name": "Hot Fudge Brown",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_nf7eMY": {
+          "type": "item",
+          "settings": {
+            "title": "Mojave Tan",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Mojave-Tan.jpg",
+            "collection": "",
+            "color_name": "Mojave Tan",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_6dwN8A": {
+          "type": "item",
+          "settings": {
+            "title": "Red Merlot",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Red-Merlot.jpg",
+            "collection": "",
+            "color_name": "Red Merlot",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_xhPrFz": {
+          "type": "item",
+          "settings": {
+            "title": "Sparkle Blue",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Sparkle-Blue.jpg",
+            "collection": "",
+            "color_name": "Sparkle Blue",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_V3tpQk": {
+          "type": "item",
+          "settings": {
+            "title": "Black Tie Dye Flowers",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Black-Tie-Dye-Flowers.jpg",
+            "collection": "",
+            "color_name": "Black Tie Dye Flowers",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_mNcQWx": {
+          "type": "item",
+          "settings": {
+            "title": "Black Classic",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Black-Classic.jpg",
+            "collection": "",
+            "color_name": "Black Classic",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_ay98dn": {
+          "type": "item",
+          "settings": {
+            "title": "Olive Green",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Olive-Green_23ee06ba-8f8f-422c-a426-e12498cfb3a3.jpg",
+            "collection": "",
+            "color_name": "Olive Green",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_kVMUGg": {
+          "type": "item",
+          "settings": {
+            "title": "Red Chili",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Red-Chili.jpg",
+            "collection": "",
+            "color_name": "Red Chili",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_gHqXYG": {
+          "type": "item",
+          "settings": {
+            "title": "Taupe",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Taupe_ba415184-4f59-41d6-8c11-484b40a71311.jpg",
+            "collection": "",
+            "color_name": "Taupe",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_KCdErQ": {
+          "type": "item",
+          "settings": {
+            "title": "Deep Purple",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Deep-Purple.jpg",
+            "collection": "",
+            "color_name": "Deep Purple",
+            "num": 6,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_K7KUmR": {
+          "type": "item",
+          "settings": {
+            "title": "Larkspur Blue",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Larkspur-Blue.jpg",
+            "collection": "",
+            "color_name": "Larkspur Blue",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_Jg74Rm": {
+          "type": "item",
+          "settings": {
+            "title": "Hibiscus Purple",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Hibiscus-Purple.jpg",
+            "collection": "",
+            "color_name": "Hibiscus Purple",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_XtejGT": {
+          "type": "item",
+          "settings": {
+            "title": "French Navy",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/French-Navy.jpg",
+            "collection": "",
+            "color_name": "French Navy",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_rNb3XD": {
+          "type": "item",
+          "settings": {
+            "title": "Dark Lavender Purple",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Dark-Lavender-Purple.jpg",
+            "collection": "",
+            "color_name": "Dark Lavender Purple",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_hbNV3G": {
+          "type": "item",
+          "settings": {
+            "title": "Grey Sage",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Grey-Sage.jpg",
+            "collection": "",
+            "color_name": "Grey Sage",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        },
+        "item_fKP9pf": {
+          "type": "item",
+          "settings": {
+            "title": "Dark Forest Green",
+            "show_pic": true,
+            "pic": "shopify:\/\/shop_images\/Dark-Forest-Green.jpg",
+            "collection": "",
+            "color_name": "Dark Forest Green",
+            "num": 4,
+            "btn_text": "Shop All",
+            "parame": "uff_d8qrj5_option%3AColor"
+          }
+        }
+      },
+      "block_order": [
+        "item_LQ3r6A",
+        "item_PHrjn7",
+        "item_nf7eMY",
+        "item_6dwN8A",
+        "item_xhPrFz",
+        "item_V3tpQk",
+        "item_mNcQWx",
+        "item_ay98dn",
+        "item_kVMUGg",
+        "item_gHqXYG",
+        "item_KCdErQ",
+        "item_K7KUmR",
+        "item_Jg74Rm",
+        "item_XtejGT",
+        "item_rNb3XD",
+        "item_hbNV3G",
+        "item_fKP9pf"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "main_list_images_Le7QUt",
+    "slideshow_hqhwh9",
+    "section_shopbycolor_cPpRCy"
+  ]
+}

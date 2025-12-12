@@ -1,0 +1,154 @@
+{
+  "sections": {
+    "1634696237f56daeb0": {
+      "type": "collection-list",
+      "disabled": true,
+      "blocks": {
+        "1634696237f56daeb0-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "brushed-naked-feeling"
+          }
+        },
+        "1634696237f56daeb0-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "pattern-kingdom"
+          }
+        },
+        "1634696237f56daeb0-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "fall-essentials",
+            "image": "shopify:\/\/shop_images\/13.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "1634696237f56daeb0-0",
+        "1634696237f56daeb0-1",
+        "1634696237f56daeb0-2"
+      ],
+      "settings": {
+        "title": "",
+        "layout": "carousel",
+        "grid": 3,
+        "grid_mobile": "1",
+        "show_view_all": false,
+        "alternate_bg_color": false
+      }
+    },
+    "main": {
+      "type": "main-collection-no-usf",
+      "settings": {
+        "show_collection_content": false,
+        "show_collection_image": true,
+        "description_position": "top",
+        "layout": "rows",
+        "show_vendor": false,
+        "grid": 4,
+        "grid_mobile": "2",
+        "products_per_page": 24,
+        "enable_infinite_scroll": true,
+        "show_filter_counts": false,
+        "ajax_products": false,
+        "filter_mode": "sidebar",
+        "sticky_sidebar": true,
+        "collapse_filters_method": "all",
+        "collapse_sort_by": true,
+        "enable_sorting": true,
+        "show_featured_in_sort": true
+      }
+    },
+    "1633766261be0e031b": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "1633766261be0e031b-1": {
+          "type": "image",
+          "settings": {
+            "desktop_image_position": "center center",
+            "mobile_image_position": "center center",
+            "slide_link": "",
+            "subheading": "",
+            "title": "Brushed Naked Feeling",
+            "title_size": 42,
+            "heading_h1": false,
+            "text": "<p>Find balance in brushed naked feeling<\/p>",
+            "enlarge_text": true,
+            "button_label": "SHOP NOW",
+            "overlay_position": "position--hcenter position--vcenter"
+          }
+        }
+      },
+      "block_order": [
+        "1633766261be0e031b-1"
+      ],
+      "settings": {
+        "height": "fixed",
+        "height_desktop": 600,
+        "height_mobile": 500,
+        "full_width": true,
+        "mobile_overlay_under": true,
+        "overlay_style_tint": true,
+        "slide_transition": "slide",
+        "slide_navigation": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "16337664923dc57056": {
+      "type": "text-columns-with-images",
+      "disabled": true,
+      "blocks": {
+        "16337664923dc57056-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "video": "",
+            "image_width": 700,
+            "title": "Cozy All Day",
+            "text": "<p>Brushed Naked Feeling collection is composed of brushed, super soft and compressive fabrics,<\/p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "16337664923dc57056-1": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "video": "",
+            "image_width": 700,
+            "title": "Supportive,Enough Compression",
+            "text": "<p>With a seamless waistband that does not dig in, allowing you to exercise unlimited.Basic leggings suitable for all occasions<\/p>",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16337664923dc57056-0",
+        "16337664923dc57056-1"
+      ],
+      "settings": {
+        "title": "Brushed For Softer Comfort",
+        "text_alignment": "center",
+        "button_style": "primary",
+        "media_shape": "natural",
+        "alternate_bg_color": false,
+        "full_width": false
+      }
+    },
+    "1633766495ab86ffa3": {
+      "type": "featured-collection-usf",
+      "settings": {}
+    }
+  },
+  "order": [
+    "1634696237f56daeb0",
+    "main",
+    "1633766261be0e031b",
+    "16337664923dc57056",
+    "1633766495ab86ffa3"
+  ]
+}

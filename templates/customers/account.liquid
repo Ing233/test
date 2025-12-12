@@ -1,0 +1,533 @@
+<style>
+  {% comment %} 通用 {% endcomment %}
+    .fw-500 {
+      font-weight: 500;
+  }
+  .bg-grey{
+    background: #ebebeb;
+  }
+  .color-grey{
+    color: #777777;
+  }
+  .color-black {
+    color: #000000;
+  }
+  .underline{
+    text-decoration: underline;
+  }
+
+
+  #customer_sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5rem;
+    row-gap: 1rem;
+  }
+
+  #return_to_store,
+  #return_to_store-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1em 1rem;
+  }
+
+  #customer_detail, #customer_address-book {
+      position: relative;
+      border-radius: 5px;
+      background: #ebebeb;
+      padding: 1rem 2rem;
+  }
+
+  .rte h3.customer_heading {
+      text-align: left;
+      margin: 0;
+  }
+
+  #customer_detail .address.note {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+  }
+  #view_address {
+    color: #ffffff;
+    padding: 10px 30px;
+  }
+
+  #view_address:hover {
+      color: #1b1b1b;
+  }
+
+  #customer_order-history {
+    margin-top: 30px;
+  }
+
+  #customer_orders table thead tr th {
+    border: none;
+    font-weight: 500;
+  }
+
+  {% comment %} Order History {% endcomment %}
+  #customer_orders table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    border-radius: 5px;
+  }
+  #customer_orders table.order-table{
+    border: 1px solid #ebebeb;
+  }
+  #customer_orders table thead tr:first-child, #customer_orders table tbody tr:first-child {
+    position: relative;
+    top: -10px;
+    height: 50px;
+    border-radius: 5px 5px 0 0;
+  }
+  #customer_orders table tr, #customer_orders table td, .edit_address table tr, .edit_address table td {
+    border: none;
+  }
+
+  .edit_address .action_bottom {
+    margin: 0 auto;
+    text-align: center;
+  }
+  table.thead-table {
+    position: relative;
+  }
+  #customer_orders table.thead-table::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0;
+      right: 0;
+      bottom: 30px;
+      background: #ebebeb;
+      border-radius: 5px;
+      z-index: -1; /* 置于内容下方 */
+  }
+
+  @media (max-width: 767px){
+    .mb-color-grey{
+      color: #777777;
+    }
+    .mb-color-blue{
+      color: #2424fc!important;
+    }
+    .mb-color-black {
+      color: #000000;
+    }
+    .hidden-on-mb{
+      display: none!important;
+    }
+
+
+    #page-account .py-medium{
+      padding-top: 30px;
+    }
+    #my-account {
+      margin: 0 1rem;
+    }
+    #customer_orders table.thead-table thead tr {
+      top: 5px;
+    }
+    #customer_orders table.thead-table::before {
+      top: 15px;
+      bottom: 15px;
+    }
+    
+    #customer_sidebar {
+      grid-template-rows: repeat(2, auto);
+      grid-template-columns: 1fr;
+      margin-bottom: 2em;
+    }
+    #customer_detail, #customer_address-book, #customer_order-history {
+      padding: 1rem;
+      margin: 0 1rem;
+      max-width: 100%;
+    }
+    #customer_order-history{
+      padding: 0;
+    }
+    .show-items-img {
+      display: flex;
+      overflow-x: scroll;
+      gap: 10px;
+    }
+  }
+  @media (min-width: 767px){
+    .hidden-on-pc{
+      display: none!important;
+    }
+    .pc-color-grey{
+      color: #777777!important;
+    }
+    .pc-color-black {
+      color: #000000!important;
+    }
+    .pc-bd-color-grey {
+      border-bottom: 1px solid #777777!important;
+    }
+  }
+</style>
+<div class="rte py-medium">
+  <div id="admin_header">
+    <h1 class="h2 feature-header" data-cc-animate>{{ 'customer.account.title' | t }}</h1>
+  </div>
+
+  <div class="action_link action_return note" id='return_to_store' data-cc-animate>
+    <h3 class="customer_heading">Welcome, {{ customer.name }}!</h3>
+
+    <a data-cc-animate-click href="{{ routes.root_url }}" class="hidden-on-mb">
+      {{ 'customer.general.return' | t }}
+    </a>
+  </div>
+
+  <div id="customer_sidebar" class="section-spacing">
+    <div id="customer_detail" class="group" data-cc-animate data-cc-animate-delay="0.2s">
+      
+      <h3 class="customer_heading">Account Overivew</h3>
+
+      <div class="address note">
+        <div class="name">
+          <p class="fw-500">Name</p>
+          <p>{{ customer.name }}</p>
+        </div>
+        <div class="email note">
+          <p class="fw-500">Email</p>
+          <p>{{ customer.email }}</p>
+        </div>
+        <div class="area">
+          <p class="fw-500">Area</p>
+          {% if customer.default_address != nil %}
+            <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
+          {% endif %}
+        </div>
+        <div class="phone">
+          <p class="fw-500">Phone</p>
+          <p>{{ customer.default_address.phone  }}</p>
+        </div>
+
+
+        <div class="log-out">
+          <a data-cc-animate-click href="{{ routes.account_logout_url }}" style="position: relative;bottom: -15px;">
+          {{ 'layout.customer.log_out' | t  }}
+          </a>
+        </div>
+        
+        {% comment %} Edit Default Address {% endcomment %}
+        <div class="edit align-right">
+          <a data-cc-animate-click id="view_address" class="button address-edit-toggle" href="#" data-form-id="{{ customer.default_address.id }}" aria-owns="edit_address_{{ customer.default_address.id }}" aria-expanded="false">Edit</a>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Address Book {% endcomment %}
+    <div id="customer_address-book">
+      <h3 class="customer_heading">Address Book</h3>
+      <p>{{ customer.name }}</p>
+      {% if customer.default_address != nil %}
+        {% if customer.default_address.address1 != nil %}
+          <p>{{ customer.default_address.address1 }}
+            {% endif %}{% if customer.default_address.address2 != nil %}, {{ customer.default_address.address2 }}
+          </p>
+        {% endif %}
+        
+
+      {% else %}
+        <p>You have no saved addresses</p>
+      {% endif %}
+      <p>{{ customer.default_address.phone  }}</p>
+
+      <div id="action" class="action_link action_add note">
+        <a href="/account/addresses">
+          Manage Address
+        </a>
+      </div>
+    </div>
+
+    
+  </div>
+
+  {% comment %} Edit address {% endcomment %}
+  <div id="edit_address_{{customer.default_address.id}}" class="customer_address edit_address" style="display: none">
+    <h4>{{ 'customer.addresses.edit_address' | t }}</h4>
+
+    {% form 'customer_address', customer.default_address. %}
+    <table class="customer_address_table">
+      <tr>
+        <td class="label"><label for="address_first_name_{{form.id}}">{{ 'customer.addresses.first_name' | t }}</label></td>
+        <td class="value"><input type="text" id="address_first_name_{{form.id}}" class="address_form" name="address[first_name]" value="{{form.first_name}}" size="40" /></td>
+      </tr>
+      <tr>
+        <td class="label"><label for="address_last_name_{{form.id}}">{{ 'customer.addresses.last_name' | t }}</label></td>
+        <td class="value"><input type="text" id="address_last_name_{{form.id}}" class="address_form" name="address[last_name]" value="{{form.last_name}}" size="40" /></td>
+      </tr>
+      <tr>
+        <td class="label"><label for="address_company_{{form.id}}">{{ 'customer.addresses.company' | t }}</label></td>
+        <td class="value"><input type="text" id="address_company_{{form.id}}" class="address_form" name="address[company]" value="{{form.company}}" size="40" /></td>
+      </tr>
+      <tr>
+        <td class="label"><label for="address_address1_{{form.id}}">{{ 'customer.addresses.address1' | t }}</label></td>
+        <td class="value"><input type="text" id="address_address1_{{form.id}}" class="address_form" name="address[address1]" value="{{form.address1}}" size="40" /></td>
+      </tr>
+      <tr>
+        <td class="label"><label for="address_address2_{{form.id}}">{{ 'customer.addresses.address2' | t }}</label></td>
+        <td class="value"><input type="text" id="address_address2_{{form.id}}" class="address_form" name="address[address2]" value="{{form.address2}}" size="40" /></td>
+      </tr>
+      <tr>
+        <td class="label"><label for="address_city_{{form.id}}">{{ 'customer.addresses.city' | t }}</label></td>
+        <td class="value"><input type="text" id="address_city_{{form.id}}" class="address_form" name="address[city]" value="{{form.city}}" size="40" /></td>
+      </tr>
+      <tr>
+        <td class="label"><label for="address_country_{{form.id}}">{{ 'customer.addresses.country' | t }}</label></td>
+        <td class="value">
+          <select id="address_country_{{form.id}}" name="address[country]" data-default="{{form.country}}">{{ country_option_tags }}</select>
+        </td>
+      </tr>
+      <tr id="address_province_container_{{form.id}}" style="display:none">
+        <td class="label"><label for="address_province_{{form.id}}">{{ 'customer.addresses.province' | t }}</label></td>
+        <td class="value"><select id="address_province_{{form.id}}" class="address_form" name="address[province]" data-default="{{form.province}}"></select></td>
+      </tr>
+      <tr>
+        <td class="label"><label for="address_zip_{{form.id}}">{{ 'customer.addresses.zip' | t }}</label></td>
+        <td class="value"><input type="text" id="address_zip_{{form.id}}" class="address_form" name="address[zip]" value="{{form.zip}}" size="40" /></td>
+      </tr>
+      <tr>
+        <td class="label"><label for="address_phone_{{form.id}}">{{ 'customer.addresses.phone' | t }}</label></td>
+        <td class="value"><input type="text" id="address_phone_{{form.id}}" class="address_form" name="address[phone]" value="{{form.phone}}" size="40" /></td>
+      </tr>
+      <tr>
+        <td class="label"></td>
+        <td class="value"><label>{{ form.set_as_default_checkbox }} {{ 'customer.addresses.set_default' | t }}</label></td>
+      </tr>
+    </table>
+    <div class="action_bottom">
+      <p><input type="submit" value="{{ 'customer.addresses.update' | t }}" /></p>
+      <p><span class="note"><a href="#" onclick="$(this).closest('.customer_address').toggle(); return false;">{{ 'customer.addresses.cancel' | t }}</a></span></p>
+    </div>
+    {% endform %}
+  </div>
+
+  {% comment %} Order History {% endcomment %}
+  <div id="customer_order-history">
+    <h1 class="h2 feature-header">Order History</h1>
+    {% if customer.orders.size != 0 %}
+      <p data-cc-animate data-cc-animate-delay="0.4s">You have {{ customer.orders.size }} order records</p>
+    {% else %}
+      <p data-cc-animate data-cc-animate-delay="0.4s">{{ 'customer.orders.none' | t }}</p>
+    {% endif %}
+
+    <div id="customer_orders" data-cc-animate data-cc-animate-delay="0.4s">
+      {% paginate customer.orders by 20 %}
+      {% if customer.orders.size != 0 %}
+        <table class="thead-table">
+          <thead>
+            <tr>
+              <th class="ordersr"  style="width: 200px">All Orders</th>
+              <th class="details align-left hidden-on-mb" style="width: 35%">Order Details</th>
+              <th class="amount hidden-on-mb align-left" style="width: 10%">Total Amount</th>
+              <th class="track hidden-on-mb align-left" style="width: 20%">Track Number<span class="tips color-grey">(Click To Track)</span></th>
+              <th class="operate hidden-on-mb align-right">Operate</th>
+            </tr>
+          </thead>
+        </table>
+      {% for order in customer.orders %}
+        <table class="color-grey order-table">
+          <tbody>
+
+            <tr class="bg-grey order" data-order-name="{{ order.name }}">
+              <td class="hidden-on-mb"><span class="note">{{ order.created_at | date: format: 'month_date_year' }}</span></td>
+              <td colspan="4" class="mb-color-black">
+                <span>Order Number: <a data-cc-animate-click href="{{ order.customer_url }}" class="pc-color-grey mb-color-blue pc-bd-color-grey">{{ order.name }}</a></span>
+                {% comment %} 订单状态 {% endcomment %}
+                <span class="hidden-on-pc color-grey" colspan="3" style="float: right;">{{ order.fulfillment_status_label }}</span>
+              </td>
+              
+            </tr>
+
+            {% for line_item in order.line_items %}
+              <tr id="{{ line_item.id }}" class="{% cycle 'odd', 'even' %} hidden-on-mb">
+                {% comment %} image {% endcomment %}
+                <td class="product" style="width: 200px">
+                  <img src="{{ line_item.image | img_url: '200x200' }}"/>
+                </td>
+
+                {% comment %} detail {% endcomment %}
+                <td class="detail align-left" style="width: 35%">
+                  <div class="note">
+                    <p>{{ line_item.title }}</p>
+                    <div class="price">
+                      {% if line_item.original_line_price > line_item.final_line_price %}
+                          <div class="original-price">{{ line_item.original_price | money }}</div>
+                          <div><span>{{ line_item.final_price | money }}</span> <span class="color-grey">({{ line_item.quantity }}item)</span></div>
+                        {% else %}
+                          <div><span>{{ line_item.final_price | money }}</span> <span class="color-grey">({{ line_item.quantity }}item)</span></div>
+                        {% endif %}
+
+                        {% render 'unit-price', variant: line_item %}
+
+                        {% if line_item.line_level_discount_allocations.size > 0 %}
+                          <ul class="cart-discount-list">
+                          {% for discount_allocation in line_item.line_level_discount_allocations %}
+                            <li class="cart-discount">
+                              <div class="cart-discount__label">{{ discount_allocation.discount_application.title }}</div>
+                              <div class="cart-discount__amount">(-{{ discount_allocation.amount | money }})</div>
+                            </li>
+                          {% endfor %}
+                          </ul>
+                        {% endif %}
+                        
+                    </div>
+                  </div>
+                </td>
+
+                {% if forloop.index == 1 %}
+                  {% assign line_size = 1 %}
+                  {% if order.line_items.size <= 3 %}
+                    {% assign line_size = order.line_items.size %}
+                  {% endif %}
+                  {% comment %} Total Amount {% endcomment %}
+                  <td class="align-left total" rowspan="{{ line_size }}" style="width: 10%">
+                    {{ order.total_price | money }}
+                  </td>
+
+                  {% comment %} Track Number {% endcomment %}
+                  <td class="align-left hidden-on-mb" rowspan="{{ line_size }}" style="width: 10%">
+                    <a href="{{ line_item.fulfillment.tracking_url }}" target="_blank" style="color: #2424fc;">{{ line_item.fulfillment.tracking_number }}</a>
+                  </td>
+
+                  {% comment %} Operate {% endcomment %}
+                  <td class="align-right hidden-on-mb" rowspan="{{ line_size }}">
+                    <a data-cc-animate-click href="{{ order.customer_url }}" style="color: #777777;">Check The Details</a>
+                  </td>
+                {% endif %}
+              </tr>
+            {% endfor %}
+
+            {% comment %} mb {% endcomment %}
+             {% if order.line_items.size > 1 %}
+              <tr id="{{ line_item.id }}" class="{% cycle 'odd', 'even' %} hidden-on-pc">
+                {% comment %} image {% endcomment %}
+                <td class="product show-items-img">
+                  {% for line_item in order.line_items %}
+                      <img src="{{ line_item.image | img_url: '200x200' }}"/>
+                  {% endfor %}
+                </td>
+                {% comment %} Total Amount {% endcomment %}
+                <td class="align-left total" rowspan="{{ order.line_items.size }}">
+                  <p>{{ order.total_price | money }}</p>
+                  <p>{{ order.item_count }}item</p>
+                </td>
+                </tr>
+            {% else %}
+              {% for line_item in order.line_items %}
+                <tr id="{{ line_item.id }}" class="{% cycle 'odd', 'even' %} hidden-on-pc">
+                  {% comment %} image {% endcomment %}
+                  <td class="product">
+                    <img src="{{ line_item.image | img_url: '200x200' }}"/>
+                  </td>
+
+                  {% comment %} detail {% endcomment %}
+                  <td class="detail align-left">
+                    <div class="note">
+                      <p>{{ line_item.title }}</p>
+                      <div class="price">
+                        {% if line_item.original_line_price > line_item.final_line_price %}
+                            <div class="original-price">{{ line_item.original_price | money }}</div>
+                            <div><span>{{ line_item.final_price | money }}</span></div>
+                            <div><span class="color-grey">({{ line_item.quantity }}item)</span></div>
+                          {% else %}
+                            <div><span>{{ line_item.final_price | money }}</span></div>
+                            <div><span class="color-grey">({{ line_item.quantity }}item)</span></div>
+                          {% endif %}
+
+                          {% render 'unit-price', variant: line_item %}
+
+                          {% if line_item.line_level_discount_allocations.size > 0 %}
+                            <ul class="cart-discount-list">
+                            {% for discount_allocation in line_item.line_level_discount_allocations %}
+                              <li class="cart-discount">
+                                <div class="cart-discount__label">{{ discount_allocation.discount_application.title }}</div>
+                                <div class="cart-discount__amount">(-{{ discount_allocation.amount | money }})</div>
+                              </li>
+                            {% endfor %}
+                            </ul>
+                          {% endif %}
+                          
+                      </div>
+                    </div>
+                  </td>
+
+                  {% if forloop.index == 1 %}
+                    {% comment %} Total Amount {% endcomment %}
+                    <td class="align-left total" rowspan="{{ order.line_items.size }}">
+                      {{ order.total_price | money }}
+                    </td>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+            {% endif %}
+
+            <tr class="hidden-on-pc">
+              {% comment %} Track Number {% endcomment %}
+              <td class="align-left hidden-on-pc" colspan="3">
+                <a href="{{ order.line_items[0].fulfillment.tracking_url }}"  style="color: #2424fc;" target="_blank">{{ order.line_items[0].fulfillment.tracking_number }}</a>
+                <div class="color-grey">(Click to check logistics)</div>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      {% endfor %}
+      {% endif %}
+      {% if paginate.pages > 1 %}
+      <div id="pagination" data-cc-animate data-cc-animate-delay="0.6s">
+        {{ paginate | default_pagination }}
+      </div>
+      {% endif %}
+      {% endpaginate %}
+    </div>
+  </div>
+
+
+  <div class="action_link action_return note hidden-on-pc" id='return_to_store-1' data-cc-animate>
+    <h3 class="customer_heading"></h3>
+
+    <a data-cc-animate-click href="{{ routes.root_url }}" target="_blank">
+      Continue Shopping
+    </a>
+  </div>
+</div>
+
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script>
+<script type="text/javascript" charset="utf-8">
+document.addEventListener("DOMContentLoaded", function(event) {
+  $('.address-delete').on('click', function(evt) {
+    evt.preventDefault();
+    var $el = $(this);
+    var target = $el.data('target');
+    var confirmMessage = $el.data('confirm-message');
+    if (
+      confirm(confirmMessage || 'Are you sure you wish to delete this address?')
+    ) {
+      Shopify.postLink(target, {
+        parameters: { _method: 'delete' }
+      });
+    }
+  });
+  $('.address-edit-toggle').on('click', function(evt) {
+    evt.preventDefault();
+    var formId = $(this).data('form-id');
+    var $editButton = $(this);
+    var $editAddress = $('#edit_address_' + formId);
+    var isExpanded = $editButton.attr('aria-expanded') === 'true';
+    $editAddress.toggle();
+    $editButton.attr('aria-expanded', !isExpanded).focus();
+  });
+});
+
+// initialize observers on address selectors
+new Shopify.CountryProvinceSelector('address_country_new', 'address_province_new', {hideElement: 'address_province_container_new'});
+{% for address in customer.addresses %}
+new Shopify.CountryProvinceSelector('address_country_{{address.id}}', 'address_province_{{address.id}}', {hideElement: 'address_province_container_{{address.id}}'});
+{% endfor %}
+</script>

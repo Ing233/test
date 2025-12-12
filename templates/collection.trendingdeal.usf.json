@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection-trending-deal-usf",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

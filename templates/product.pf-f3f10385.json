@@ -1,0 +1,192 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "show_list_wxrwq3": {
+          "type": "show_list",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_h1": true
+          }
+        },
+        "c9924fa7-2d38-482f-8dfa-c4df9c23b6dd": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "e18500a1-069f-4a62-8bab-0b7c36786494": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "discount_countdown_i4BYbk": {
+          "type": "discountCountdown",
+          "settings": {}
+        },
+        "d8207980-9066-4486-ab5a-d513649fd4dd": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_style": "underlined",
+            "show_realtime_availability": true,
+            "show_size_chart": false,
+            "size_chart_variant": "Size",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_tax_and_shipping": false,
+            "show_quantity_selector": false,
+            "enable_payment_button": false,
+            "show_pickup_availability": false
+          }
+        },
+        "4a1a0aac-a06f-4f89-a4d6-d8a21785f48f": {
+          "type": "sku",
+          "settings": {}
+        },
+        "cb91288a-c29a-4573-a942-a1648e803561": {
+          "type": "social",
+          "settings": {}
+        },
+        "9ef3dcc5-f9b8-48cd-a8cd-bcce8e70d5d8": {
+          "type": "shopify:\/\/apps\/sc-back-in-stock\/blocks\/app-block\/839cbcb7-0406-4c2b-8e74-a54d987b90ab",
+          "settings": {}
+        },
+        "57793d50-7a62-42bc-a537-093c23273870": {
+          "type": "tabs",
+          "settings": {
+            "description_style": "accordion_closed",
+            "show_product_description": true,
+            "tab_2_page": "",
+            "tab_2_title": "Care",
+            "tab_2_content": "<p><strong>  • <\/strong>Wash with like colours<\/p><p><strong>  • <\/strong>Machine wash cold<\/p><p><strong>  • <\/strong>Do not bleach<\/p><p><strong>  • <\/strong>Tumble dry low<\/p><p><strong>  • <\/strong>Do not iron<\/p><p><strong>  • <\/strong>Do not dry clean<\/p>",
+            "tab_3_page": "",
+            "tab_3_title": "Shipping&Returns",
+            "tab_3_content": "<p><strong>•<\/strong>Free Standard Shipping(3-20 business days)<\/p><p><strong> <\/strong>•30-Days Return (Final Sale not included except quality problems)<\/p><p>(More info <a href=\"\/pages\/shipping-return\" target=\"_blank\" title=\"SHIPPING & RETURN\">here<\/a>)<br\/><\/p>",
+            "tab_4_page": "",
+            "tab_4_title": "",
+            "tab_4_content": ""
+          }
+        },
+        "828b0e20-01aa-4a3c-8935-6d66f8b82743": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image_width": 700,
+            "url": "shopify:\/\/collections\/brushed-naked-feeling"
+          }
+        },
+        "038fdc4d-109e-410d-bc92-f571f6f48cdc": {
+          "type": "trust_icons",
+          "settings": {
+            "icon_size": 45,
+            "show_icon1": true,
+            "text1": "<p>Free Shipping <\/p>",
+            "icon1": "none",
+            "image1": "shopify:\/\/shop_images\/Free-shipping_1.png",
+            "show_icon2": true,
+            "text2": "<p>Easy Return&Refund<\/p>",
+            "icon2": "none",
+            "image2": "shopify:\/\/shop_images\/Easy-returns.png",
+            "show_icon3": true,
+            "text3": "<p>Secure Checkout<\/p>",
+            "icon3": "none",
+            "image3": "shopify:\/\/shop_images\/Trust-and-safe-site.png",
+            "show_icon4": true,
+            "text4": "<p>Satisfaction Guarantee<\/p>",
+            "icon4": "none",
+            "image4": "shopify:\/\/shop_images\/Premium-quality.png"
+          }
+        },
+        "1ba790d6-f9b3-4eab-9bad-92cfb9a15671": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "show_list_wxrwq3",
+        "title",
+        "c9924fa7-2d38-482f-8dfa-c4df9c23b6dd",
+        "price",
+        "e18500a1-069f-4a62-8bab-0b7c36786494",
+        "discount_countdown_i4BYbk",
+        "d8207980-9066-4486-ab5a-d513649fd4dd",
+        "buy_buttons",
+        "4a1a0aac-a06f-4f89-a4d6-d8a21785f48f",
+        "cb91288a-c29a-4573-a942-a1648e803561",
+        "9ef3dcc5-f9b8-48cd-a8cd-bcce8e70d5d8",
+        "57793d50-7a62-42bc-a537-093c23273870",
+        "828b0e20-01aa-4a3c-8935-6d66f8b82743",
+        "038fdc4d-109e-410d-bc92-f571f6f48cdc",
+        "1ba790d6-f9b3-4eab-9bad-92cfb9a15671"
+      ],
+      "settings": {
+        "media_style": "one-column",
+        "cart_type": "add_in_modal",
+        "full_width": false,
+        "sticky_product_form": true,
+        "enable_mobile_sticky_cart": false,
+        "enable_sticky_selected_variant": true,
+        "show_backorder_text": false,
+        "show_inventory_notice": true,
+        "inventory_notice_threshold": 100,
+        "slide_nav_style": "dots",
+        "show_thumbnails": false,
+        "enable_zoom": true,
+        "enable_video_looping": true,
+        "scroll_to_variant_media": false,
+        "variant_media_grouping": true,
+        "variant_media_grouping_option": "Color"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "title": "You may also like",
+        "hide_swatches": false,
+        "show_vendor": false,
+        "grid": 4
+      }
+    },
+    "pf-f3f10385": {
+      "type": "pf-f3f10385",
+      "settings": {}
+    },
+    "16357375701338fcd8": {
+      "type": "apps",
+      "blocks": {
+        "afd470fb-07d7-4359-87aa-23b5626bc986": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "afd470fb-07d7-4359-87aa-23b5626bc986"
+      ],
+      "settings": {
+        "skip_container": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "pf-f3f10385",
+    "16357375701338fcd8"
+  ]
+}

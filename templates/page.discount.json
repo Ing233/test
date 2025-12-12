@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page-1",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

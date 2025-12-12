@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "pf-9fc72d0a": {
+      "type": "pf-9fc72d0a",
+      "settings": {}
+    },
+    "0ec4e6ab-12da-480d-a287-39a77ca4d3d2": {
+      "type": "newsletter",
+      "settings": {
+        "subheading": "",
+        "title": "Subscribe to our newsletter",
+        "text": "<p>Sign up to our newsletter and we’ll keep you up to date with the latest arrivals<\/p>",
+        "height_desktop": 500,
+        "height_mobile": 400,
+        "alternate_bg_color": false,
+        "image": "shopify:\/\/shop_images\/Christmas-newsletter.jpg",
+        "color_bg": ""
+      }
+    }
+  },
+  "order": [
+    "pf-9fc72d0a",
+    "0ec4e6ab-12da-480d-a287-39a77ca4d3d2"
+  ]
+}

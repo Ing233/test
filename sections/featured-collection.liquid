@@ -1,0 +1,305 @@
+<link rel="stylesheet" href="{{ 'featured-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- if section.settings.layout == 'rows' -%}
+{%- if section.settings.grid == 2 -%}
+  {%- assign product_class = 'column half' -%}
+  {%- elsif section.settings.grid == 3 -%}
+  {%- assign product_class = 'column third' -%}
+{%- else -%}
+  {%- assign product_class = 'column quarter' -%}
+{%- endif -%}
+{%- endif -%}
+
+{%- assign max_products = section.settings.grid | times: section.settings.rows -%}
+
+{% assign animation_type = "cc-fade-in-up" %}
+{%- if section.settings.layout == "columns" -%}
+{% assign animation_type = "cc-fade-in" %}
+{%- endif -%}
+
+{% if section.settings.layout == 'carousel' %}<div class="product-slider">{% endif %}
+
+<div class="wide-container half-gutter section-spacing {% if section.settings.alternate_bg_color %}use-alt-bg {% endif %}" {% if section.settings.grid_mobile == 'scroll' %}data-section-type="slideshow" {% else %} data-section-type="featured-collection"{% endif %} 
+  style="{% if section.settings.product_block == 'product_block_size' %}padding: 0;{% endif %}"
+  data-components="product-block" data-cc-animate>
+{% if section.settings.title != blank or section.settings.show_view_all %}
+  <div class="section-heading {% if section.settings.product_block == 'product_block_size' %}mb-margin{% endif %}" data-cc-animate>
+    {% if section.settings.title != blank %}
+      <h2 class="h2">
+        <a data-cc-animate-click href="{{ collections[section.settings.collection].url }}">
+          {{ section.settings.title | escape }}
+        </a>
+      </h2>
+    {% else %}
+        <div></div>
+    {% endif %}
+
+    {% if section.settings.show_view_all %}
+      <a data-cc-animate-click class="view-all-link" href="{{ collections[section.settings.collection].url }}">
+        {{ 'collections.general.view_all' | t }}
+      </a>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if section.settings.layout == 'carousel' %}
+  <div class="swiper-container product-list product-list--{{ section.settings.layout }}"
+       data-products-in-view="{{ section.settings.grid }}">
+
+    <div class="swiper-wrapper" data-normheights=".image" data-normheights-inner="img">
+      {% if section.settings.collection != blank %}
+        {% assign collection = collections[section.settings.collection] %}
+        {% for product in collection.products limit: 12 %}
+          {% comment %} 榜单 (ql20250201) {% endcomment %}
+          {% assign ql_ranking = product.metafields.custom.ranking.value %}
+          {% assign ranking_top = 21 %}
+          {% assign page_handle = '' %}
+          {% assign ranking_title = '' %}
+          {% for this_ranking in ql_ranking %}
+            {% assign num = this_ranking.top | abs %}
+            {% if num > 0 and ranking_top > num  %}
+              {% assign ranking_top = num %}
+              {% assign page_handle = this_ranking.page %}
+              {% assign ranking_title = this_ranking.title %}
+            {% endif %}
+            
+          {% endfor %}
+          <div class="swiper-slide">
+            {% assign animate_delay = forloop.index | times: 0.4 %}
+            {% if section.settings.product_block == 'product_block' %}
+              {% render 'product-block', product: product, product_class: product_class, i: forloop.index, animate: animate_delay, show_vendor: section.settings.show_vendor, hide_swatches: section.settings.hide_swatches,ql_ranking: ranking_top, page_handle: page_handle, show_top: 3 %}
+            {% else %}
+              {% render 'product-block-size', product: product, product_class: product_class, i: forloop.index, animate: animate_delay, show_vendor: section.settings.show_vendor, hide_swatches: section.settings.hide_swatches,ql_ranking: ranking_top, page_handle: page_handle, show_top: 3 %}
+            {% endif %}
+          </div>
+        {% endfor %}
+
+      {% else %}
+        {% for i in (1..max_products) %}
+          <div class="swiper-slide">
+            {% assign animate_delay = forloop.index | times: 0.4 %}
+            {% render 'onboarding-product-block', i: forloop.index, product_class: product_class, animate: animate_delay %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="swiper-scrollbar"></div>
+    <a href="#" class="swiper-button-prev" aria-label="{{ 'general.accessibility_labels.previous' | t | escape }}">{% render 'svg-chevron-left' %}</a>
+    <a href="#" class="swiper-button-next" aria-label="{{ 'general.accessibility_labels.next' | t | escape }}">{% render 'svg-chevron-right' %}</a>
+  </div>
+{% else %}
+  <div class="product-list
+  slick-slider-dots-light-xs slick-slider-overlay-dots slideshow
+    product-list--{{ section.settings.layout }}
+    {% if section.settings.grid_mobile == '2' %}mob-two-col {% elsif section.settings.grid_mobile == 'scroll' %}mb-scroll {% endif %}
+    {% if section.settings.grid_mobile != 'scroll' %}
+      mob-show-{{ section.settings.rows | times: section.settings.grid_mobile }}
+    {% endif %}
+    {% if section.settings.layout == 'columns' %}jiggly-split dynamic-col-{{ section.settings.grid }}{% else %}grid--uniform{% endif %}"
+    {% if section.settings.grid_mobile == 'scroll' %}
+    data-navigation="arrows"
+    data-pc-navigation="dots"
+    data-transition="slide"
+    data-autoplay="false"
+    data-autoplay-speed="2"
+    data-pc-slides="{{ section.settings.pc_show_num }}"
+    data-pc-slides-jump="{{section.settings.grid_mb_scroll_jump}}"
+    data-mb-slides="2"
+    data-uninfinite="true"
+    {% if section.settings.product_block == 'product_block_size' %}data-ajax-add-to-cart="true"{% endif %}
+    {% endif %}
+    >
+
+    {% if section.settings.collection != blank %}
+      {% assign collection = collections[section.settings.collection] %}
+      {% for product in collection.products limit: max_products %}
+      {% if product == blank %}
+        {% continue %}
+      {% endif %}
+        {% comment %} 榜单 (ql20250201) {% endcomment %}
+        {% assign ql_ranking = product.metafields.custom.ranking.value %}
+        {% assign ranking_top = 21 %}
+        {% assign page_handle = '' %}
+        {% assign ranking_title = '' %}
+        {% for this_ranking in ql_ranking %}
+          {% assign num = this_ranking.top | abs %}
+          {% if num > 0 and ranking_top > num  %}
+            {% assign ranking_top = num %}
+            {% assign page_handle = this_ranking.page %}
+            {% assign ranking_title = this_ranking.title %}
+          {% endif %}
+          
+        {% endfor %}
+        {% if section.settings.grid_mobile == 'scroll' %}
+          <div class="slide slide-{{ forloop.index }} image-overlay {% if section.settings.product_block == 'product_block_size' %}product-block-size{% endif %}">
+        {% endif %}
+        
+        {% if section.settings.product_block == 'product_block' %}
+          {% render 'product-block', product: product, product_class: product_class, animation_type: animation_type, i: forloop.index, show_vendor: section.settings.show_vendor, animate: forloop.index, hide_swatches: section.settings.hide_swatches,ql_ranking: ranking_top, page_handle: page_handle, show_top: 3 %}
+        {% else %}
+          {% render 'product-block-size', product: product, product_class: product_class, animation_type: animation_type, i: forloop.index, show_vendor: section.settings.show_vendor, animate: forloop.index, hide_swatches: section.settings.hide_swatches,ql_ranking: ranking_top, page_handle: page_handle, show_top: 3 %}
+        {% endif %}
+
+        
+      {% if section.settings.grid_mobile == 'scroll' %}
+        </div>
+      {% endif %}
+      
+        
+      {% endfor %}
+
+    {% else %}
+      {% for i in (1..max_products) %}
+        {% assign animate_delay = forloop.index | times: 0.4 %}
+        {% render 'onboarding-product-block', i: forloop.index, product_class: product_class, animate: animate_delay, animation_type: animation_type %}
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endif %}
+</div>
+
+{% if section.settings.layout == 'carousel' %}</div>{% endif %}
+
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "class": "section-featured-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "columns",
+          "label": "Collage"
+        },
+        {
+          "value": "rows",
+          "label": "Grid"
+        },
+        {
+          "value": "carousel",
+          "label": "Carousel"
+        }
+      ],
+      "default": "rows",
+      "info": "Collage will only work when the 'Image shape' is set to Natural - in Products / Image shape"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show product vendor",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "grid",
+      "label": "Desktop products per row",
+      "min": 2,
+      "max": 50,
+      "default": 9
+    },
+    {
+      "type": "range",
+      "id": "pc_show_num",
+      "label": "PC: 单行展示个数",
+      "min": 1,
+      "max": 4,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": "Rows",
+      "min": 1,
+      "max": 4,
+      "default": 2,
+      "info": "Does not apply to carousel layout"
+    },
+    {
+      "type": "range",
+      "id": "grid_mb_scroll_jump",
+      "label": "移动端选'scroll', pc一次滑动几个产品",
+      "min": 1,
+      "max": 4,
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "grid_mobile",
+      "label": "Mobile products per row",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "scroll",
+          "label": "Scroll"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_swatches",
+      "label": "Hide color swatches",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "alternate_bg_color",
+      "label": "Use alternate section color",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View all' link",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "product_block",
+      "label": "产品类型",
+      "options": [
+        {
+          "value": "product_block",
+          "label": "显示产品颜色"
+        },
+        {
+          "value": "product_block_size",
+          "label": "显示某个颜色的尺码"
+        }
+      ],
+      "default": "product_block"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection",
+      "category": "Collection",
+      "settings": {}
+    }
+  ],
+  "templates": ["article", "index", "page", "product", "collection", "blog", "list-collections", "search", "404", "cart"]
+}
+{% endschema %}
+

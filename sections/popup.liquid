@@ -1,0 +1,485 @@
+{% if section.settings.mode != 'disabled' and customer.email_subscription_status != 'SUBSCRIBED' %}
+{%- comment -%}and customer.accepts_marketing != false{%- endcomment -%}
+
+<style>
+  #shopify-section-popup .cc-popup .cc-popup-modal .cc-popup-title{
+  font-size: {{section.settings.title_font_size}}px;
+}
+#shopify-section-popup .rte p{
+  font-size: {{section.settings.text_font_size}}px;
+  margin-top: 0;
+}
+#shopify-section-popup .cc-email-tips{
+  font-size: {{section.settings.tips_font_size}}px;
+}
+.cc-popup .cc-popup-modal .cc-popup-form{
+  margin-top: 0;
+}
+.cc-popup.mb-popup--bottom .cc-popup-modal {
+  height: 450px;
+}
+
+#shopify-section-popup .cc-popup-background {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    z-index: 996;
+}
+
+#shopify-section-popup {
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#shopify-section-popup.section-popup--visible{
+  position: fixed;
+}
+
+#shopify-section-popup.section-popup--visible .cc-popup-background{
+  display: block;
+  position: absolute;
+}
+
+@media (max-width: 768px){
+  #shopify-section-popup .cc-popup .cc-popup-modal .cc-popup-title{
+    font-size: {{section.settings.mb_title_font_size}}px;
+  }
+  #shopify-section-popup .rte p{
+    font-size: {{section.settings.mb_text_font_size}}px;
+  }
+  #shopify-section-popup .cc-email-tips{
+    font-size: {{section.settings.mb_tips_font_size}}px;
+    padding-top: 10px;
+  }
+
+  .cc-popup--flex_row .cc-popup-container .cc-popup-image {
+        height: 451px;
+  }
+  .cc-popup.mb-popup--bottom .cc-popup-modal {
+    border-radius: unset !important;
+    height: auto;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+}
+
+</style>
+
+  <div class="cc-popup-background"></div>
+  <section class="section-{{ section.id }} cc-popup cc-popup--{{ section.settings.position }} mb-popup--{{ section.settings.mb_position }}"
+    data-freeze-scroll="false"
+    data-section-id="{{ section.id }}"
+    data-section-type="newsletter-popup"
+    data-dismiss-for-days="{{ section.settings.popup_dismiss_for_days }}"
+    data-dismiss-for-hours="{{ section.settings.popup_dismiss_for_hours }}"
+    data-dismiss-for-mins="{{ section.settings.popup_dismiss_for_mins }}"
+    data-accepts_marketing="{{ customer.accepts_marketing }}"
+    data-delay-seconds="{{ section.settings.popup_delay_seconds }}"
+    data-test-mode="{% if section.settings.mode == 'testing' %}true{% else %}false{% endif %}">
+    
+    <div class="cc-popup-modal cc-popup--{{section.settings.content_layout}} {% if section.settings.image != blank %} cc-popup-modal--has-image{% endif %}"
+         role="dialog"
+         aria-modal="true"
+         style="background-color: {{section.settings.bg_color}};--color: {{section.settings.color}}; width: 760px; max-width: 100%;border-radius: 10px;">
+
+      <button type="button" class="cc-popup-close" style="z-index: 100;" aria-label="{{ 'general.accessibility_labels.close' | t | escape }}">
+        {% render 'popup-close' %}
+      </button>
+
+      <div class="cc-popup-container">
+
+        {%- if section.settings.image != blank -%}
+          <div class="cc-popup-image {% if section.settings.show_mb_image == false %} mb-hidden-image{% endif %}">
+            {% render 'responsive-image', image: section.settings.image %}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank or section.settings.text != blank or section.settings.show_newsletter == true or section.settings.show_social_icons == true -%}
+          <div class="cc-popup-content" style="height: 100%;">
+            <div class="cc-popup-column">
+              {%- capture popup_top_content -%}
+                {%- if section.settings.title != blank or section.settings.text != blank -%}
+                  <div class="cc-popup-text" style="text-align: {{section.settings.text_align}};">
+                    {%- if section.settings.title != blank -%}
+                      <h2 class="cc-popup-title" style="text-align: {{section.settings.text_align}};">{{ section.settings.title }}</h2>
+                    {%- endif -%}
+                    {%- if section.settings.text != blank -%}
+                      <div class="rte">{{ section.settings.text }}</div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endcapture -%}
+
+              {%- capture popup_bottom_content -%}
+                {%- if section.settings.show_social_icons == true -%}
+                  <div class="cc-popup-social">
+                    {%- if section.settings.social_title != blank -%}
+                      <h3>{{ section.settings.social_title }}</h3>
+                    {%- endif -%}
+                    {% render 'social-icons', icon_setting: settings.social_custom_icon, icon_size: 'x32' %}
+                  </div>
+                {%- endif -%}
+              {%- endcapture -%}
+
+              {%- if section.settings.show_newsletter == true -%}
+                <div class="cc-popup-form">
+                  {% form 'customer', id: 'cc-popup' %}
+                    {% unless form.posted_successfully? %}
+                      {{ popup_top_content }}
+                    {% endunless %}
+
+                    {% if form.posted_successfully? %}
+                      <div class="cc-popup-form__response cc-popup-form__response--success">
+                        <h4>{{ 'general.popup_section.success' | t }}</h4>
+                      </div>
+                    {% else %}
+                      {% if form.errors %}
+                        <div class="cc-popup-form__response cc-popup-form__response--error">
+                          {% for field in form.errors %}
+                          <p class="error-message">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                      <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+                      <div class="cc-popup-form__inputs">
+                        <div class="cc-popup-form__input-wrapper">
+                          <input type="email" required class="cc-popup-form-input" value="" id="cc-popup-mailinglist_email" name="contact[email]" placeholder="{{ 'general.popup_section.email_placeholder' | t }}" />
+                          {% if section.settings.show_tip == true %}
+                            <div class="cc-email-tips" style="text-align: {{section.settings.text_align}};">
+                              {{section.settings.email_tips}}
+                            </div>
+                          {% endif %}
+                          
+                        </div>
+                        <div class="cc-popup-form-buttons">
+                          <button class="btn btn--primary button cc-popup-form-submit" type="submit"
+                          style="background-color: {{section.settings.btn_bg_color}};color: {{section.settings.btn_color}};">{{ 'general.popup_section.submit' | t }}</button>
+                        </div>
+                      </div>
+                    {% endif %}
+
+                    {{ popup_bottom_content }}
+                  {% endform %}
+                </div>
+              {%- else -%}
+                {{ popup_top_content }}
+                {{ popup_bottom_content }}
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </section>
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Popup",
+    "class": "section-popup",
+    "settings": [
+      {
+        "type": "select",
+        "id": "mode",
+        "label": "Display mode",
+        "default": "disabled",
+        "options": [
+          {
+            "value": "enabled",
+            "label": "Enabled"
+          },
+          {
+            "value": "testing",
+            "label": "Test mode"
+          },
+          {
+            "value": "disabled",
+            "label": "Disabled"
+          }
+        ],
+        "info": "Test mode displays your popup each time even after dismissing it. Switch to Enabled once you are happy with how your popup looks."
+      },
+      {
+        "type": "range",
+        "id": "popup_delay_seconds",
+        "label": "Delay",
+        "info": "Delay is disabled in theme editor for visibility",
+        "default": 5,
+        "min": 2,
+        "max": 60,
+        "step": 1,
+        "unit": "sec"
+      },
+      {
+        "type": "range",
+        "id": "popup_dismiss_for_days",
+        "label": "Frequency (days)",
+        "default": 30,
+        "info": "Number of days before a dismissed popup reappears",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "day"
+      },
+      {
+        "type": "range",
+        "id": "popup_dismiss_for_hours",
+        "label": "Frequency (hours)",
+        "default": 0,
+        "info": "Number of hours before a dismissed popup reappears",
+        "min": 0,
+        "max": 23,
+        "step": 1,
+        "unit": "h"
+      },
+      {
+        "type": "range",
+        "id": "popup_dismiss_for_mins",
+        "label": "Frequency (minutes)",
+        "default": 0,
+        "info": "Number of minutes before a dismissed popup reappears",
+        "min": 0,
+        "max": 59,
+        "step": 1,
+        "unit": "min"
+      },
+      {
+        "type": "select",
+        "id": "position",
+        "label": "Position (PC)",
+        "default": "center",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "bottom-left",
+            "label": "Bottom left"
+          },
+          {
+            "value": "bottom-right",
+            "label": "Bottom right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "mb_position",
+        "label": "Position (MB)",
+        "default": "bottom",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text align",
+        "default": "left",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+       {
+       "type": "color",
+       "id": "bg_color",
+       "label": "Background color"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Color"
+       },
+      {
+        "type": "header",
+        "content": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Sign up and save"
+      },
+      {
+        "type": "range",
+        "id": "title_font_size",
+        "label": "Font size (PC)",
+        "min": 10,
+        "max": 100,
+        "default": 30,
+        "step": 1,
+        "unit": "px"
+       },
+       {
+        "type": "range",
+        "id": "mb_title_font_size",
+        "label": "Font size (MB)",
+        "min": 10,
+        "max": 100,
+        "default": 30,
+        "step": 1,
+        "unit": "px"
+       },
+       {
+       "type": "header",
+       "content": "Text"
+       },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Entice customers to sign up for your mailing list with discounts or exclusive offers.</p>"
+      },
+      {
+        "type": "range",
+        "id": "text_font_size",
+        "label": "Font size (PC)",
+        "min": 10,
+        "max": 100,
+        "default": 30,
+        "step": 1,
+        "unit": "px"
+       },
+       {
+        "type": "range",
+        "id": "mb_text_font_size",
+        "label": "Font size (MB)",
+        "min": 10,
+        "max": 100,
+        "default": 30,
+        "step": 1,
+        "unit": "px"
+       },
+       {
+       "type": "header",
+       "content": "Image"
+       },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+       "type": "select",
+       "id": "content_layout",
+       "label": "图片和文字位置(PC)",
+       "default": "flex_row",
+       "options": [
+         {
+           "value": "flex_row",
+           "label": "横放"
+         },
+         {
+           "value": "over",
+           "label": "图片作为背景"
+         }
+       ]
+      },
+      {
+       "type": "checkbox",
+       "id": "show_mb_image",
+       "label": "移动端是否显示图片",
+        "default": false
+      },
+       {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "color",
+        "id": "btn_bg_color",
+        "label": "Background color"
+       },
+       {
+         "type": "color",
+         "id": "btn_color",
+         "label": "Color"
+        },
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customers who subscribe will have their email address added to the 'accepts marketing' [customer list](/admin/customers?query=&accepts_marketing=1)."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_newsletter",
+        "label": "Show newsletter signup",
+        "default": true
+      },
+      {
+       "type": "checkbox",
+       "id": "show_tip",
+       "label": "Show email tips",
+       "default": true
+      },
+      {
+        "type": "richtext",
+        "id": "email_tips",
+        "label": "Email tips",
+        "default": "<p>Email tips.</p>"
+      },
+      {
+        "type": "range",
+        "id": "tips_font_size",
+        "label": "Font size (PC)",
+        "min": 10,
+        "max": 100,
+        "default": 30,
+        "step": 1,
+        "unit": "px"
+       },
+       {
+        "type": "range",
+        "id": "mb_tips_font_size",
+        "label": "Font size (MB)",
+        "min": 10,
+        "max": 100,
+        "default": 30,
+        "step": 1,
+        "unit": "px"
+       },
+      {
+        "type": "header",
+        "content": "Social media"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social_icons",
+        "label": "Show social media icons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

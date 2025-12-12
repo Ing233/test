@@ -1,0 +1,239 @@
+{%- liquid
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+
+  assign product_url = product.url | within: collection
+
+  if animation_type == blank
+    assign animation_type = "cc-fade-in-up"
+  endif
+
+  assign current_variant = product.selected_or_first_available_variant
+
+  assign primary_image = product.selected_or_first_available_variant.featured_media.preview_image
+
+  assign secondary_image = product.media[1].preview_image
+  for med in product.media
+    if med.preview_image == primary_image
+      assign secondary_image = product.media[forloop.index].preview_image
+      break
+    endif
+  endfor
+
+  if settings.prod_show_videos
+    assign videos = product.media | where: "media_type", "video"
+    unless videos == blank
+      for source in videos[0].sources
+        if source != blank and source.format == "mp4"
+          assign video_source = source
+          break
+        endif
+      endfor
+
+      assign mp4_url = video_source.url
+    endunless
+  endif
+
+  assign product_has_swatches = false
+  if settings.swatch_enabled and settings.prod_block_swatches and hide_swatches != true
+    for product_option in product.options_with_values
+      if settings.swatch_option_name == product_option.name
+        assign product_has_swatches = true
+        break
+      endif
+    endfor
+  endif
+-%}
+
+{% assign show_color = true %}
+{% if hidden_color %}
+  {% assign show_color = false %}
+{% endif %}
+
+{% comment %} metafields: CNUM {% endcomment %}
+{% assign all_hb_color_num = product.metafields.custom.product_tags.value["CNUM"] %}
+
+{% comment %} metafields: TITLE {% endcomment %}
+{% assign this_ql_subtitle = product.tags | where: 'TITLE_' %}
+
+
+{%- comment -%}折扣{%- endcomment -%}
+{% assign arr_discount_m =  product.metafields.custom.discount.value %}
+{% assign hasdiscount = false %}
+{% assign discoutVal = 0 %}
+{% assign tag = '' %}
+{% assign is_icon = false %}
+{% for zk_value in arr_discount_m %}
+  {% assign date_now = "now" | date: "%s" %}
+  {% assign date_start = zk_value.start_time | replace_first: '_', ' '  | date: "%s" %}
+  {% assign date_end = zk_value.end_time | replace_first: '_', ' '  | date: "%s" %}
+  {% assign this_handle = zk_value.handle | handle %}
+  
+  {% if product.handle == this_handle and date_now > date_start and date_now < date_end %}
+    {% assign hasdiscount = true %}
+  {% endif %}
+
+
+  {% if hasdiscount == true %}
+      {% assign tag = zk_value.tag %}
+      {% assign is_icon = zk_value.is_icon %}
+      {% assign val = zk_value.discount_value | abs  | times: product.price %}
+      {% assign discoutVal0 = product.price | times: 100 %}
+      {% assign discoutVal = discoutVal0 | minus: val %}
+      {% assign discoutVal = discoutVal | times: 0.1 | ceil %}
+      {% assign discoutVal = discoutVal | times: 0.1 | ceil %}
+      {% assign p = discoutVal | money %}
+      {% assign pArr = p | split: '.' %}
+  {% endif %}
+{% endfor %}
+
+{% assign oo = product.price | money %}
+{% assign oPriceArr = oo | split: '.' %}
+
+
+<div class="product-block cc-product-block {% unless product.available %} sold-out{% endunless %}
+  {% if on_sale %} on-sale{% endif %}
+  {% if settings.prod_hover == "second_image" %}hover-image{% endif %}
+  {% if settings.prod_hover == "all_images" and product.images.size > 1 %}all-images{% endif %}
+  {% if product.tags contains 'meta-layout-right' %}layout-right{% endif %}
+  {% if settings.prod_label_layout == 'marquee_on_hover' %} product-block--marquee-on-hover {% endif%}
+  {% if settings.quickbuy_enabled %}product-block--quickbuy{% endif %}
+  {% if mp4_url != blank %}product-block--video{% endif %}
+  {% if product_has_swatches %}product-block--has-swatches{% endif %}
+  {{ product_class }}"
+     data-loop-index="{{ i }}"
+  {% if animate %} data-cc-animate="{{ animation_type }}" data-cc-animate-delay="{{ animate | times: 0.15 }}s" {% endif %}
+
+  {% if product.images.size > 1 %}
+    {% if settings.prod_hover == "all_images" or product_has_swatches %}
+      {%- liquid
+        assign images = ""
+        for image in product.images
+          assign image_placeholder = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+          assign images = images | append: "," | append: image_placeholder
+        endfor
+      -%}
+      data-product-images="{{ images | remove_first: "," }}"
+    {% endif %}
+  {% endif %}
+>
+
+  <div class="product-block__inner">
+    <!-- BEGIN SPT.WISHLIST -->
+    <span class="spt-wishlist-element spt-icon spt-icon-heart-empty" data-spt-params="{productId:{{product.id}},urlName:'{{product.handle}}',variantId:{{product.variants[0].id}}}"></span>
+    <!-- END SPT.WISHLIST -->
+
+    <div class="image {% if settings.prod_hover == "second_image" and product.media.size > 1 %}image--hover-second {% if primary_image.aspect_ratio == secondary_image.aspect_ratio %}image--same-aspect-ratio{% endif %}{% endif %}">
+      {% if settings.prod_label_layout contains 'marquee' %}
+        <div class="product-marquee">
+          {% render 'product-label', product: product %}
+        </div>
+      {% endif %}
+
+      <div>
+        <!-- raking 榜单 (ql20250201) -->
+        {% assign num_show_top = 5 %}
+        {% if show_top %}
+          {% assign num_show_top = show_top | abs %}
+        {% endif %}
+        {% if ql_ranking and ql_ranking <= num_show_top %}
+          {% assign page_title = page_handle | replace: '-', ' ' | replace: '_', ' ' %}
+          <span class="product-label product-label--trending-top">
+            <span>#0{{ql_ranking}} &nbsp;</span><span class="ql-fl-capitalize">{{page_title}}</span>
+            
+          </span>
+        {% endif %}
+
+        <!-- 长期折扣图标 -->
+        {% if is_icon %}
+          <a class="product-label product-label--long-discount" href="/collections/trending-deal">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" viewBox="0 0 1000 1000" xml:space="preserve">
+              <g>
+                <path d="M272.2,870.8c-12.3,0-22.2-9.9-22.2-22.2V619.7c0-12.2,9.9-22.2,22.2-22.2c12.3,0,22.2,9.9,22.2,22.2v228.9   C294.4,860.8,284.5,870.8,272.2,870.8z"></path> 
+                <path d="M523.7,870.8c-12.3,0-22.2-9.9-22.2-22.2v-315c0-12.2,9.9-22.2,22.2-22.2c12.2,0,22.2,9.9,22.2,22.2v315   C545.8,860.8,535.9,870.8,523.7,870.8z"></path> 
+                <path d="M775.1,870.8c-12.2,0-22.2-9.9-22.2-22.2V447.4c0-12.3,9.9-22.2,22.2-22.2c12.2,0,22.2,9.9,22.2,22.2v401.2   C797.3,860.8,787.3,870.8,775.1,870.8z"></path> 
+                <path d="M229.5,502.9c-45.2,0-75-3.1-79.7-3.6c-12.2-1.4-20.9-12.3-19.6-24.5c1.4-12.2,12.3-21,24.5-19.6   c4.5,0.5,451.3,46.4,624.1-253.9c6.1-10.6,19.7-14.3,30.3-8.2c10.6,6.1,14.3,19.7,8.2,30.3C674.6,471.3,373.7,502.9,229.5,502.9z"></path> 
+                <path d="M869.8,140.4L849.1,311c-1,8.1-10.7,11.7-16.7,6.2L685.3,183.3c-6-5.5-3.3-15.4,4.6-17.2l167.9-36.7   C864.5,128,870.7,133.6,869.8,140.4z"></path>
+              </g>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+      <a data-cc-animate-click class="image-inner" href="{% if page_handle != blank %}{{ product_url }}?tending={{page_handle}}{% else %}{{ product_url }}{% endif %}" aria-label="{{ product.title | escape }}" tabindex="-1">
+        <div class="image__first">
+          {% if mp4_url != blank %}
+            {% render 'inline-video', video: mp4_url, image: primary_image %}
+          {% else %}
+            {% render 'responsive-image', image: primary_image %}
+          {% endif %}
+
+          {%- comment -%}
+          {% unless settings.prod_label_layout contains 'marquee' %}
+            {% render 'product-label', product: product %}
+          {% endunless %}
+          {%- endcomment -%}
+          
+
+        </div>
+
+        {% if settings.prod_hover == "second_image" and product.media.size > 1 %}
+        <div class="image__second">
+          {% render 'responsive-image', image: secondary_image, aspect_ratio: primary_image.aspect_ratio %}
+        </div>
+        {% endif %}
+        
+      </a>
+
+    </div>
+
+
+
+
+    {% comment %} text-area {% endcomment %}
+    <div class="text-area">
+        <div class="heading">{{ product.title }}</div>
+        <div class="price">
+            {% if  on_sale %}
+                <span class="was-price theme-money">{{ current_variant.compare_at_price | money }}</span>
+            {% endif %}
+            <span class="current-price">{{ current_variant.price | money }}</span>
+        </div>
+    </div>
+    <div class="options-area">
+        <div class="color-option"><span class="color-group">Color</span>&nbsp;<span class="color-name">{{ current_variant.option1 }}</span></div>
+        <form method="post" action="/cart/add" accept-charset="UTF-8" class="product-purchase-form feedback-add_in_modal" enctype="multipart/form-data">
+            <input type="hidden" name="form_type" value="product">
+            <input type="hidden" name="utf8" value="✓">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="product-id" value="{{ product.id }}">
+            
+            {% if product.options.size > 1 %}
+                <div class="size-option">
+                    <select name="id" class="form-control replaced">
+                        <option value="{{ current_variant.id }}" style="color: #E0E0E0;">Select Size</option>
+                        {% for variant in product.variants %}
+                            {% if variant.option1 != current_variant.option1 %}{% continue %}{% endif %}
+                        
+                            <option value="{{ variant.id }}" data-inventory="{{ variant.available }}" data-stock="{% if variant.available == 0 %}out{% endif %}" {% if variant.available == 0 %}disabled{% endif %}>{{ variant.option2 }}{% if product.options > 2 %} / {{variant.option3}}{% endif %}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% else %}
+                <input type="hidden" name="id" value="{{ current_variant.id }}">
+            {% endif %}
+            
+            <button class="add-to-card button" type="submit" name="add">
+              {{ 'products.product.add_to_cart' | t }}
+            </button>
+        </form>
+
+    </div>
+  </div>
+
+  
+  
+</div>
+
+

@@ -1,0 +1,944 @@
+<!-- BEGIN USF 1-->
+<script>
+    window._usfAdvertisingImg = {};
+    window._usfProductsCount = {{collection.products_count}};
+  </script>
+{%- liquid
+    if collection.url.size == 0
+      assign collection_url = routes.all_products_collection_url
+    else
+      assign collection_url = collection.url
+    endif
+  
+    if collection_url contains "?"
+      assign collection_url = collection_url | split: "?" | first
+    endif
+  
+    assign current_sort_by = collection.sort_by | default: collection.default_sort_by
+  -%}
+   
+  {%- comment -%}--------- 广告图 ---------{%- endcomment -%}
+  {% for block in section.blocks %}
+    {% if block.type == 'ql_advertising' %}
+      {% assign set_advertising = false %}
+      {% for item in block.settings.collection_list %}
+        {% if item.handle != collection.handle %}
+          {% continue %}
+        {% endif %}
+        {% assign set_advertising = true %}
+        {% assign pc_img_url = block.settings.ql_pc_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+        {% assign mobile_img_url = block.settings.ql_mobile_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+  
+        {% capture usf_advertisingBlock %}
+          <div class="product-block__inner">
+            <div class="pc-img image">
+              <a href="{{block.settings.ql_url}}" class="image-inner">
+                <div class="image__first">
+                  <div class="rimage-outer-wrapper" style="max-width: {{block.settings.ql_pc_image.width | default: 0 }}px">
+                    <div class="rimage-wrapper lazyload--placeholder"
+                      style="padding-top:100/{{block.settings.ql_pc_image.aspect_ratio | default: 1 }}%">
+                      <img class="rimage__image lazyload fade-in"
+                        data-src="{{pc_img_url}}"
+                        data-widths="[{{block.settings.ql_pc_image.width | default: 0 }}]" data-sizes="auto">
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mobile-img image">
+              <a :href="{{ block.settings.ql_url}}" class="image-inner">
+                <div class="image__first">
+                  <div class="rimage-outer-wrapper" style="max-width: {{block.settings.ql_mobile_image.width | default: 0 }}px">
+                    <div class="rimage-wrapper lazyload--placeholder" style="padding-top:57.8%">
+                      <img class="rimage__image lazyload fade-in"
+                        data-src="{{mobile_img_url}}"
+                        data-widths="[{{block.settings.ql_mobile_image.width | default: 0 }}]" data-sizes="auto">
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            
+            <div style="position: absolute;
+            --pc-bottom: {{block.settings.pc_padding_bottom}}px;
+            --pc-left: {{block.settings.pc_padding_left}}px;
+            --pc-color: {% if block.settings.pc_color %}{{block.settings.pc_color}}{% else %}#000{% endif %};
+            --pc-font-size: {{block.settings.pc_font_size}}px;
+            --mb-bottom: {{block.settings.mb_padding_bottom}}px;
+            --mb-left: {{block.settings.mb_padding_left}}px;
+            --mb-color: {% if block.settings.mb_color %}{{block.settings.mb_color}}{% else %}#000{% endif %};
+            --mb-font-size: {{block.settings.pc_font_size}}px;" class="advertising--text-area">
+              <div class="text-area">
+                <div class="heading">{{block.settings.title}}</div>
+                <span class="description">{{block.settings.description}}</span>
+              </div>
+              <span class="show-now-btn">
+                <a href="{{ block.settings.ql_url }}">{{block.settings.show_now_btn}}</a>
+                <!-- <span style="white-space: nowrap;"><svg height="16" width="16" viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg" class="ctaLinkIcon-3XB0n" focusable="false" role="img" aria-hidden="true"
+                    data-testid="link-arrow-icon">
+                    <path
+                      d="m10.53 2.47 5 5a.75.75 0 0 1 .01 1.04l-5 5-.35-.35a1 1 0 0 1 0-1.42l3-3H5a1 1 0 0 1-1-1v-.5h9.18l-3-3a1 1 0 0 1 0-1.42l.35-.35ZM2 7.25a1 1 0 0 1 1 1v.5H1a1 1 0 0 1-1-1v-.5Z"
+                      fill="currentColor" fill-rule="evenodd"></path>
+                  </svg></span> -->
+              </span>
+            </div>
+          </div>
+        {% endcapture %}
+  
+      {% endfor %}
+      {% if set_advertising %}
+        
+      <script>
+        window._usfAdvertisingImg[{{block.settings.ql_position}}] = {{usf_advertisingBlock | json}};
+      </script>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{%- comment -%}------------------------------------------------{%- endcomment -%}
+  
+  <div data-section-type="collection-template"
+       data-collection-url="{{ collection_url }}"
+       data-ajax-filtering="{{ section.settings.ajax_products }}"
+       data-components="tabs,product-block,price-range,accordion"
+       class="pb-medium {% if section.settings.show_collection_image and collection.featured_image %}header-overlap-section{% elsif section.settings.show_collection_content %}pt-medium{% else %}sm:pt-medium{% endif %}" data-cc-animate>
+  
+    {% paginate collection.products by section.settings.products_per_page %}
+      {% if section.settings.show_collection_image and collection.featured_image %}
+        <div class="collection-header image-overlay image-overlay--bg-full needs-alt-logo">
+          <div class="rimage-outer-wrapper rimage-background lazyload fade-in"
+               data-cc-animate="cc-fade-in-zoom-out"
+               data-bgset="{% render 'bgset', image: collection.featured_image %}"
+               data-sizes="auto"
+               data-parent-fit="cover">
+            <noscript>
+              <div class="rimage-wrapper" style="padding-top:{{ 1 | divided_by: collection.featured_image.aspect_ratio | times: 100 }}%">
+                <img src="{{ collection.featured_image | img_url: '1024x1024' }}" alt="{{ collection.featured_image.alt | escape }}" class="rimage__image">
+              </div>
+            </noscript>
+          </div>
+  
+          <div class="overlay-type overlay" data-cc-animate="cc-fade-in-zoom-out">
+            <div class="overlay__content">
+      {% endif %}
+  
+        <div class="central">
+          <div class="content transparent">
+            {% if section.settings.show_collection_content %}
+              {% if collection.description != blank %}
+                <h1 class="line-1 feature-header" data-cc-animate>{{ collection.title }}</h1>
+  
+                {% if section.settings.description_position == "top" %}
+                  <div class="line-2 rte" data-cc-animate data-cc-animate-delay="0.2s">
+                    {{ collection.description }}
+                  </div>
+                {% endif %}
+              {% else %}
+                <h1 class="line-1 feature-header no-margin" data-cc-animate>{{ collection.title }}</h1>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+  
+      {% if section.settings.show_collection_image and collection.featured_image %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+  
+      <div data-cc-animate data-cc-animate-delay="0.7s">
+        <div class="wide-container half-gutter cc-product-filter-container  
+          {% if section.settings.show_collection_image == false and section.settings.show_collection_content == false %}pt-0{% endif %}" data-ajax-container data-ajax-scroll-to>
+          <div class="product-list-container" >
+              {% if section.settings.layout == 'rows' %}
+                {% if section.settings.grid == 2 %}
+                  {% assign product_class = 'column half' %}
+                {% elsif section.settings.grid == 3 %}
+                  {% assign product_class = 'column third' %}
+                {% else %}
+                  {% assign product_class = 'column quarter' %}
+                {% endif %}
+              {% endif %}
+            {% capture grid_class %} product-list cf product-list--{{ section.settings.layout }} {% if section.settings.grid_mobile == '2' %}mob-two-col{% endif %} {% if section.settings.layout == 'columns' %}jiggly-split dynamic-col-{{ section.settings.grid }}{% else %}grid--uniform{% endif %} {% endcapture %}
+           <script>
+            window._usf_grid_class = {{ grid_class | json }};
+            window._usf_product_class = {{ product_class | json }};
+            window._usfGlobalSettings = {
+              prod_hover: {{ settings.prod_hover | json }},
+              prod_label_layout: {{ settings.prod_label_layout | json }},
+              quickbuy_enabled: {{ settings.quickbuy_enabled | json }},
+              show_product_block_reviews: {{ settings.show_product_block_reviews | json }},
+              swatch_enabled: {{ settings.swatch_enabled | json }},
+              prod_block_swatches: {{ settings.prod_block_swatches | json }},
+              swatch_option_name: {{ settings.swatch_option_name | json }},
+              swatch_use_prod_images: {{ settings.swatch_use_prod_images | json }},
+              swatch_prod_images_shape: {{ settings.swatch_prod_images_shape | json }},
+              swatch_method: {{ settings.swatch_method | json }},
+              show_sold_out_label: {{ settings.show_sold_out_label | json }},
+              show_sale_label: {{ settings.show_sale_label | json }},
+              show_new_label: {{ settings.show_new_label | json }},
+              prod_new_method: {{ settings.prod_new_method | json }},
+              prod_new_limit_int: {{ settings.prod_new_limit_int | json }},
+            };
+            window._usfSectionSettings = {
+              show_vendor: {{ section.settings.show_vendor | json }}
+            };
+              window._usfFromText = {{ 'products.listing.from' | t | json }};
+              window._usfSoldOutText = {{ 'products.listing.sold_out' | t | json }};
+              window._usfSaleText = {{ 'products.product.sale' | t | json }};
+              window._usfNewText = {{ 'products.labels.new_in' | t | json }};
+              window._usfCollectionById = {};
+              {% for collection in collections %}
+              window._usfCollectionById[{{ collection.id | json }}] = {{ collection.handle | json }};
+              {% endfor %}
+              var url_search = window.location.search;
+              var arr_parameters = url_search.split('&');
+              var sortBy= arr_parameters.filter((par) => par.includes('fb='));
+            window._ql_sort_by = sortBy.map((t) => {
+                let l = decodeURIComponent(t);
+                let p = l.replace("fb=", "").replace("?%3F", "").replace("?", "").trim().split(',');
+                return p.map((n) => n.split('__'));
+              });
+  
+          </script>       
+            <div id="usf_container"></div>  
+          </div>
+        </div>
+  
+        {% if collection.description != blank and section.settings.description_position == "bottom" and section.settings.show_collection_content == true %}
+          <div class="central footer">
+            <div class="content transparent">
+              <div class="rte">
+                {{ collection.description }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endpaginate %}
+  </div>
+  <!-- END USF -->
+  
+  {% comment %}USF
+  {%- liquid
+    if collection.url.size == 0
+      assign collection_url = routes.all_products_collection_url
+    else
+      assign collection_url = collection.url
+    endif
+  
+    if collection_url contains "?"
+      assign collection_url = collection_url | split: "?" | first
+    endif
+  
+    assign current_sort_by = collection.sort_by | default: collection.default_sort_by
+  -%}
+  
+  <div data-section-type="collection-template"
+       data-collection-url="{{ collection_url }}"
+       data-ajax-filtering="{{ section.settings.ajax_products }}"
+       data-components="tabs,product-block,price-range,accordion"
+       class="pb-medium {% if section.settings.show_collection_image and collection.featured_image %}header-overlap-section{% elsif section.settings.show_collection_content %}pt-medium{% else %}sm:pt-medium{% endif %}" data-cc-animate>
+  
+    {% paginate collection.products by section.settings.products_per_page %}
+      {% if section.settings.show_collection_image and collection.featured_image %}
+        <div class="collection-header image-overlay image-overlay--bg-full needs-alt-logo">
+          <div class="rimage-outer-wrapper rimage-background lazyload fade-in"
+               data-cc-animate="cc-fade-in-zoom-out"
+               data-bgset="{% render 'bgset', image: collection.featured_image %}"
+               data-sizes="auto"
+               data-parent-fit="cover">
+            <noscript>
+              <div class="rimage-wrapper" style="padding-top:{{ 1 | divided_by: collection.featured_image.aspect_ratio | times: 100 }}%">
+                <img src="{{ collection.featured_image | img_url: '1024x1024' }}" alt="{{ collection.featured_image.alt | escape }}" class="rimage__image">
+              </div>
+            </noscript>
+          </div>
+  
+          <div class="overlay-type overlay" data-cc-animate="cc-fade-in-zoom-out">
+            <div class="overlay__content">
+      {% endif %}
+  
+        <div class="central">
+          <div class="content transparent">
+            {% if section.settings.show_collection_content %}
+              {% if collection.description != blank %}
+                <h1 class="line-1 feature-header" data-cc-animate>{{ collection.title }}</h1>
+  
+                {% if section.settings.description_position == "top" %}
+                  <div class="line-2 rte" data-cc-animate data-cc-animate-delay="0.2s">
+                    {{ collection.description }}
+                  </div>
+                {% endif %}
+              {% else %}
+                <h1 class="line-1 feature-header no-margin" data-cc-animate>{{ collection.title }}</h1>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+  
+      {% if section.settings.show_collection_image and collection.featured_image %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+  
+      {% if section.settings.filter_mode == "simple" or section.settings.filter_mode == "none" %}
+        <div class="wide-container filter{% if section.settings.show_collection_image == false and section.settings.show_collection_content == false %} mt-0{% endif %}"
+             data-cc-animate data-cc-animate-delay="0.7s">
+          <form id="CollectionFilterForm" data-ajax-container>
+           
+            {%- if collection.current_vendor or collection.current_type -%}
+              <input type="hidden" name="q" value="{{ collection.current_vendor }}{{ collection.current_type }}">
+            {%- endif -%}
+  
+            {%- if section.settings.enable_sorting == false -%}
+              <input type="hidden" name="sort_by" value="{{ current_sort }}">
+            {%- endif -%}
+  
+            {% if section.settings.filter_mode == "simple" %}
+              {%- for filter in collection.filters -%}
+                {%- case filter.type -%}
+                  {%- when "list" -%}
+                    <div class="option">
+                      <label for="filter-by-{{ filter.label | handle }}">{{ filter.label }}</label>
+                      <select id="filter-by-{{ filter.label | handle }}" name="{{ filter.values.first.param_name }}">
+                        <option value="">{{ 'collections.filtering.all' | t }}</option>
+                        {%- for value in filter.values -%}
+                          <option value="{{ value.value | escape }}" {% if value.active %}selected{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                            {{ value.label }}{% if section.settings.show_filter_counts %} ({{ value.count }}){% endif %}
+                          </option>
+                        {%- endfor -%}
+                      </select>
+                    </div>
+                  {%- when "price_range" -%}
+                    
+  
+                {%- endcase -%}
+              {%- endfor -%}
+            {% endif %}
+  
+            {%- if section.settings.enable_sorting -%}
+              <div class="option">
+                <label for="filter-by-sort-by">{{ 'collections.sorting.title' | t }}</label>
+                <select id="filter-by-sort-by" name="sort_by">
+                  {%- for option in collection.sort_options -%}
+                    {%- if option.value == "manual" and section.settings.show_featured_in_sort -%}
+                      <option value="{{ option.value | escape }}"{% if option.value == sort_by or option.value == current_sort_by %} selected="selected"{% endif %}>
+                        {{ option.name | escape }}
+                      </option>
+                    {%- elsif option.value != "manual" -%}
+                      <option value="{{ option.value | escape }}"{% if option.value == sort_by or option.value == current_sort_by %} selected="selected"{% endif %}>
+                        {{ option.name | escape }}
+                      </option>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </select>
+              </div>
+            {% endif %}
+  
+            <noscript>
+              <button type="submit" class="btn">{{ 'collections.filtering.submit' | t }}</button>
+            </noscript>
+          </form>
+        </div>
+      {% endif %}
+  
+      <div data-cc-animate data-cc-animate-delay="0.7s">
+        <div class="wide-container half-gutter cc-product-filter-container
+          {% if section.settings.filter_mode == "simple" or section.settings.filter_mode == "none" %}pt-0{% endif %}
+          {% if section.settings.show_collection_image == false and section.settings.show_collection_content == false %}pt-0{% endif %}" data-ajax-container data-ajax-scroll-to>
+  
+          {% if section.settings.filter_mode == "sidebar" %}
+            <div class="footer-button-xs">
+              <button class="button no-hover" data-show-collection-filter
+                data-close-text="{{ 'collections.filtering.mobile_close' | t }}"
+                data-open-text="{{ 'collections.filtering.mobile_reveal' | t }}"
+                data-result-count-text="{{ 'collections.filtering.show_results' | t }}"
+                data-result-count-text-singular="{{ 'collections.filtering.show_results_singular' | t }}">
+                {{ 'collections.filtering.mobile_reveal' | t }}
+              </button>
+            </div>
+  
+            <div class="cc-product-filter cc-product-filter--sticky-{{ section.settings.sticky_sidebar }}">
+              <form id="CollectionFilterForm">
+                
+                {%- if collection.current_vendor or collection.current_type -%}
+                  <input type="hidden" name="q" value="{{ collection.current_vendor }}{{ collection.current_type }}">
+                {%- endif -%}
+  
+                {%- if section.settings.enable_sorting == false -%}
+                  <input type="hidden" name="sort_by" value="{{ current_sort }}">
+                {%- endif -%}
+  
+                {%- for filter in collection.filters -%}
+                  {%- liquid
+                    if settings.swatch_enabled and settings.swatch_option_name == filter.label and filter.type == "list"
+                      assign filter_group_is_swatch = true
+                    else
+                      assign filter_group_is_swatch = false
+                    endif
+  
+                    if section.settings.collapse_filters_method == 'all'
+                      assign filter_is_open = false
+                    elsif section.settings.collapse_filters_method == 'none'
+                      assign filter_is_open = true
+                    elsif section.settings.collapse_filters_method contains 'over-'
+                      assign limit = section.settings.collapse_filters_method | split: '-' | last | plus: 0
+                      if filter.values.size > limit
+                        assign filter_is_open = false
+                      else
+                        assign filter_is_open = true
+                      endif
+                    endif
+  
+                    assign filter_title = filter.label | escape
+                  -%}
+  
+                  {%- capture filter_content -%}
+                    {%- case filter.type -%}
+                      {%- when "list" -%}
+                        {%- if filter_group_is_swatch -%}
+                          <ul class="cc-swatches">
+                            {%- for value in filter.values -%}
+                              <li data-tag="{{ value.label | handle }}">
+                                <label class="cc-checkbox{% if value.active %} active{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}"
+                                       title="{{ value.label | escape }}">
+                                  <input class="cc-checkbox__input"
+                                         id="Filter-{{ value.param_name }}-{{ value.value | handle }}"
+                                         type="checkbox"
+                                         name="{{ value.param_name }}"
+                                         value="{{ value.value | escape }}"
+                                         {% if value.active %}checked{% endif %}
+                                    {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                                </label>
+                                {% if settings.swatch_method == "image" %}
+                                  {% style %}
+                                    .cc-swatches [data-tag="{{ value.label | handle }}"] .cc-checkbox::before {
+                                      background-image: url({{ value.label | handle | append: '.png' | file_img_url: '48x48', crop: 'center' }});
+                                    }
+                                  {% endstyle %}
+                                {% endif %}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- else -%}
+                          {%- for value in filter.values -%}
+                            <label class="cc-checkbox">
+                              <input class="cc-checkbox__input"
+                                     id="Filter-{{ value.param_name }}-{{ value.value | handle }}"
+                                     type="checkbox"
+                                     name="{{ value.param_name }}"
+                                     value="{{ value.value | escape }}"
+                                     {% if value.active %}checked{% endif %}
+                                {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+  
+                              <span class="cc-checkbox__label">{{ value.label | escape }}</span>
+  
+                              {% if section.settings.show_filter_counts %}
+                                <span class="cc-checkbox__count">{{ value.count }}</span>
+                              {% endif %}
+                            </label>
+                          {%- endfor -%}
+                        {%- endif -%}
+  
+                      {%- when "price_range" -%}
+                        {% render 'price-range', filter: filter %}
+  
+                    {%- endcase -%}
+                  {%- endcapture -%}
+  
+                  {%- render "accordion", first_item_open: filter_is_open, item1_title: filter_title, item1_content: filter_content -%}
+                {%- endfor -%}
+  
+                {%- if section.settings.enable_sorting -%}
+                  {%- liquid
+                    assign filter_title = 'collections.sorting.title' | t
+  
+                    if section.settings.collapse_sort_by == true
+                      assign filter_is_open = false
+                    else
+                      assign filter_is_open = true
+                    endif
+                  -%}
+  
+                  {%- capture filter_content -%}
+                    <ul class="cc-product-filter__sort-by">
+                      {%- for option in collection.sort_options -%}
+                        {%- if option.value == "manual" and section.settings.show_featured_in_sort -%}
+                          <label class="cc-checkbox sort-{{ option.name | handle }}">
+                            <input class="cc-checkbox__input"
+                                   type="radio"
+                                   name="sort_by"
+                                   value="{{ option.value | escape }}"
+                                   {% if option.value == current_sort_by %}checked{% endif %}
+                            >
+                            <span class="cc-checkbox__label">{{ option.name | escape }}</span>
+                          </label>
+                        {%- elsif option.value != "manual" -%}
+                          <label class="cc-checkbox sort-{{ option.name | handle }}">
+                            <input class="cc-checkbox__input"
+                                   type="radio"
+                                   name="sort_by"
+                                   value="{{ option.value | escape }}"
+                                   {% if option.value == current_sort_by %}checked{% endif %}
+                            >
+                            <span class="cc-checkbox__label">{{ option.name | escape }}</span>
+                          </label>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </ul>
+                  {%- endcapture -%}
+  
+                  {%- render "accordion", first_item_open: filter_is_open, item1_title: filter_title, item1_content: filter_content -%}
+                {% endif %}
+  
+                <noscript>
+                  <button type="submit" class="btn">{{ 'collections.filtering.submit' | t }}</button>
+                </noscript>
+              </form>
+            </div>
+          {% endif %}
+  
+          <div class="product-list-container{% if section.settings.filter_mode == "sidebar" %} product-list-container--with-sidebar{% endif %}" data-infinite-scroll-container>
+  
+            {% capture active_filters_html %}
+              <div class="active-filter-controls-container">
+                <ul class="active-filter-controls">
+                  <li class="active-filter-controls__clear-left">
+                    <a href="{{ collection.url }}" class="active-filter-controls__clear">
+                      {{ 'collections.filtering.clear_all' | t }}
+                    </a>
+                  </li>
+  
+                  {%- for filter in collection.filters -%}
+                    {%- for value in filter.active_values -%}
+                      <li>
+                        <a href="{{ value.url_to_remove }}" class="active-filter-controls__tag" data-active-tag="{{ value | escape }}">
+                          {{ value.label | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+  
+                    {% if filter.type == "price_range" %}
+                      {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                        <li>
+                          <a href="{{ filter.url_to_remove }}" class="active-filter-controls__tag" data-active-tag="{{ filter | escape }}">
+                            {%-if filter.min_value.value %}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{% endif %}
+                          </a>
+                        </li>
+                      {%- endif -%}
+                    {% endif %}
+                  {%- endfor -%}
+  
+                  <li class="active-filter-controls__clear-right">
+                    <a href="{{ collection.url }}" class="active-filter-controls__clear">
+                      {{ 'collections.filtering.clear_all' | t }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            {% endcapture %}
+            {%- if active_filters_html contains 'active-filter-controls__tag' -%}
+              {{ active_filters_html }}
+            {%- endif -%}
+  
+            <div class="product-list cf
+              product-list--{{ section.settings.layout }}
+              {% if section.settings.grid_mobile == '2' %}mob-two-col{% endif %}
+              {% if section.settings.layout == 'columns' %}jiggly-split dynamic-col-{{ section.settings.grid }}{% else %}grid--uniform{% endif %}"
+            data-result-count="{{ collection.products_count }}"
+            data-infinite-scroll-results>
+  
+              {% unless collection.products.size > 0 %}
+                <h3 class="align-centre no-results">{{ 'collections.general.no_matches' | t }}</h3>
+              {% endunless %}
+  
+              {% if section.settings.layout == 'rows' %}
+                {% if section.settings.grid == 2 %}
+                  {% assign product_class = 'column half' %}
+                {% elsif section.settings.grid == 3 %}
+                  {% assign product_class = 'column third' %}
+                {% else %}
+                  {% assign product_class = 'column quarter' %}
+                {% endif %}
+              {% endif %}
+  
+              {% for product in collection.products %}
+                {% render 'product-block', product: product, product_class: product_class, i: forloop.index, show_vendor: section.settings.show_vendor %}
+              {% endfor %}
+            </div>
+  
+            
+              Infinite scroll option:
+  
+              By default, more products will load in once you scroll to the bottom of the page.
+  
+              Change 'false' to 'true' on the line below to prevent this from happening, and instead show a button at the bottom of the page.
+              Clicking this button will load in the next batch of products.
+            
+  
+            {% assign show_scroll_button = false %}
+            {% if paginate.pages > 1 %}
+              <div class="pagination central small-gap-top content {% if section.settings.enable_infinite_scroll %}infiniscroll{% if show_scroll_button %} wait-for-trigger{% endif %}{% endif %}  transparent">
+                {{ paginate | default_pagination }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+  
+        {% if collection.description != blank and section.settings.description_position == "bottom" and section.settings.show_collection_content == true %}
+          <div class="central footer">
+            <div class="content transparent">
+              <div class="rte">
+                {{ collection.description }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endpaginate %}
+  </div>
+  
+  
+  
+  USF{% endcomment %}
+  {% schema %}
+    {
+      "name": "Collection pages",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Header"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_collection_content",
+          "label": "Show collection title/description",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_collection_image",
+          "label": "Show collection image",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "description_position",
+          "label": "Description position",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "GRID"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "options": [
+            {
+              "value": "columns",
+              "label": "Collage"
+            },
+            {
+              "value": "rows",
+              "label": "Grid"
+            }
+          ],
+          "default": "rows",
+          "info": "Collage will only work when the 'Image shape' is set to Natural - in Products / Image shape"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "label": "Show product vendor",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "grid",
+          "label": "Desktop products per row",
+          "min": 2,
+          "max": 4,
+          "default": 3
+        },
+        {
+          "type": "select",
+          "id": "grid_mobile",
+          "label": "Mobile products per row",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            }
+          ],
+          "default": "2"
+        },
+        {
+          "type": "range",
+          "id": "products_per_page",
+          "label": "Products per page",
+          "min": 12,
+          "max": 48,
+          "step": 6,
+          "default": 18
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_infinite_scroll",
+          "label": "Enable infinite-scroll",
+          "default": true,
+          "info": "As visitors scroll down, more products are loaded in automatically."
+        },
+        {
+          "type": "header",
+          "content": "FILTERS"
+        },
+        {
+          "type": "paragraph",
+          "content": "To create the collection filters, go to your [navigation](\/admin\/menus) page."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_filter_counts",
+          "label": "Show filter counts",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "ajax_products",
+          "label": "Filter and sort collections without reloading the page",
+          "default": true,
+          "info": "Some apps require this to be disabled"
+        },
+        {
+          "type": "radio",
+          "id": "filter_mode",
+          "label": "Filter mode",
+          "default": "sidebar",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "simple",
+              "label": "Simple"
+            },
+            {
+              "value": "sidebar",
+              "label": "Sidebar"
+            }
+          ],
+          "info": "'Simple' is only recommended if you have a small number of filters. Note, it doesn't allow for multiple options within a filter to be selected and it won't show the price range filter."
+        },
+        {
+          "type": "header",
+          "content": "Sidebar Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "sticky_sidebar",
+          "label": "Stick the sidebar on scroll",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "collapse_filters_method",
+          "label": "Filter group collapse",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "over-6",
+              "label": "Over 6 items"
+            },
+            {
+              "value": "over-12",
+              "label": "Over 12 items"
+            },
+            {
+              "value": "over-18",
+              "label": "Over 18 items"
+            },
+            {
+              "value": "all",
+              "label": "All"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "collapse_sort_by",
+          "label": "Collapse 'Sort by' filter group",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Sorting"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_sorting",
+          "label": "Enable sorting",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_featured_in_sort",
+          "label": "Show 'Featured' option in sorting dropdown",
+          "default": false
+        }
+        ],
+      "blocks":[
+        {
+          "type": "ql_advertising",
+          "name": "Advertising position",
+          "settings": [
+              {
+                "type": "number",
+                "id": "ql_position",
+                "label": "广告位置（广告位放在第几个产品后面？）",
+                "default": 0
+              },
+              {
+                "type": "image_picker",
+                "id": "ql_pc_image",
+                "label": "PC Image"
+              },
+              {
+                "type": "image_picker",
+                "id": "ql_mobile_image",
+                "label": "Mobile Image"
+              },
+              {
+                "type": "textarea",
+                "id": "title",
+                "label": "标题",
+                "default": "Title"
+              },
+              {
+                "type": "textarea",
+                "id": "description",
+                "label": "描述",
+                "default": "Description."
+              },
+              {
+                "type": "text",
+                "id": "show_now_btn",
+                "label": "广告按钮",
+                "default": "Show now"
+              },
+              {
+                "type": "url",
+                "id": "ql_url",
+                "label": "广告跳转地址"
+              },
+              {
+                "type": "collection_list",
+                "id": "collection_list",
+                "label": "该广告要投放到哪些系列页中？",
+                "limit": 8
+            },
+            {
+              "type": "header",
+              "content": "Desktop Layout"
+            },
+            {
+              "type": "range",
+              "id": "pc_font_size",
+              "unit": "px",
+              "min": 8,
+              "max": 30,
+              "step": 1,
+              "default": 18,
+              "label": "font size (PC)"
+            },
+            {
+              "type": "color",
+              "id": "pc_color",
+              "label": "Color (PC)"
+            },
+            {
+              "type": "range",
+              "id": "pc_padding_left",
+              "min": 0,
+              "max": 100,
+              "unit": "px",
+              "step": 1,
+              "default": 0,
+              "label": "Padding left (PC)"
+            },
+            {
+              "type": "range",
+              "id": "pc_padding_bottom",
+              "min": 0,
+              "max": 100,
+              "unit": "px",
+              "step": 1,
+              "default": 0,
+              "label": "Padding Bottom (PC)"
+            },
+            {
+              "type": "header",
+              "content": "Mobile Layout"
+            },
+            {
+              "type": "range",
+              "id": "mb_font_size",
+              "unit": "px",
+              "min": 8,
+              "max": 30,
+              "step": 1,
+              "default": 18,
+              "label": "font size (MB)"
+            },
+            {
+              "type": "color",
+              "id": "mb_color",
+              "label": "Color (MB)"
+            },
+            {
+              "type": "range",
+              "id": "mb_padding_left",
+              "min": 0,
+              "max": 100,
+              "unit": "px",
+              "step": 1,
+              "default": 0,
+              "label": "Padding left (MB)"
+            },
+            {
+              "type": "range",
+              "id": "mb_padding_bottom",
+              "min": 0,
+              "max": 100,
+              "unit": "px",
+              "step": 1,
+              "default": 0,
+              "label": "Padding Bottom (MB)"
+              }
+          ]
+        }
+      ]
+    }
+  {% endschema %}
+  

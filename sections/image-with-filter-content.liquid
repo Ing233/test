@@ -1,0 +1,298 @@
+{% assign has_description = false %}
+{% for this_collection in section.settings.selected_collections %}
+    {% if this_collection.title == collection.title %}
+        {% assign has_description = true %}
+    {% endif %}
+{% endfor %}
+{% if has_description == true %}
+{% assign filter_blocks = section.blocks | where: 'type', 'filter_content' %}
+<style>
+  .layout--left{
+    text-align: left;
+    }
+    .layout--center{
+        text-align: center;
+    }
+    .layout--right{
+        text-align: right;
+    }
+    .collection--filters-content .slideshow .slick-track {
+        display: flex;
+        align-items: stretch;
+        list-style: none;
+        width: 100%;
+        padding-bottom: 10px;
+        margin: 0;
+    }
+
+    .collection--filters-content .slideshow .slick-track>.filter--slide {
+        width: 20%;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        padding-right: 14px;
+        height: auto;
+    }
+    .collection--filters-content .slideshow .slick-track>.filter--cover-image {
+        width: var(--width);
+    }
+  .collection--filters-content .slideshow .slick-track>.filter--cover-image * {
+      height: 100%;
+  }
+    .collection--filters-content .rimage-wrapper .rimage__image {
+        border-radius: 6px 6px 6px 6px;
+    }
+    .ql_collection--filters-content .filter--content .text-area {
+        padding-top: 0px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .ql_collection--filters-content .filter--content .text-area.justify-content__center{
+        justify-content: center; 
+    }
+    .collection--filters-content .slideshow .slick-track>.filter--slide .text-area .filter--content_heading {
+        font-size: 20px;
+        font-weight: 500;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+    .collection--filters-content .slideshow .slick-track>.filter--slide .text-area .filter--content_subheading {
+        display: block;
+        font-size: 14px;
+        line-height: 14px;
+        color: #757575;
+        /* padding-top: 10px; */
+    }
+    .ql_collection--filters-content .filter--content {
+        cursor: pointer;
+    }
+    .ql_collection--filters-content .slideshow .slick-prev,
+    .ql_collection--filters-content .slideshow .slick-next{
+        transform: translateY(calc(-50% - 5px));
+        width: 22px;
+        background: #343434;
+        border-radius: 5px;
+    }
+    .ql_collection--filters-content .slideshow .slick-prev:hover,
+    .ql_collection--filters-content .slideshow .slick-next:hover,
+    .ql_collection--filters-content .slideshow .slick-prev:focus,
+    .ql_collection--filters-content .slideshow .slick-next:focus{
+        background: #343434!important;
+        opacity: 0.75;
+    }
+    .ql_collection--filters-content .slideshow .slick-prev.slick-disabled,
+    .ql_collection--filters-content .slideshow .slick-next.slick-disabled{
+        background: #343434!important;
+        opacity: 0;
+    }
+    .ql_collection--filters-content .slideshow .slick-prev {
+        left: 8px;
+    }
+    .ql_collection--filters-content .slideshow .slick-next {
+        right: 8px;
+    } 
+    @media (max-width: 768px){
+      .slideshow.ql_filters-content {
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+      .collection--filters-content .slideshow .slick-track>.filter--slide{
+        padding-right: 10px;
+      }
+      .collection--filters-content .slideshow .slick-track>.filter--slide .text-area .filter--content_heading {
+          font-size: 16px;
+      }
+      
+      .collection--filters-content .slideshow .slick-track>.filter--slide .text-area .filter--content_subheading {
+          font-size: 12px;
+      }
+      .collection--filters-content .slideshow .slick-track>.filter--cover-image {
+        width: calc(var(--width) + 10px);
+        }
+    .ql_collection--filters-content .slideshow .slick-prev {
+        left: 8px;
+    }
+    .ql_collection--filters-content .slideshow .slick-next {
+        right: 8px;
+    }
+    }
+</style>
+    <div class="collection--filters-content ql_collection--filters-content" data-section-type="slideshow">
+        <div class="slideshow ql_filters-content" 
+            data-navigation="none" 
+            data-mb-navigation="arrows" 
+            data-pc-navigation="arrows"
+            data-autoplay="false"
+            data-transition="slide"
+            data-pc-slides="5"
+            data-mb-slides="3"
+            data-uninfinite="true">
+          {% assign index = 1 %}
+            {% if section.settings.cover_image != nil %}
+                {% assign num = filter_blocks.size | plus: 1 %}
+                {% assign num = num | divided_by: 1.00 %}
+                <div class="filter--cover-image filter--slide slide-{{ index }}" style="--width: calc({{100 | divided_by: num}}% + 25px);">
+                    <div class="image-inner"> 
+                        <{% if section.settings.cover_image_url %}a href="{{ section.settings.cover_image_url }}" {% else %}div{% endif %} class="image__first">
+                            {% render 'responsive-image', image: section.settings.cover_image %}
+                        </{% if section.settings.cover_image_url %}a{% else %}div{% endif %}>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when "filter_content" %}
+                        {% if block.settings.filter_img == nil %}
+                            {% continue %}
+                        {% endif %}
+                        {% assign index = index | plus: 1 %}
+                        <div class="filter--content filter--slide slide-{{ index }}" 
+                        data-usf-facet="{{block.settings.filter_facet}}"
+                        data-usf-facet-label="{{block.settings.filter_facet_option}}">
+                                <div class="image-inner"> 
+                                    <div class="image__first">
+                                        {% render 'responsive-image', image: block.settings.filter_img %}
+                                    </div>
+                                </div>
+                         
+                            
+                            <div class="text-area
+                            {% if block.settings.filter_heading == '' or block.settings.filter_subheading == '' %}
+                             justify-content__center
+                            {% endif %}
+                            ">
+                                {% if block.settings.filter_heading != '' %}
+                                    <div class="filter--content_heading layout--{{block.settings.heading_layout}}">
+                                        {{block.settings.filter_heading}}
+                                    </div>
+                                {% endif %}
+                                {% if block.settings.filter_subheading != '' %}
+                                    <span class="filter--content_subheading layout--{{block.settings.subheading_layout}}">
+                                        {{block.settings.filter_subheading}}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                {% endcase %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Image with filter content",
+    "class": "section-no-padding-margin",
+    "settings": [
+        {
+        "type": "collection_list",
+        "id": "selected_collections",
+        "label": "要投放到哪些系列页中？"
+        },
+       {
+        "type": "header",
+        "content": "Media"
+       },
+       {
+        "type": "image_picker",
+        "id": "cover_image",
+        "label": "Image"
+       },
+       {
+        "type": "url",
+        "id": "cover_image_url",
+        "label": "跳转链接"    
+    }
+    ],
+    "blocks": [
+       {
+        "type": "filter_content",
+        "name": "Filter content",
+        "settings": [
+            {
+               "type": "header",
+               "content": "Text"
+            },
+            {
+               "type": "text",
+               "id": "filter_heading",
+               "label": "Heading"
+            },
+            {
+               "type": "select",
+               "id": "heading_layout",
+               "label": "Heading layout",
+               "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "Center"
+                    },
+                    {
+                        "value": "right",
+                        "label": "Right"
+                    }
+               ]
+            },
+            {
+               "type": "text",
+               "id": "filter_subheading",
+               "label": "Second line"
+            },
+            {
+                "type": "select",
+                "id": "subheading_layout",
+                "label": "Heading layout",
+                "options": [
+                     {
+                         "value": "left",
+                         "label": "Left"
+                     },
+                     {
+                         "value": "center",
+                         "label": "Center"
+                     },
+                     {
+                         "value": "right",
+                         "label": "Right"
+                     }
+                ]
+             },
+            {
+                "type": "text",
+                "id": "filter_facet",
+                "label": "Filter title"
+             },
+             {
+                "type": "text",
+                "id": "filter_facet_option",
+                "label": "Filter value"
+             },
+            {
+               "type": "header",
+               "content": "Media"
+            },
+            {
+               "type": "image_picker",
+               "id": "filter_img",
+               "label": "Image",
+               "info": "未设置图片，则block无效"
+            },
+        ]
+       }
+    ],
+    "presets":[
+        {
+            "name": "Image with filter content"
+        }
+    ]
+  }
+{% endschema %}

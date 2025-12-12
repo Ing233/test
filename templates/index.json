@@ -1,0 +1,443 @@
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "image_dd9jXL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Banner_b7bd3fbc-d4b0-487c-a3bf-b5f77bd83237.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/fall-outfit-mb.jpg",
+            "desktop_image_position": "center center",
+            "mobile_image_position": "center center",
+            "slide_link": "shopify:\/\/collections\/butterluxe",
+            "subheading": "这里还能有一行副标题",
+            "title": "这是一张测试banner",
+            "title_size": 56,
+            "heading_h1": false,
+            "text": "<p>这是副标题<\/p>",
+            "enlarge_text": true,
+            "text_color": "",
+            "mb_text_color": "",
+            "pc_text_below": false,
+            "mb_text_below": false,
+            "overlay_position": "position--left position--top",
+            "mb_overlay_position": "mb-position--hcenter mb-position--vcenter",
+            "padding_top": 16,
+            "padding_bottom": 0,
+            "padding_left_and_right": 8,
+            "mb_padding_top": 0,
+            "mb_padding_bottom": 0,
+            "mb_padding_l_and_r": 0,
+            "button_label": "button",
+            "button_color": "#ffffff",
+            "button_bg": "#000000",
+            "mb_button_color": "",
+            "mb_button_bg": "",
+            "pc_btn_below": false,
+            "mb_btn_below": false,
+            "btn_overlay_position": "position--hcenter position--vcenter",
+            "mb_btn_overlay_pos": "mb-position--hcenter mb-position--vcenter",
+            "btn_padding_top": 0,
+            "btn_padding_bottom": 0,
+            "btn_left_and_right": 0,
+            "mb_btn_top": 0,
+            "mb_btn_bottom": 0,
+            "mb_btn_l_and_r": 0
+          }
+        },
+        "image_VBJdz3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Christmas-pc-_01.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Christmas-mb_01.jpg",
+            "desktop_image_position": "center center",
+            "mobile_image_position": "center center",
+            "slide_link": "shopify:\/\/collections\/butterlift",
+            "subheading": "yyy",
+            "title": "ttt",
+            "title_size": 56,
+            "heading_h1": false,
+            "text": "<p>bbb<\/p>",
+            "enlarge_text": true,
+            "text_color": "",
+            "mb_text_color": "",
+            "pc_text_below": false,
+            "mb_text_below": false,
+            "overlay_position": "position--left position--vcenter",
+            "mb_overlay_position": "mb-position--hcenter mb-position--vcenter",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left_and_right": 0,
+            "mb_padding_top": 0,
+            "mb_padding_bottom": 0,
+            "mb_padding_l_and_r": 0,
+            "button_label": "b",
+            "button_color": "",
+            "button_bg": "",
+            "mb_button_color": "",
+            "mb_button_bg": "",
+            "pc_btn_below": false,
+            "mb_btn_below": false,
+            "btn_overlay_position": "position--hcenter position--vcenter",
+            "mb_btn_overlay_pos": "mb-position--hcenter mb-position--vcenter",
+            "btn_padding_top": 0,
+            "btn_padding_bottom": 0,
+            "btn_left_and_right": 0,
+            "mb_btn_top": 0,
+            "mb_btn_bottom": 0,
+            "mb_btn_l_and_r": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_dd9jXL",
+        "image_VBJdz3"
+      ],
+      "settings": {
+        "height": "adapt",
+        "height_desktop": 760,
+        "height_mobile": 440,
+        "full_width": true,
+        "overlay_style_tint": false,
+        "slide_transition": "slide",
+        "slide_navigation": "dots",
+        "autoplay": true,
+        "autoplay_speed": 8
+      }
+    },
+    "088be0fc-df0a-459f-8e99-c5ba789bed8a": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "template--16017607262361__088be0fc-df0a-459f-8e99-c5ba789bed8a-1681788862fa38ad4f-2": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/Christmas-pc_03.jpg",
+            "video": "",
+            "image_width": 900,
+            "title": "Fleece",
+            "text": "<p>text<\/p>",
+            "button_label": "shop",
+            "link": "shopify:\/\/collections\/fleece-lined"
+          }
+        },
+        "text_block_cK3rtK": {
+          "type": "text_block",
+          "disabled": true,
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/shortsleeves.jpg",
+            "video": "",
+            "image_width": 700,
+            "title": "Shorts Sleeves",
+            "text": "<p>Enjoy your most comfortable tee<\/p>",
+            "button_label": "shop now",
+            "link": ""
+          }
+        },
+        "text_block_rtfqN4": {
+          "type": "text_block",
+          "disabled": true,
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/short-sleeves_0e0ec1ca-92ac-442c-a5ac-c5ada44af784.jpg",
+            "video": "",
+            "image_width": 700,
+            "title": "Skirts",
+            "text": "",
+            "button_label": "shop now",
+            "link": ""
+          }
+        },
+        "template--16017607262361__088be0fc-df0a-459f-8e99-c5ba789bed8a-1681788862fa38ad4f-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/skirts_shorts-mb.jpg",
+            "video": "",
+            "image_width": 900,
+            "title": "Shorts",
+            "text": "",
+            "button_label": "shop now",
+            "link": "shopify:\/\/collections\/fleece-lined"
+          }
+        }
+      },
+      "block_order": [
+        "template--16017607262361__088be0fc-df0a-459f-8e99-c5ba789bed8a-1681788862fa38ad4f-2",
+        "text_block_cK3rtK",
+        "text_block_rtfqN4",
+        "template--16017607262361__088be0fc-df0a-459f-8e99-c5ba789bed8a-1681788862fa38ad4f-0"
+      ],
+      "settings": {
+        "title": "",
+        "text_alignment": "left",
+        "button_style": "primary",
+        "media_shape": "natural",
+        "alternate_bg_color": false,
+        "full_width": true,
+        "padding_left": 20,
+        "show_title": true,
+        "title_position": "center",
+        "title_colour": "#ffffff"
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Butterluxe Collection >",
+        "collection": "butterluxe",
+        "layout": "rows",
+        "show_vendor": false,
+        "grid": 9,
+        "rows": 1,
+        "grid_mb_scroll_jump": 1,
+        "grid_mobile": "scroll",
+        "hide_swatches": false,
+        "alternate_bg_color": false,
+        "show_view_all": true
+      }
+    },
+    "1c1bfeec-75f0-46fa-bd2a-27ade655e12a": {
+      "type": "slideshow",
+      "blocks": {
+        "template--16270092566681__1c1bfeec-75f0-46fa-bd2a-27ade655e12a-image-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/365-days-leggings-pc_02.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/365-days-Leggings-mb_02.gif",
+            "desktop_image_position": "center center",
+            "mobile_image_position": "center center",
+            "slide_link": "shopify:\/\/collections\/leggings",
+            "subheading": "",
+            "title": "",
+            "title_size": 56,
+            "heading_h1": true,
+            "text": "",
+            "enlarge_text": true,
+            "text_color": "",
+            "mb_text_color": "",
+            "pc_text_below": false,
+            "mb_text_below": false,
+            "overlay_position": "position--left position--vcenter",
+            "mb_overlay_position": "mb-position--hcenter mb-position--vcenter",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left_and_right": 0,
+            "mb_padding_top": 0,
+            "mb_padding_bottom": 0,
+            "mb_padding_l_and_r": 0,
+            "button_label": "",
+            "button_color": "",
+            "button_bg": "",
+            "mb_button_color": "",
+            "mb_button_bg": "",
+            "pc_btn_below": false,
+            "mb_btn_below": false,
+            "btn_overlay_position": "position--hcenter position--vcenter",
+            "mb_btn_overlay_pos": "mb-position--hcenter mb-position--vcenter",
+            "btn_padding_top": 0,
+            "btn_padding_bottom": 0,
+            "btn_left_and_right": 0,
+            "mb_btn_top": 0,
+            "mb_btn_bottom": 0,
+            "mb_btn_l_and_r": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--16270092566681__1c1bfeec-75f0-46fa-bd2a-27ade655e12a-image-1"
+      ],
+      "settings": {
+        "height": "adapt",
+        "height_desktop": 1000,
+        "height_mobile": 500,
+        "full_width": true,
+        "overlay_style_tint": false,
+        "slide_transition": "slide",
+        "slide_navigation": "dots",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "7bd7173b-f736-460c-9466-d2758db83a8d": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_eVnzeX": {
+          "type": "collection",
+          "settings": {
+            "collection": "bras",
+            "image": "shopify:\/\/shop_images\/02_fad962ea-c900-49fc-88fa-af67d2b7fdbe.jpg"
+          }
+        },
+        "collection_EHQRnk": {
+          "type": "collection",
+          "settings": {
+            "collection": "long-sleeves",
+            "image": "shopify:\/\/shop_images\/04_bbd2f638-a716-4350-aa5f-91b00da286c4.jpg"
+          }
+        },
+        "template--14715137687637__7bd7173b-f736-460c-9466-d2758db83a8d-16691840086509496f-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "pants",
+            "image": "shopify:\/\/shop_images\/05_f4df3ea2-6072-4dae-b970-d14ee0334762.jpg"
+          }
+        },
+        "collection_feQKcP": {
+          "type": "collection",
+          "settings": {
+            "collection": "matte-faux-leather-outfits",
+            "image": "shopify:\/\/shop_images\/03_a295ba09-e0ae-4627-9d4c-61271c0f5f61.jpg"
+          }
+        },
+        "collection_GHVRFn": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-arrivals",
+            "image": "shopify:\/\/shop_images\/01_c7d6e579-9315-4198-a700-2da50ce9176e.jpg"
+          }
+        },
+        "collection_bdQejr": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_eVnzeX",
+        "collection_EHQRnk",
+        "template--14715137687637__7bd7173b-f736-460c-9466-d2758db83a8d-16691840086509496f-2",
+        "collection_feQKcP",
+        "collection_GHVRFn",
+        "collection_bdQejr"
+      ],
+      "settings": {
+        "title": "More Hot Sale Collections",
+        "layout": "rows",
+        "grid": 5,
+        "grid_mobile": "3",
+        "show_view_all": false,
+        "alternate_bg_color": false,
+        "title_position": "center",
+        "title_colour": "#000000",
+        "pc_title_size": 23,
+        "show_title": true,
+        "mb_title_size": 23
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "custom_css": [],
+      "settings": {
+        "subheading": "",
+        "title": "Subscribe to our newsletter",
+        "text": "<p>Sign up and be the first to know about new arrivals and special promotions<\/p>",
+        "height_desktop": 500,
+        "height_mobile": 400,
+        "alternate_bg_color": false,
+        "image": "shopify:\/\/shop_images\/BF-pc_02_146f853b-7a9f-449f-9625-15dff969e3ed.jpg",
+        "color_bg": "#f4f4f4"
+      }
+    },
+    "1634554963fe5f266d": {
+      "type": "rich-text",
+      "settings": {
+        "subheading": "",
+        "title": "Your Daily Activewear",
+        "title_size": 20,
+        "heading_h1": false,
+        "text": "<p><strong>CRZ YOGA<\/strong> is a High-Value Experience brand., with satisfying customer service and innovative products.<\/p>",
+        "image_width": 60,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "text_alignment": "left",
+        "enlarge_text": false,
+        "full_width": true,
+        "no_padding_bottom": true,
+        "alternate_bg_color": false,
+        "color_bg": "#313941"
+      }
+    },
+    "section_contact_us_d6UTjV": {
+      "type": "section-contact-us",
+      "blocks": {
+        "orders_rAtLxy": {
+          "type": "orders",
+          "settings": {
+            "b_title": "Orders",
+            "b_subheading": "message"
+          }
+        },
+        "concat_us_THzMxU": {
+          "type": "concat_us",
+          "settings": {
+            "b_title": "Contact Us",
+            "b_url": ""
+          }
+        },
+        "follow_a6kEc4": {
+          "type": "follow",
+          "settings": {
+            "b_title": "Follow information",
+            "url": ""
+          }
+        },
+        "faqs_QaRJ6K": {
+          "type": "faqs",
+          "settings": {
+            "faqs_title": "FAQS heading",
+            "faqs_content": "<p>FAQS content<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "orders_rAtLxy",
+        "concat_us_THzMxU",
+        "follow_a6kEc4",
+        "faqs_QaRJ6K"
+      ],
+      "settings": {
+        "q_name": "Contact Us",
+        "q_x": "right",
+        "q_bottom": 10,
+        "q_border_radius": 5,
+        "q_orientation": "dir_row",
+        "btn_p_color": "",
+        "btn_p_bg": "",
+        "btn_c_color": "",
+        "btn_c_bg": "",
+        "content_bg": "",
+        "content_color": "",
+        "content_heading": "CRZ YOGA",
+        "h_font_size": 21,
+        "mb_h_font_size": 21,
+        "content_subheading": "How can we help?",
+        "subh_font_size": 27,
+        "mb_subh_font_size": 27,
+        "content_width": 300,
+        "content_height": 500,
+        "content_padding": 50,
+        "block_font_size": 15,
+        "block_color": "",
+        "pop_font_size": 27,
+        "pop_color": ""
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "088be0fc-df0a-459f-8e99-c5ba789bed8a",
+    "featured-collection",
+    "1c1bfeec-75f0-46fa-bd2a-27ade655e12a",
+    "7bd7173b-f736-460c-9466-d2758db83a8d",
+    "newsletter",
+    "1634554963fe5f266d",
+    "section_contact_us_d6UTjV"
+  ]
+}

@@ -1,0 +1,95 @@
+/* [data-section-type="collection-list"] {
+    padding-left: 10px;
+    padding-right: 10px;
+} */
+
+[data-section-type="collection-list"] .collection-block.column.column-2 {
+  width: 50%;
+}
+[data-section-type="collection-list"] .collection-block.column.column-3 {
+  width: 33.3%;
+}
+[data-section-type="collection-list"] .collection-block.column.column-4 {
+  width: 25%;
+}
+[data-section-type="collection-list"] .collection-block.column.column-5 {
+  width: 20%;
+}
+[data-section-type="collection-list"] .collection-block.column.column-6 {
+  width: 16.6%;
+}
+[data-section-type="collection-list"] .collection-block.column.column-7 {
+  width: 14.2%;
+}
+[data-section-type="collection-list"] .collection-block.column.column-8 {
+  width: 12.5%;
+}
+[data-section-type="collection-list"] .collection-block.column.column-9 {
+  width: 11%;
+}
+[data-section-type="collection-list"] .collection-block.column.column-10 {
+  width: 10%;
+}
+[data-section-type="collection-list"] .title_position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/*===== 文本在下方的样式 =====*/
+[data-section-type="collection-list"]  .collection-block .caption.upper.title_position-under .button {
+  position: unset;
+  transform: translate3d(0px, 0px, 0px);
+  border-color: initial;
+}
+
+[data-section-type="collection-list"] .product-block:hover .caption.upper.title_position-under, [data-section-type="collection-list"] .collection-block:hover .caption.upper.title_position-under {
+  transform: translateY(0px) scale(1.07);
+}
+
+
+[data-section-type="collection-list"] .collection-block:hover .caption.upper.title_position-under {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-section-type="collection-list"] .collection-block .caption.upper.title_position-under {
+  opacity: 1;
+  transform: translate3d(0, 0%, 0);
+}
+
+[data-section-type="collection-list"] .product-block .caption.upper.title_position-under, [data-section-type="collection-list"] .collection-block .caption.title_position-under {
+  position: unset;
+  transform: translateY(0%);
+}
+
+
+.collection-block:not(.hover-info) .title.h2 {
+  font-size: 1.56rem;
+  line-height: 1.25;
+}
+
+
+@media (max-width: 767px) {
+  [data-section-type="collection-list"] .collection-block.column {
+      padding-top: 30px;
+      padding-right: 5px;
+  }
+[data-section-type="collection-list"] .collection-block.column.mb-third {
+      width: 33.3%;
+  }
+[data-section-type="collection-list"] .collection-block.column.mb-two {
+      width: 50%;
+  }
+[data-section-type="collection-list"] .collection-block.column.mb-one {
+      width: 100%;
+  }
+
+[data-section-type="collection-list"] .collection-block .caption{
+  display: none;
+}
+[data-section-type="collection-list"] .collection-block .caption.mb-show-title {
+      display: block;
+  }
+
+}

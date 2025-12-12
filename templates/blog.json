@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "blog_layout": "collage",
+        "blog_posts_per_page": 10,
+        "blog_posts_per_row_mobile": "2",
+        "blog_show_title": true,
+        "blog_show_filter": true,
+        "blog_show_rss_link": false,
+        "blog_show_author": false,
+        "blog_show_date": true,
+        "blog_excerpt": "hover",
+        "blog_image_shape": "square"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_h1": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "discount_countdown_DCctmC": {
+          "type": "discountCountdown",
+          "settings": {}
+        },
+        "d8207980-9066-4486-ab5a-d513649fd4dd": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_style": "underlined",
+            "show_realtime_availability": true,
+            "show_size_chart": false,
+            "size_chart_variant": "Size",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_tax_and_shipping": false,
+            "show_quantity_selector": true,
+            "enable_payment_button": false,
+            "show_pickup_availability": false
+          }
+        },
+        "6a28286f-cf26-4ea1-ae22-ed50b4c408d2": {
+          "type": "sku",
+          "settings": {}
+        },
+        "cb91288a-c29a-4573-a942-a1648e803561": {
+          "type": "social",
+          "settings": {}
+        },
+        "6eb759c6-799b-44e1-847d-23f7f6b258fd": {
+          "type": "divider",
+          "settings": {
+            "show_line": true,
+            "spacing_above": "small",
+            "spacing_below": "none"
+          }
+        },
+        "0689aceb-5640-4cf6-9f7d-4b016488b09f": {
+          "type": "description",
+          "settings": {}
+        },
+        "828b0e20-01aa-4a3c-8935-6d66f8b82743": {
+          "type": "image",
+          "settings": {
+            "image_width": 700,
+            "url": "shopify:\/\/collections\/brushed-naked-feeling"
+          }
+        },
+        "4da572e1-9ace-4655-a40b-50e38f2be422": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Obsessed with Brushed >",
+            "text_style": "uppercase"
+          }
+        },
+        "e3a88ce5-ad19-484a-ac1c-13301c3ee911": {
+          "type": "link",
+          "settings": {
+            "text": "OBSESSED WITH BRUSHED >",
+            "url": "",
+            "text_style": "link",
+            "open_new_window": true
+          }
+        },
+        "038fdc4d-109e-410d-bc92-f571f6f48cdc": {
+          "type": "trust_icons",
+          "settings": {
+            "icon_size": 30,
+            "show_icon1": true,
+            "text1": "<p>Trust label<\/p>",
+            "icon1": "check_mark",
+            "show_icon2": true,
+            "text2": "<p>Trust label<\/p>",
+            "icon2": "check_mark",
+            "show_icon3": true,
+            "text3": "<p>Trust label<\/p>",
+            "icon3": "check_mark",
+            "show_icon4": true,
+            "text4": "<p>Trust label<\/p>",
+            "icon4": "check_mark"
+          }
+        },
+        "1ba790d6-f9b3-4eab-9bad-92cfb9a15671": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "discount_countdown_DCctmC",
+        "d8207980-9066-4486-ab5a-d513649fd4dd",
+        "buy_buttons",
+        "6a28286f-cf26-4ea1-ae22-ed50b4c408d2",
+        "cb91288a-c29a-4573-a942-a1648e803561",
+        "6eb759c6-799b-44e1-847d-23f7f6b258fd",
+        "0689aceb-5640-4cf6-9f7d-4b016488b09f",
+        "828b0e20-01aa-4a3c-8935-6d66f8b82743",
+        "4da572e1-9ace-4655-a40b-50e38f2be422",
+        "e3a88ce5-ad19-484a-ac1c-13301c3ee911",
+        "038fdc4d-109e-410d-bc92-f571f6f48cdc",
+        "1ba790d6-f9b3-4eab-9bad-92cfb9a15671"
+      ],
+      "settings": {
+        "media_style": "one-column",
+        "cart_type": "add_in_modal",
+        "full_width": true,
+        "sticky_product_form": true,
+        "enable_mobile_sticky_cart": true,
+        "enable_sticky_selected_variant": true,
+        "show_backorder_text": false,
+        "show_inventory_notice": true,
+        "inventory_notice_threshold": 5,
+        "slide_nav_style": "dots",
+        "show_thumbnails": true,
+        "enable_zoom": true,
+        "enable_video_looping": true,
+        "scroll_to_variant_media": true,
+        "variant_media_grouping": true,
+        "variant_media_grouping_option": "Color,Colour,Couleur,Farbe"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "title": "You may also like",
+        "hide_swatches": false,
+        "show_vendor": false,
+        "grid": 4
+      }
+    },
+    "automizely-af7050ba": {
+      "type": "automizely-af7050ba",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "automizely-af7050ba"
+  ]
+}

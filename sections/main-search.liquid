@@ -1,0 +1,152 @@
+<!-- BEGIN USF 2-->
+<div data-section-type="search-template" data-components="product-block" class="py-medium">
+  <div class="central align-center">
+    {% if section.settings.search_show_title %}
+      <h1 class="feature-header" data-cc-animate>{{ 'general.search.title' | t }}</h1>
+    {% endif %}
+    <form action="{{ routes.search_url }}" method="get" class="search-form" role="search" data-cc-animate data-cc-animate-delay="0.2s">
+      {% comment %} Remove the following line to search everything, not just products {% endcomment %}
+      <input type="hidden" name="type" value="product">
+      <input type="hidden" name="options[prefix]" value="last" />
+
+      <div class="inline-mini-form inline-mini-form--arrow {% if section.settings.search_show_title == false %}mt-0{% endif %}">
+        <input type="text" name="q" value="{{ search.terms | escape }}" class="focus-me"
+               placeholder="{{ 'general.search.page_placeholder' | t }}"
+               aria-label="{{ 'general.search.input_label' | t | escape }}"
+               autocomplete="off" required />
+        <button class="compact" type="submit" aria-label="{{ 'general.search.submit' | t }}">{% render 'svg-rarrow-long' %}</button>
+      </div>
+    </form>
+  </div>
+     {% if section.settings.layout == 'rows' %}
+            {% if section.settings.grid == 2 %}
+              {% assign product_class = 'column half' %}
+              {% elsif section.settings.grid == 3 %}
+              {% assign product_class = 'column third' %}
+            {% else %}
+              {% assign product_class = 'column quarter' %}
+            {% endif %}
+          {% endif %}
+   {% capture grid_class %} product-list product-list--{{ section.settings.layout }} {% if section.settings.layout == 'columns' %}jiggly-split dynamic-col-{{ section.settings.grid }}{% else %}grid--uniform{% endif %} {% if section.settings.grid_mobile == '2' %}mob-two-col{% endif %} {% endcapture %}
+     <script>
+          window._usf_grid_class = {{ grid_class | json }};
+          window._usf_product_class = {{ product_class | json }};
+          window._usfGlobalSettings = {
+            prod_hover: {{ settings.prod_hover | json }},
+            prod_label_layout: {{ settings.prod_label_layout | json }},
+            quickbuy_enabled: {{ settings.quickbuy_enabled | json }},
+            show_product_block_reviews: {{ settings.show_product_block_reviews | json }},
+            swatch_enabled: {{ settings.swatch_enabled | json }},
+            prod_block_swatches: {{ settings.prod_block_swatches | json }},
+            swatch_option_name: {{ settings.swatch_option_name | json }},
+            swatch_use_prod_images: {{ settings.swatch_use_prod_images | json }},
+            swatch_prod_images_shape: {{ settings.swatch_prod_images_shape | json }},
+            swatch_method: {{ settings.swatch_method | json }},
+            show_sold_out_label: {{ settings.show_sold_out_label | json }},
+            show_sale_label: {{ settings.show_sale_label | json }},
+            show_new_label: {{ settings.show_new_label | json }},
+            prod_new_method: {{ settings.prod_new_method | json }},
+            prod_new_limit_int: {{ settings.prod_new_limit_int | json }},
+          };
+          window._usfSectionSettings = {
+            show_vendor: {{ section.settings.show_vendor | json }}
+          };
+            window._usfFromText = {{ 'products.listing.from' | t | json }};
+            window._usfSoldOutText = {{ 'products.listing.sold_out' | t | json }};
+            window._usfSaleText = {{ 'products.product.sale' | t | json }};
+            window._usfNewText = {{ 'products.labels.new_in' | t | json }};
+            window._usfCollectionById = {};
+            {% for collection in collections %}
+            window._usfCollectionById[{{ collection.id | json }}] = {{ collection.handle | json }};
+            {% endfor %}
+        </script>
+  
+    <div class="wide-container half-gutter"  data-cc-animate data-cc-animate-delay="0.4s">
+      <div class="product-list-container" data-infinite-scroll-container>
+        <div id="usf_container"></div>
+      </div>
+    </div>
+</div>
+
+<!-- END USF -->
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Search results",
+    "class": "section-search-template",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "search_show_title",
+        "label": "Show page title",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Product layout",
+        "options": [
+          {
+            "value": "columns",
+            "label": "Collage"
+          },
+          {
+            "value": "rows",
+            "label": "Grid"
+          }
+        ],
+        "default": "rows",
+        "info": "Collage will only work when the 'Image shape' is set to Natural - in Products / Image shape"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Products per row",
+        "min": 2,
+        "max": 4,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "label": "Number of products to show per page",
+        "min": 6,
+        "max": 48,
+        "step": 6,
+        "default": 12
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_infinite_scroll",
+        "label": "Enable infinite-scroll",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "grid_mobile",
+        "label": "Mobile products per row",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          }
+        ],
+        "default": "2"
+      }
+    ]
+  }
+{% endschema %}

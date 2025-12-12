@@ -1,0 +1,663 @@
+{
+  "sections": {
+    "f4e0023e-1878-44eb-a50a-13d8d78fe602": {
+      "type": "collection-list-carousel",
+      "blocks": {
+        "bb48edfb-a064-4df1-a8b8-06082852579c": {
+          "type": "collection_text_classify",
+          "settings": {
+            "selected_collections": [
+              "bras"
+            ],
+            "tab1": "High Neck",
+            "tab1_url": "https:\/\/shop.crzyoga.com\/collections\/bras?uff_jjynd1_tags=High%20Neck%20Bras",
+            "tab2": "Square Neck",
+            "tab2_url": "https:\/\/shop.crzyoga.com\/collections\/bras?uff_jjynd1_tags=Square%20Neck%20Bras",
+            "tab3": "Racerback",
+            "tab3_url": "https:\/\/shop.crzyoga.com\/collections\/bras?uff_jjynd1_tags=Racerback%20Bras",
+            "tab4": "Strappy Back",
+            "tab4_url": "https:\/\/shop.crzyoga.com\/collections\/bras?uff_jjynd1_tags=Strappy%20Bras",
+            "tab5": "U Back",
+            "tab5_url": "https:\/\/shop.crzyoga.com\/collections\/bras?uff_jjynd1_tags=U%20Back%20Bras",
+            "tab6": "Y Back",
+            "tab6_url": "https:\/\/shop.crzyoga.com\/collections\/bras?uff_jjynd1_tags=Y%20Back%20Bras",
+            "tab7": "Longline",
+            "tab7_url": "https:\/\/shop.crzyoga.com\/collections\/bras?uff_jjynd1_tags=Longline%20Bras",
+            "tab8": "",
+            "tab8_url": ""
+          }
+        },
+        "cc87bbf5-20ac-4a48-96f3-9ac760c70c76": {
+          "type": "collection_text_classify",
+          "settings": {
+            "selected_collections": [
+              "tanks"
+            ],
+            "tab1": "Built-in Bra",
+            "tab1_url": "shopify:\/\/collections\/built-in-bra-tanks",
+            "tab2": "Double Lined",
+            "tab2_url": "https:\/\/shop.crzyoga.com\/collections\/tanks?uff_jjynd1_tags=Double%20Lined",
+            "tab3": "Cropped",
+            "tab3_url": "https:\/\/shop.crzyoga.com\/collections\/tanks?uff_uyxz7g_tags=Cropped",
+            "tab4": "Long",
+            "tab4_url": "https:\/\/shop.crzyoga.com\/collections\/tanks?uff_uyxz7g_tags=Long",
+            "tab5": "Short",
+            "tab5_url": "https:\/\/shop.crzyoga.com\/collections\/tanks?uff_uyxz7g_tags=Short",
+            "tab6": "Relaxed",
+            "tab6_url": "https:\/\/shop.crzyoga.com\/collections\/tanks?uff_35yqye_tags=Relaxed",
+            "tab7": "Slim",
+            "tab7_url": "https:\/\/shop.crzyoga.com\/collections\/tanks?uff_35yqye_tags=Slim",
+            "tab8": "Tight",
+            "tab8_url": "https:\/\/shop.crzyoga.com\/collections\/tanks?uff_35yqye_tags=Tight"
+          }
+        },
+        "72c90394-5e9b-463e-81d7-3af59a3f4f1e": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/Butterluxe_48942f45-115e-4ece-8c2b-7b53b55e5868.jpg",
+            "title": "<p>So soft, as your<\/p><p>second skin.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/soft.svg",
+            "description_1": "Extremely soft, luxurious comfort",
+            "icon_2": "shopify:\/\/shop_images\/stretchy.svg",
+            "description_2": "Ultra stretch, shape-retention",
+            "icon_3": "shopify:\/\/shop_images\/light.svg",
+            "description_3": "Breathable, weightless",
+            "icon_4": "shopify:\/\/shop_images\/gentle-compression.svg",
+            "description_4": "Very gentle compression",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/leggings-filter?uff_h6ydka_tags=Butterluxe"
+          }
+        },
+        "12f79f88-d9f7-41d7-a5fc-45b62b171da7": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/Butterlift.jpg",
+            "title": "<p>More compressed<\/p><p>and thick.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/Buttery-soft.svg",
+            "description_1": "As buttery soft as Butterluxe",
+            "icon_2": "shopify:\/\/shop_images\/A_bit_thick_no_see-throurh.svg",
+            "description_2": "A bit thick, no see-through",
+            "icon_3": "shopify:\/\/shop_images\/Medium_compression.svg",
+            "description_3": "Medium compression",
+            "icon_4": "shopify:\/\/shop_images\/Brushed.svg",
+            "description_4": "Brushed. Four-Way stretch",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/bottoms?uff_h6ydka_tags=Butterlift"
+          }
+        },
+        "0e8b2e99-2349-4d78-a26a-11ae55a21d43": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/Butterbreeze.jpg",
+            "title": "<p>Conquer the<\/p><p>sweat.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/Fastest-drying.svg",
+            "description_1": "Faster-drying, breathable",
+            "icon_2": "shopify:\/\/shop_images\/Sweat-wicking.svg",
+            "description_2": "Sweat wicking",
+            "icon_3": "shopify:\/\/shop_images\/Stretchy-2.svg",
+            "description_3": "Decent compression",
+            "icon_4": "shopify:\/\/shop_images\/Lightweight.svg",
+            "description_4": "Lightweight",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/bottoms?uff_h6ydka_tags=Butterbreeze"
+          }
+        },
+        "a3ec456b-7622-4a8f-a379-81ccbe1b71b3": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/Nakedfeel_b38dc1a7-da5c-4861-9512-e31926c894bd.jpg",
+            "title": "<p>No restriction<\/p><p>on the move.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/Pet-Hair-Resistant.svg",
+            "description_1": "Sleek. No-fur-stick-to",
+            "icon_2": "shopify:\/\/shop_images\/Buttery-soft.svg",
+            "description_2": "Buttery soft. lightweight",
+            "icon_3": "shopify:\/\/shop_images\/Sweat-wicking.svg",
+            "description_3": "Sweat-wicking",
+            "icon_4": "shopify:\/\/shop_images\/Stretchy-2.svg",
+            "description_4": "Decent compression",
+            "ql_url": "shopify:\/\/collections\/naked-feeling"
+          }
+        },
+        "e3ddbf30-e38c-4bb2-bac8-9ad03992f466": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/Hugged-Feel_af2f75ea-89d4-4fdd-8a26-b3bb39caa542.jpg",
+            "title": "<p>Get rid of hinderance<\/p><p>during training.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/Max-compression.svg",
+            "description_1": "Max compression, supportive",
+            "icon_2": "shopify:\/\/shop_images\/Anti-cellulite.svg",
+            "description_2": "Anti cellulite",
+            "icon_3": "shopify:\/\/shop_images\/Sleek.svg",
+            "description_3": "Sleek, cool to touch",
+            "icon_4": "shopify:\/\/shop_images\/Squat-proof.svg",
+            "description_4": "Thick, squat proof",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/leggings-filter?uff_h6ydka_tags=Hugged%20Feeling"
+          }
+        }
+      },
+      "block_order": [
+        "bb48edfb-a064-4df1-a8b8-06082852579c",
+        "cc87bbf5-20ac-4a48-96f3-9ac760c70c76",
+        "72c90394-5e9b-463e-81d7-3af59a3f4f1e",
+        "12f79f88-d9f7-41d7-a5fc-45b62b171da7",
+        "0e8b2e99-2349-4d78-a26a-11ae55a21d43",
+        "a3ec456b-7622-4a8f-a379-81ccbe1b71b3",
+        "e3ddbf30-e38c-4bb2-bac8-9ad03992f466"
+      ],
+      "settings": {
+        "collection_list": [
+          "leggings"
+        ],
+        "grid": 5,
+        "show_collection_image": false
+      }
+    },
+    "c9641b30-25d7-4f42-92ca-07cb0fbbf1f8": {
+      "type": "collection-list-carousel",
+      "blocks": {
+        "695426a5-7831-4b73-a04e-0d373504d402": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/shorts_01.jpg",
+            "title": "<p>Unprecedented <\/p><p>Softness.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/Design_for_yoga_or_lounge.svg",
+            "description_1": "Design for yoga or lounge",
+            "icon_2": "shopify:\/\/shop_images\/soft_1e817e2b-e49c-4cb6-a452-eda94f9507f5.svg",
+            "description_2": "Extremly soft, max comfort",
+            "icon_3": "shopify:\/\/shop_images\/stretchy_2421f580-9ec7-439c-aaa6-ea31d00ab8f2.svg",
+            "description_3": "Ultra stretch & resilience",
+            "icon_4": "shopify:\/\/shop_images\/gentle-compression.svg",
+            "description_4": "Very gentle compression",
+            "ql_url": "shopify:\/\/collections\/butterluxe-biker"
+          }
+        },
+        "5ead3160-07c4-4992-ba33-d351777ccf4e": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/shorts_04.jpg",
+            "title": "<p>Get Weightless<\/p><p>Power.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/Design_for_training_or_running.svg",
+            "description_1": "Design for running or workout",
+            "icon_2": "shopify:\/\/shop_images\/Fastest-drying_e7ac538f-3005-4f5f-af4f-7094d461b993.svg",
+            "description_2": "Quick dry & breathable",
+            "icon_3": "shopify:\/\/shop_images\/Sleek_fa585ffa-c803-4ee5-b631-fc63c5a5eead.svg",
+            "description_3": "Sleek and lightweight",
+            "icon_4": "shopify:\/\/shop_images\/jingyin.svg",
+            "description_4": "No swish-swish sound",
+            "ql_url": "shopify:\/\/collections\/feathery-fit-soft-shorts"
+          }
+        },
+        "acc0b274-6ce5-400f-a5f3-f4cc16c3f522": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/shorts_02.jpg",
+            "title": "<p>For Unrestraint <\/p><p>Performance.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/Design_for_hot_yoga_or_Pilates.svg",
+            "description_1": "Design for hot yoga or pilates",
+            "icon_2": "shopify:\/\/shop_images\/Pet-Hair-Resistant_7c203492-46b1-410e-9458-49b76c6d0d43.svg",
+            "description_2": "Sleek, no-fur-stick-to",
+            "icon_3": "shopify:\/\/shop_images\/Sweat-wicking_ddf8557c-2edb-4af7-bd84-afa2e36e8c06.svg",
+            "description_3": "Sweat-wicking",
+            "icon_4": "shopify:\/\/shop_images\/Stretchy-2_a73a6d53-765b-40cd-876b-0e155c04b6e3.svg",
+            "description_4": "Decent compression",
+            "ql_url": "shopify:\/\/collections\/nakedfeel-biker"
+          }
+        },
+        "020f208a-94f1-432a-91ed-ea42b51dae72": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_image": "shopify:\/\/shop_images\/shorts_03.jpg",
+            "title": "<p>Brushed for <\/p><p>Softer.<\/p>",
+            "icon_1": "shopify:\/\/shop_images\/Design_for_yoga_or_training.svg",
+            "description_1": "Design for yoga or training",
+            "icon_2": "shopify:\/\/shop_images\/Brushed_8f9a4526-6a1d-4351-88e1-ba31f49a2856.svg",
+            "description_2": "Brushed comfort",
+            "icon_3": "shopify:\/\/shop_images\/Lightweight_1458b48e-ab0f-4edd-8f11-d20ddabd6aeb.svg",
+            "description_3": "Lightweight and soft",
+            "icon_4": "shopify:\/\/shop_images\/Stretchy-2_a73a6d53-765b-40cd-876b-0e155c04b6e3.svg",
+            "description_4": "Decent compression",
+            "ql_url": "shopify:\/\/collections\/brushed-nakedfeel-biker"
+          }
+        }
+      },
+      "block_order": [
+        "695426a5-7831-4b73-a04e-0d373504d402",
+        "5ead3160-07c4-4992-ba33-d351777ccf4e",
+        "acc0b274-6ce5-400f-a5f3-f4cc16c3f522",
+        "020f208a-94f1-432a-91ed-ea42b51dae72"
+      ],
+      "settings": {
+        "collection_list": [
+          "shorts"
+        ],
+        "grid": 4,
+        "show_collection_image": false
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "0c3dd97a-5ddc-4abd-af2c-228509ab0498": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 8,
+            "ql_pc_image": "shopify:\/\/shop_images\/leggings-pc_7a7e694f-9c01-4c6b-bdb4-e638d1a52330.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/leggings_34892b56-3a49-4cb2-b1b9-e217e976c99b.jpg",
+            "title": "365 Days leggings",
+            "description": "Discover perfect blend of style and functionality.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/leggings?utm_source=collectionad&utm_campaign=leggings",
+            "collection_list": [
+              "butterluxe"
+            ]
+          }
+        },
+        "260cea0c-3382-4fca-82f4-9532949b9767": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 18,
+            "ql_pc_image": "shopify:\/\/shop_images\/workout-pc_d6d4783b-20da-4729-a0d3-7d776040a8e4.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/workout.jpg",
+            "title": "CRZ Workout Shop",
+            "description": "Supportive and compressive fabric.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/workout?utm_source=collectionad&utm_campaign=workout",
+            "collection_list": [
+              "butterluxe",
+              "best-sellers",
+              "womens-sale",
+              "new-arrivals",
+              "naked-feeling"
+            ]
+          }
+        },
+        "5b2dcc50-c847-4dcb-8bfb-bd597966bac9": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 22,
+            "ql_pc_image": "shopify:\/\/shop_images\/summer_Vacation-mb.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/summer_Vacation.jpg",
+            "title": "Summer Vacation",
+            "description": "Embrace colorful summer with CRZ YOGA.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/swimsuits?utm_source=collectionad&utm_campaign=swimsuit",
+            "collection_list": [
+              "butterluxe"
+            ]
+          }
+        },
+        "20d7fce3-afae-474b-a104-f4a2d6560d56": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 32,
+            "ql_pc_image": "shopify:\/\/shop_images\/onesies-pc_32ae9755-941c-453b-94ce-88677c7bdce6.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/onesies-mb_64feb86f-f9bd-4199-9c3e-92bec1eab9a1.jpg",
+            "title": "New Drop Style - Bodysuits",
+            "description": "Made with most popular Butterluxe fabric. Smooth Body Curve.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/onesies-dress?utm_source=collectionad&utm_campaign=onesies",
+            "collection_list": [
+              "butterluxe",
+              "leggings",
+              "pants",
+              "workout",
+              "fall-winter"
+            ]
+          }
+        },
+        "ql_advertising_6kA9WG": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 44,
+            "ql_pc_image": "shopify:\/\/shop_images\/onesies-pc_32ae9755-941c-453b-94ce-88677c7bdce6.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/onesies-mb_64feb86f-f9bd-4199-9c3e-92bec1eab9a1.jpg",
+            "title": "New Drop Style - Bodysuits",
+            "description": "Made with most popular Butterluxe fabric. Smooth Body Curve.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/onesies-dress?utm_source=collectionad&utm_campaign=onesies",
+            "collection_list": [
+              "bras",
+              "bras-tops",
+              "tanks",
+              "long-sleeves",
+              "shorts",
+              "short-sleeves"
+            ]
+          }
+        },
+        "c7af53e9-8007-4aa2-a33f-283d3ac4f3df": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 44,
+            "ql_pc_image": "shopify:\/\/shop_images\/Doublelined-pc.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/doublelined-mb.jpg",
+            "title": "Double Lined Tanks",
+            "description": "Provide maximum comfy and for  no see-through.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/tanks?uff_jjynd1_tags=Double%20Lined",
+            "collection_list": [
+              "butterluxe"
+            ]
+          }
+        },
+        "b88ce15b-0ee1-4cbe-9096-a5cbd6c010cf": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 8,
+            "ql_pc_image": "shopify:\/\/shop_images\/butterluxe-pc_5a7bb984-c97c-4197-9efb-81b89020e676.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/butterluxe_a3bfd7e8-67bc-40fa-ae97-e01b2d21b054.jpg",
+            "title": "Butterluxe-Luxury softness",
+            "description": "Lighter, softer, stretchier.",
+            "show_now_btn": "Shop Butterluxe",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/butterluxe?utm_source=collectionad&utm_campaign=butterluxe",
+            "collection_list": [
+              "bras",
+              "bras-tops",
+              "tanks",
+              "long-sleeves",
+              "shorts",
+              "short-sleeves"
+            ]
+          }
+        },
+        "ql_advertising_ryakRB": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 8,
+            "ql_pc_image": "shopify:\/\/shop_images\/butterluxe-pc_5a7bb984-c97c-4197-9efb-81b89020e676.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/butterluxe_a3bfd7e8-67bc-40fa-ae97-e01b2d21b054.jpg",
+            "title": "Butterluxe-Luxury softness",
+            "description": "Lighter, softer, stretchier.",
+            "show_now_btn": "Shop Butterluxe",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/butterluxe?utm_source=collectionad&utm_campaign=butterluxe",
+            "collection_list": [
+              "best-sellers",
+              "womens-sale",
+              "new-arrivals",
+              "naked-feeling",
+              "leggings",
+              "pants",
+              "workout",
+              "fall-winter"
+            ]
+          }
+        },
+        "eac75da6-2220-4097-83a7-4d7b21c67244": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 18,
+            "ql_pc_image": "shopify:\/\/shop_images\/bras_tops-pc_d3fef2d3-d923-484d-9e85-a8ab57a933eb.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/bras_tops.jpg",
+            "title": "Complete all set to go",
+            "description": "Search your favorite matching Tops & Bras from here.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/bras-tops?utm_source=collectionad&utm_campaign=bras&tops",
+            "collection_list": [
+              "leggings",
+              "pants",
+              "workout",
+              "fall-winter"
+            ]
+          }
+        },
+        "ql_advertising_jNKeii": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 22,
+            "ql_pc_image": "shopify:\/\/shop_images\/onesies-pc_32ae9755-941c-453b-94ce-88677c7bdce6.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/onesies-mb_64feb86f-f9bd-4199-9c3e-92bec1eab9a1.jpg",
+            "title": "New Drop Style - Bodysuits",
+            "description": "Made with most popular Butterluxe fabric. Smooth Body Curve.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/onesies-dress?utm_source=collectionad&utm_campaign=onesies",
+            "collection_list": [
+              "best-sellers",
+              "womens-sale",
+              "new-arrivals",
+              "naked-feeling"
+            ]
+          }
+        },
+        "f95345ba-024b-46ef-871e-68b6828e3a2a": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 22,
+            "ql_pc_image": "shopify:\/\/shop_images\/Blog-9-pc.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/Blog-9-mb.jpg",
+            "title": "Vibrant Colors Matters!",
+            "description": "Learn how colors affect body and mind.",
+            "show_now_btn": "Learn more",
+            "ql_url": "https:\/\/shop.crzyoga.com\/blogs\/news\/blog-9?utm_source=collectionad&utm_campaign=blog-9",
+            "collection_list": [
+              "leggings",
+              "pants",
+              "workout",
+              "fall-winter"
+            ]
+          }
+        },
+        "51ee8331-1727-4ef7-88cb-0dce13f64112": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 32,
+            "ql_pc_image": "shopify:\/\/shop_images\/maternity-pc_06fb26c2-b175-4626-a3e4-930df879c22a.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/maternity-mb_97ab2101-8ec0-49c0-8a33-47905bf62d12.jpg",
+            "title": "Stylish Mom-to-be",
+            "description": "Get support and careness in maternity gears.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/maternity?utm_source=collectionad&utm_campaign=maternity",
+            "collection_list": [
+              "best-sellers",
+              "womens-sale",
+              "new-arrivals",
+              "naked-feeling"
+            ]
+          }
+        },
+        "1a6995e3-23a5-4b6a-bd18-453f99b48f99": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 44,
+            "ql_pc_image": "shopify:\/\/shop_images\/flareleggings-pc.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/flareleggings-mb.jpg",
+            "title": "Flare Leggings",
+            "description": "Lead fashion in trending styles.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/leggings?uff_jjynd1_tags=Flare",
+            "collection_list": [
+              "best-sellers",
+              "womens-sale",
+              "new-arrivals",
+              "naked-feeling"
+            ]
+          }
+        },
+        "ql_advertising_EbfkxJ": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 18,
+            "ql_pc_image": "shopify:\/\/shop_images\/Blog-9-pc.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/Blog-9-mb.jpg",
+            "title": "Vibrant Colors Matters!",
+            "description": "Learn how colors affect body and mind.",
+            "show_now_btn": "Learn more",
+            "ql_url": "https:\/\/shop.crzyoga.com\/blogs\/news\/blog-9?utm_source=collectionad&utm_campaign=blog-9",
+            "collection_list": [
+              "bras",
+              "bras-tops",
+              "tanks",
+              "long-sleeves",
+              "shorts",
+              "short-sleeves"
+            ]
+          }
+        },
+        "ql_advertising_7xfHcc": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 22,
+            "ql_pc_image": "shopify:\/\/shop_images\/flareleggings-pc.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/flareleggings-mb.jpg",
+            "title": "Flare Leggings",
+            "description": "Lead fashion in trending styles.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/leggings?uff_jjynd1_tags=Flare",
+            "collection_list": [
+              "bras",
+              "bras-tops",
+              "tanks",
+              "long-sleeves",
+              "shorts",
+              "short-sleeves"
+            ]
+          }
+        },
+        "ql_advertising_UUktVP": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 32,
+            "ql_pc_image": "shopify:\/\/shop_images\/summer_Vacation-mb.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/summer_Vacation.jpg",
+            "title": "Summer Vacation",
+            "description": "Embrace colorful summer with CRZ YOGA.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/swimsuits?utm_source=collectionad&utm_campaign=swimsuit",
+            "collection_list": [
+              "bras",
+              "bras-tops",
+              "tanks",
+              "long-sleeves",
+              "shorts",
+              "short-sleeves"
+            ]
+          }
+        },
+        "d1a6c621-1e01-4c15-bdf9-9e36e28a9202": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 22,
+            "ql_pc_image": "shopify:\/\/shop_images\/girls_f78c50ce-0689-406c-ad99-a27cba71d35f.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/Girls-mb.jpg",
+            "title": "Shop for Girls",
+            "description": "Dress up this winter with your loved her by sharing warmth and coziness.",
+            "show_now_btn": "Shop Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/collections\/girls?utm_source=collectionad&utm_campaign=girls",
+            "collection_list": [
+              "maternity"
+            ]
+          }
+        },
+        "ql_advertising_ePkRte": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 44,
+            "ql_pc_image": "shopify:\/\/shop_images\/Maternity-pc_51297635-b07b-4ea0-ac3d-7064c0cd113c.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/Maternity-mb_534c245e-ed85-4645-b813-99cbe672dd70.jpg",
+            "title": "Here What Moms Saying",
+            "description": "Embras comfort and style with CRZ YOGA's  maternity collection.",
+            "show_now_btn": "Show Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/blogs\/news\/blog-4?utm_source=collectionad&utm_campaign=blog-4",
+            "collection_list": [
+              "leggings",
+              "pants",
+              "workout",
+              "fall-winter"
+            ]
+          }
+        },
+        "209af60b-0726-4011-9adc-6eb6d6245de4": {
+          "type": "ql_advertising",
+          "settings": {
+            "ql_position": 4,
+            "ql_pc_image": "shopify:\/\/shop_images\/Maternity-pc_51297635-b07b-4ea0-ac3d-7064c0cd113c.jpg",
+            "ql_mobile_image": "shopify:\/\/shop_images\/Maternity-mb_534c245e-ed85-4645-b813-99cbe672dd70.jpg",
+            "title": "Here What Moms Saying",
+            "description": "Embras comfort and style with CRZ YOGA's  maternity collection.",
+            "show_now_btn": "Show Now",
+            "ql_url": "https:\/\/shop.crzyoga.com\/blogs\/news\/blog-4?utm_source=collectionad&utm_campaign=blog-4",
+            "collection_list": [
+              "maternity"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "0c3dd97a-5ddc-4abd-af2c-228509ab0498",
+        "260cea0c-3382-4fca-82f4-9532949b9767",
+        "5b2dcc50-c847-4dcb-8bfb-bd597966bac9",
+        "20d7fce3-afae-474b-a104-f4a2d6560d56",
+        "ql_advertising_6kA9WG",
+        "c7af53e9-8007-4aa2-a33f-283d3ac4f3df",
+        "b88ce15b-0ee1-4cbe-9096-a5cbd6c010cf",
+        "ql_advertising_ryakRB",
+        "eac75da6-2220-4097-83a7-4d7b21c67244",
+        "ql_advertising_jNKeii",
+        "f95345ba-024b-46ef-871e-68b6828e3a2a",
+        "51ee8331-1727-4ef7-88cb-0dce13f64112",
+        "1a6995e3-23a5-4b6a-bd18-453f99b48f99",
+        "ql_advertising_EbfkxJ",
+        "ql_advertising_7xfHcc",
+        "ql_advertising_UUktVP",
+        "d1a6c621-1e01-4c15-bdf9-9e36e28a9202",
+        "ql_advertising_ePkRte",
+        "209af60b-0726-4011-9adc-6eb6d6245de4"
+      ],
+      "settings": {
+        "show_collection_content": true,
+        "show_collection_image": false,
+        "description_position": "top",
+        "layout": "rows",
+        "show_vendor": false,
+        "grid": 4,
+        "grid_mobile": "2",
+        "products_per_page": 24,
+        "enable_infinite_scroll": true,
+        "show_filter_counts": false,
+        "ajax_products": false,
+        "filter_mode": "sidebar",
+        "sticky_sidebar": true,
+        "collapse_filters_method": "all",
+        "collapse_sort_by": true,
+        "enable_sorting": true,
+        "show_featured_in_sort": true
+      }
+    },
+    "1633766495ab86ffa3": {
+      "type": "featured-collection-usf",
+      "settings": {}
+    },
+    "1646744397ce718267": {
+      "type": "image-with-text",
+      "settings": {
+        "subheading": "",
+        "title": "You love softness so much then we made butterluxe",
+        "text": "<p>Can't get soft enough?<\/p><p>These leggings might just become the softest leggings you own. <strong>Butterluxe<\/strong> brings you a<strong> new level of comfort<\/strong>. The ultimate softness is what you seek, and also what we seek.<\/p><p><\/p><p><strong>* The Softest Leggings Ever<br\/>* Super stretchy ensures ultimate flexibility<\/strong><\/p>",
+        "button_label": "shop now",
+        "button_link": "shopify:\/\/collections\/butterluxe",
+        "text_alignment": "left",
+        "text_width": 40,
+        "button_style": "auto",
+        "image": "shopify:\/\/shop_images\/butterluxe_e5b07602-6053-4596-ab42-1c8bf8d96e8d.jpg",
+        "video": "",
+        "image_width": 100,
+        "image_position": "right",
+        "media_size": "cover",
+        "alternate_bg_color": false,
+        "color_bg": "#ebe1d1"
+      }
+    },
+    "1646744423e52148df": {
+      "type": "custom-html",
+      "disabled": true,
+      "settings": {
+        "no_margins": false,
+        "custom_liquid": ""
+      }
+    }
+  },
+  "order": [
+    "f4e0023e-1878-44eb-a50a-13d8d78fe602",
+    "c9641b30-25d7-4f42-92ca-07cb0fbbf1f8",
+    "main",
+    "1633766495ab86ffa3",
+    "1646744397ce718267",
+    "1646744423e52148df"
+  ]
+}

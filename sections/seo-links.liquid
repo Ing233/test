@@ -1,0 +1,91 @@
+{% assign has_description = false %}
+{% for this_collection in section.settings.selected_collections %}
+    {% if this_collection.title == collection.title %}
+        {% assign has_description = true %}
+    {% endif %}
+{% endfor %}
+
+{% if has_description == true %}
+    <style>
+        .ql_seo-links {
+            margin: 40px 0;
+        }
+
+        .ql_seo-links a.link-primary {
+            display: inline-block;
+            margin: 10px 24px 0 0;
+            border-bottom: 1px solid;
+        }
+    </style>
+    <div class="ql_seo-links wide-container">
+        <div class="heading_wrapper" style="font-weight: 500;font-size: {{section.settings.font_size}}px;">
+            {{section.settings.heading}}
+        </div>
+        <div>
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'seo_link' %}
+                        {% if block.settings.text != '' and block.settings.url != nil %}
+                            <a href="{{block.settings.url}}" class="link-primary">{{block.settings.text}}</a>
+                        {% endif %}
+                {% endcase %}
+            {% endfor %}
+            
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "SEO Links",
+    "settings": [
+        {
+        "type": "collection_list",
+        "id": "selected_collections",
+        "label": "要投放到哪些系列页中？"
+        },
+       {
+        "type": "header",
+        "content": "Heading"
+       },
+       {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+       },
+       {
+        "type": "range",
+        "id": "font_size",
+        "label": "Font Size",
+        "min": 8,
+        "max": 30,
+        "default": 20,
+        "unit": "px",
+        "step": 1
+       }
+    ],
+    "blocks": [
+       {
+        "type": "seo_link",
+        "name": "SEO Link",
+        "settings": [
+            {
+               "type": "text",
+               "id": "text",
+               "label": "Text"
+            },
+            {
+               "type": "url",
+               "id": "url",
+               "label": "Url"
+            }
+        ]
+       }
+    ],
+    "presets":[
+        {
+            "name": "SEO Links"
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,269 @@
+{% assign has_description = false %}
+{% assign this_block = nil %}
+{% for block in section.blocks %}
+    {% for this_collection in block.settings.selected_collections %}
+        {% if this_collection.title == collection.title %}
+            {% assign has_description = true %}
+            {% assign this_block = block %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{% if has_description == true %}
+    <style>
+        .ql_seo-richtext {
+            margin: 40px 0;
+        }
+        .ql_seo-richtext .rich-text {
+            transition: max-height .3s ease-in-out;
+        }
+        .ql_seo-richtext.rich-text-close .rich-text{
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: {{this_block.settings.line_clamp}};
+            overflow: hidden;
+        }
+        .ql_seo-richtext .rich-text-btn {
+            background: transparent;
+            color: #000;
+            border: none;
+            border-bottom: 1px solid;
+            padding: 10px 0px 2px 0;
+            font-weight: 500;
+        }
+        .ql_seo-richtext .rich-text-btn::before{
+          content: attr(data-close);
+        }
+        .ql_seo-richtext.rich-text-close .rich-text-btn::before{
+          content: attr(data-open);
+        }
+
+        .ql_seo-links {
+            margin: 40px 0;
+        }
+
+        .ql_seo-links a.link-primary {
+            display: inline-block;
+            margin: 10px 24px 0 0;
+            border-bottom: 1px solid;
+        }
+    </style>
+
+    {% comment %} SEO RichText {% endcomment %}
+    <div class="ql_seo-richtext wide-container rich-text-close">
+        <div class="rich-text">
+            {{this_block.settings.richtext}}
+        </div>
+        <button class="btn rich-text-btn" data-open="{{this_block.settings.open_button}}" data-close="{{this_block.settings.close_button}}"></button>
+    </div>
+
+
+    {% comment %} SEO Links {% endcomment %}
+     {% if this_block.settings.show_links == true %}
+       <div class="ql_seo-links wide-container">
+            <div class="heading_wrapper" style="font-weight: 500;font-size: {{this_block.settings.font_size}}px;">
+                {{this_block.settings.heading}}
+            </div>
+            <div>
+                {% for i in (1..8) %}
+                    {% assign link_text = 'text_' | append: i  %}
+                    {% assign link_url = 'url_' | append: i  %}
+                    {% if this_block.settings[link_text] != '' and this_block.settings[link_url] != nil %}
+                        <a href="{{this_block.settings[link_url]}}" class="link-primary">{{this_block.settings[link_text]}}</a>
+                    {% endif %}
+                {% endfor %}
+                
+            </div>
+        </div>
+     {% endif %}
+    
+{% endif %}
+
+{% schema %}
+  {
+    "name": "SEO Richtext",
+    "blocks": [
+        {
+            "type": "richtext",
+            "name": "Richtext",
+            "settings":[
+                {
+                    "type": "collection_list",
+                    "id": "selected_collections",
+                    "label": "要投放到哪些系列页中？"
+                },
+                {
+                    "type": "header",
+                    "content": "SEO RichText"
+                },
+                {
+                    "type": "richtext",
+                    "id": "richtext",
+                    "label": "RichText"
+                },
+                {
+                    "type": "range",
+                    "id": "line_clamp",
+                    "min": 1,
+                    "max": 50,
+                    "unit": "行",
+                    "step": 1,
+                    "default": 2,
+                    "label": "不展开时，显示的行数"
+                },
+                {
+                    "type": "text",
+                    "id": "open_button",
+                    "label": "See More Button",
+                    "default": "See More"
+                },
+                {
+                    "type": "text",
+                    "id": "close_button",
+                    "label": "See Less Button",
+                    "default": "See Less"
+                },
+                {
+                    "type": "header",
+                    "content": "SEO links"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_links",
+                    "label": "Show Seo Links",
+                    "default": false
+                },
+                {
+                    "type": "text",
+                    "id": "heading",
+                    "label": "Heading"
+                },
+                {
+                    "type": "range",
+                    "id": "font_size",
+                    "label": "Font Size",
+                    "min": 8,
+                    "max": 30,
+                    "default": 20,
+                    "unit": "px",
+                    "step": 1
+                },
+                {
+                "type": "text",
+                "id": "text_1",
+                "label": "Text_1"
+                },
+                {
+                "type": "url",
+                "id": "url_1",
+                "label": "Url_1"
+                },
+                {
+                    "type": "header",
+                    "content": "----------------------------"
+                },
+                {
+                "type": "text",
+                "id": "text_2",
+                "label": "Text_2"
+                },
+                {
+                "type": "url",
+                "id": "url_2",
+                "label": "Url_2"
+                },
+                {
+                    "type": "header",
+                    "content": "----------------------------"
+                },
+                {
+                "type": "text",
+                "id": "text_3",
+                "label": "Text_3"
+                },
+                {
+                "type": "url",
+                "id": "url_3",
+                "label": "Url_3"
+                },
+                {
+                    "type": "header",
+                    "content": "----------------------------"
+                },
+                {
+                "type": "text",
+                "id": "text_4",
+                "label": "Text_4"
+                },
+                {
+                "type": "url",
+                "id": "url_4",
+                "label": "Url_4"
+                },
+                {
+                    "type": "header",
+                    "content": "----------------------------"
+                },
+                {
+                "type": "text",
+                "id": "text_5",
+                "label": "Text_5"
+                },
+                {
+                "type": "url",
+                "id": "url_5",
+                "label": "Url_5"
+                },
+                {
+                    "type": "header",
+                    "content": "----------------------------"
+                },
+                {
+                "type": "text",
+                "id": "text_6",
+                "label": "Text_6"
+                },
+                {
+                "type": "url",
+                "id": "url_6",
+                "label": "Url_6"
+                },
+                {
+                    "type": "header",
+                    "content": "----------------------------"
+                },
+                {
+                "type": "text",
+                "id": "text_7",
+                "label": "Text_7"
+                },
+                {
+                "type": "url",
+                "id": "url_7",
+                "label": "Url_7"
+                },
+                {
+                    "type": "header",
+                    "content": "----------------------------"
+                },
+                {
+                "type": "text",
+                "id": "text_8",
+                "label": "Text_8"
+                },
+                {
+                "type": "url",
+                "id": "url_8",
+                "label": "Url_8"
+                }
+            ]
+        }
+    ],
+    "settings": [],
+    "presets":[
+        {
+            "name": "SEO Richtext"
+        }
+    ]
+  }
+{% endschema %}

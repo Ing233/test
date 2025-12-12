@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "pf-c0cf4fad": {
+      "type": "pf-c0cf4fad",
+      "settings": {}
+    },
+    "dcf95318-3171-4d53-b40f-9aab07ba0554": {
+      "type": "newsletter",
+      "settings": {
+        "subheading": "",
+        "title": "Subscribe to our newsletter",
+        "text": "<p>Sign up to our newsletter and we’ll keep you up to date with the latest arrivals<\/p>",
+        "height_desktop": 500,
+        "height_mobile": 400,
+        "alternate_bg_color": false,
+        "image": "shopify:\/\/shop_images\/newsletter0908-pc.jpg",
+        "color_bg": ""
+      }
+    }
+  },
+  "order": [
+    "pf-c0cf4fad",
+    "dcf95318-3171-4d53-b40f-9aab07ba0554"
+  ]
+}

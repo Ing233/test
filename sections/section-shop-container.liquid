@@ -1,0 +1,464 @@
+<!-- section/section-shop-container -->
+{%- liquid
+	assign unique = section.id
+	assign text_size = section.settings.text_size 
+	assign mb_text_size = section.settings.mb_text_size 
+	assign section_height = section.settings.section_height
+	assign mb_section_height = section.settings.mb_section_height
+	assign padding_left = section.settings.padding_left
+	assign mb_padding_left = section.settings.mb_padding_left
+	assign padding_right = section.settings.padding_right
+	assign mb_padding_right = section.settings.mb_padding_right
+	assign banner_width = section.settings.banner_width
+	assign logo_width = section.settings.logo_width
+	assign animation_anchor = '#SectionShopContainer--' | append: unique
+  -%}
+  
+  {%- style -%}
+  #site-control{
+	top: {{section_height}}px;
+  }
+  #shopify-section-section-shop-container.container-hidden {
+    max-height: 0;
+    transition: max-height .5s;
+}
+
+#shopify-section-section-shop-container.container-hidden ~ #shopify-section-header #site-control {
+	top: 0;
+}
+  .index-section{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+  }
+	#SectionShopContainer--{{ unique }} {
+	  --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size }});
+	}
+	#SectionShopContainer--{{ unique }} p { 
+    font-size: {{ text_size }}px; 
+    margin: 0;
+  }
+	.brand-slider {
+		display: flex;
+		list-style-type: none;
+		margin: 0;
+		padding-left: {{padding_left}}rem;
+	}
+  
+	.content-asset {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		padding: 0 {{padding_right}}px;
+		text-align: center;
+		border-right: 1px solid #000;
+	}
+	.brand-card {
+		background: transparent;
+	}
+	li.card.brand-cardbrand-slide {
+	  background: {{section.settings.img_bg}};
+	}
+	li.card.brand-cardbrand-slide.css-transparent{
+	  background: transparent;
+	  color: {{section.settings.font_unchecked_color}};
+	}
+	li.card.brand-cardbrand-slide.css-transparent.active{
+	  color: {{section.settings.font_checked_color}};
+	}
+  
+	li.card.brand-cardbrand-slide.css-transparent.active p{
+	  font-weight: 500;
+	}
+  
+	.content-asset img {
+		/* width:100%; */
+		display: inline-block;
+		margin-top: 0;
+		vertical-align: middle;
+		object-fit: contain;
+	}
+  
+	.section-shop-container__slider {
+		display: flex;
+		justify-content: {{section.settings.align_item}};
+		height: 100%;
+	}
+	.card.brand-cardbrand-slide.active, .unfold{
+		padding-top: 0px;
+		background: #fff;
+		border-radius: 4px 4px 0px 0px;
+		border: 0;
+		margin-left: -1px;
+		-webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+		box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+		position: relative;
+	}
+  
+	.card.brand-cardbrand-slide.active{
+	  background: black;
+	}
+	.brand-cardbrand-slide {
+		margin: 0;
+		position: relative;
+		width: max-content;
+		
+	}
+  
+	.sfra-brand-title{
+		display: none;
+	}
+  
+	.brand-cardbrand-slide:hover .sfra-brand-title {
+		line-height: 15px;
+		position: absolute;
+		background: #303030;
+		color: #fff;
+		width: 150px;
+		color: #fff;
+		top: 41px;
+		padding: 10px;
+		text-align: center;
+		border-radius: 6px;
+		font-size: 11px;
+		pointer-events: none;
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%);
+		display: block;
+		z-index: 1000;
+	}
+  
+	.brand-cardbrand-slide:hover .sfra-brand-title::after
+	 {
+		bottom: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: "";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-color: rgba(243,243,243,0);
+		border-bottom-color: #303030;
+		border-width: 6px;
+		margin-left: -6px;
+	}
+	#slider-pc{
+	  display: flex;
+	}
+	#slider-mobile{
+	  display: none;
+	}
+	.card.brand-cardbrand-slide img:nth-child(2)
+	  {
+		  display: none;
+	  }
+  
+	#ql_section-shop-container.section-shop-container{
+	  height:{{section_height}}px;
+	}
+  
+	@media only screen and (max-width: 767px) {
+	  #site-control{
+		top: {{mb_section_height}}px;
+	  }
+	  .section-shop-container__slider{
+		overflow-x: scroll;
+	  }
+	  #slider-pc{
+		display: none;
+		width: 0;
+	  }
+	  #slider-mobile{
+		display: flex;
+	  }
+  
+	  .brand-cardbrand-slide:hover .sfra-brand-title{
+		display: none;
+	  }
+	  #ql_section-shop-container.section-shop-container{
+		height:{{mb_section_height}}px;
+	  }
+
+    .section-shop-container__slider {
+      justify-content: {{section.settings.mb_align_item}};
+    }
+    .brand-slider {
+      padding-left: {{mb_padding_left}}rem;
+    }
+
+    #SectionShopContainer--{{ unique }} p { 
+      font-size: {{ mb_text_size }}px; 
+    }
+
+    .content-asset {
+      padding: 0 {{mb_padding_right}}px;
+    }
+	}
+	
+	 
+  {%- endstyle -%}
+  
+  <div id="ql_section-shop-container"
+	class="section-padding section-shop-container"
+	 style="{% if section.settings.bg_color %}background:{{section.settings.bg_color}};{% endif %}"
+	data-section-id="{{ unique }}">
+  
+	{%- if section.blocks.size > 0 -%}
+	<div class="section-shop-container__slider">
+	  <ul class="brand-slider brand-row flex-nowrap list-unstyled">
+		  {%- for block in section.blocks -%}
+		  
+			  {%- liquid
+				  assign logo_img = block.settings.logo_img
+				  assign banner_img = block.settings.banner_img
+				  assign title = block.settings.title | strip
+				  assign text = block.settings.text
+				  assign is_active = block.settings.is_active
+				  assign i = forloop.index
+			  -%}
+			  <li class="card brand-cardbrand-slide {% if is_active %}active{% endif %} {% if logo_img == blank and banner_img == blank %} css-transparent{% endif %}">
+				  <a {% if is_active %}href="javascript:;"{% else %}href="{{block.settings.shop_link}}" target="_blank"{% endif %} rel="nofollow" aria-label="{{title}}" >
+		  
+					  <div data-cid="sfra-brand-header-link-da" class="content-asset">
+  
+						{%- if logo_img != blank and is_active == false -%}
+							{{ logo_img | image_url: width: logo_width | image_tag: widths: '600,700,800,1000,1200,1400,1600,1800,2000,2200,2400', class: class_attribute  }}
+						{% elsif banner_img != blank and is_active == true %}
+							{{ banner_img | image_url: width: logo_width | image_tag: widths: '600,700,800,1000,1200,1400,1600,1800,2000,2200,2400', class: class_attribute  }}        
+						 {% elsif title != '' %}
+							<p style="text-wrap: nowrap;">{{ title }}</p>
+						 {%- else -%}
+							<p style="text-wrap: nowrap;">{{ shop.name }}</p>
+						  {%- endif -%}
+  
+						
+					  </div>
+		  
+				  </a>
+		  
+		  
+			  </li>
+	  
+		  
+		  {%- endfor -%}
+	  </ul>
+	</div>
+  {%- endif -%}
+  
+   
+  </div>
+  
+  
+  {% schema %}
+	{
+	  "name": "Shop container",
+	  "class": "index-section",
+	  "settings": [
+		{
+		  "type": "header",
+		  "content": "Layout"
+		},
+		{
+		  "type": "select",
+		  "id": "align_item",
+		  "label": "Alignment (PC)",
+		  "default": "flex-start",
+		  "options": [
+			{
+			  "value": "flex-start",
+			  "label": "Left"
+			},
+			{
+			  "value": "safe center",
+			  "label": "Centered"
+			}
+		  ]
+		},
+    {
+		  "type": "select",
+		  "id": "mb_align_item",
+		  "label": "Alignment (MB)",
+		  "default": "flex-start",
+		  "options": [
+			{
+			  "value": "flex-start",
+			  "label": "Left"
+			},
+			{
+			  "value": "safe center",
+			  "label": "Centered"
+			}
+		  ]
+		},
+		{
+		  "type": "header",
+		  "content": "Height"
+		},
+		{
+		  "type": "range",
+		  "id": "section_height",
+		  "min": 10,
+		  "max": 100,
+		  "step": 1,
+		  "unit": "px",
+		  "label": "PC height",
+		  "info": "Wide to tall",
+		  "default": 40
+		},
+		{
+		  "type": "range",
+		  "id": "mb_section_height",
+		  "min": 10,
+		  "max": 100,
+		  "step": 1,
+		  "unit": "px",
+		  "label": "Photo height",
+		  "info": "Wide to tall",
+		  "default": 40
+		},
+		{
+		  "type": "header",
+		  "content": "Layout"
+		},
+		{
+		 "type": "color",
+		  "id": "bg_color",
+		  "label": "Background"
+		},
+		{
+		 "type": "range",
+		 "id": "padding_left",
+		 "label": "Padding Left (PC)",
+     	"info": "整体向右移多少",
+		 "default": 0,
+		 "min": 0,
+		 "max": 10,
+		 "step": 0.5,
+		 "unit": "rem"
+		},
+    {
+      "type": "range",
+      "id": "mb_padding_left",
+      "label": "Padding Left (MB)",
+      "info": "整体向右移多少",
+      "default": 0,
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "unit": "rem"
+     },
+	 {
+		"type": "range",
+		"id": "padding_right",
+		"label": "block之间的间隔 (PC)",
+		"default": 7,
+		"min": 0,
+		"max": 100,
+		"step": 1,
+		"unit": "px"
+	   },
+	   {
+		 "type": "range",
+		 "id": "mb_padding_right",
+		 "label": "block之间的间隔 (MB)",
+		 "default": 7,
+		  "min": 0,
+		  "max": 100,
+		  "step": 1,
+		  "unit": "px"
+		},
+     {
+		  "type": "header",
+		  "content": "Image"
+		},
+		{
+		 "type": "range",
+		 "id": "logo_width",
+		 "label": "图片宽度",
+		 "default": 100,
+		 "min": 30,
+		 "max": 130,
+		 "step": 1,
+		 "unit": "px"
+		},
+    {
+     "type": "color",
+     "id": "img_bg",
+     "label": "Image Background"
+    },
+    {
+		  "type": "header",
+		  "content": "Text"
+		},
+		{
+		  "type": "range",
+		  "id": "text_size",
+		  "label": "Font size (PC)",
+		  "default": 15,
+		  "min": 0,
+		  "max": 100,
+		  "step": 1,
+		  "unit": "px"
+		},
+    {
+		  "type": "range",
+		  "id": "mb_text_size",
+		  "label": "Font size (MB)",
+		  "default": 13,
+		  "min": 0,
+		  "max": 100,
+		  "step": 1,
+		  "unit": "px"
+		},
+        {
+		  "type": "color",
+		   "id": "font_checked_color",
+		   "label": "选中时的文本颜色 (文字样式)"
+		 },
+		 {
+		  "type": "color",
+		   "id": "font_unchecked_color",
+		   "label": "未选中时的文本颜色 (文字样式)"
+		 }
+	  ],
+	  "blocks": [
+		{
+		  "type": "text_block",
+		  "name": "Shop",
+		  "settings": [
+			{
+			  "type": "image_picker",
+			  "id": "logo_img",
+			  "label": "未选中(jpg,png,svg,gif)"
+			},
+			{
+			  "type": "image_picker",
+			  "id": "banner_img",
+			  "label": "选中(jpg,png,svg,gif)"
+			},
+			{
+			  "type": "url",
+			  "id": "shop_link",
+			  "label": "Link"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "无图则显示此文本，此文本为空则显示店名",
+				"default": "Add a shop"
+			  },
+			{
+				"type": "checkbox",
+				"id": "is_active",
+				"label": "是否选中",
+				"default": false
+			}
+		  ]
+		}
+	  ]
+	}
+  {% endschema %}
+  

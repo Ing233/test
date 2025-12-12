@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "cart_show_title": true,
+        "cart_terms_show": false,
+        "cart_terms_page": "",
+        "continue_shopping_page": "",
+        "cart_note_show": false,
+        "show_tax_and_shipping": true,
+        "show_additional_checkout_buttons": true,
+        "show_backorder_text": true
+      }
+    },
+    "125b53fe-f033-428c-b7f9-dc3c7fc88f60": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "You may also like",
+        "collection": "you-may-also-like",
+        "layout": "rows",
+        "show_vendor": false,
+        "grid": 4,
+        "rows": 1,
+        "grid_mobile": "2",
+        "hide_swatches": true,
+        "alternate_bg_color": false,
+        "show_view_all": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "125b53fe-f033-428c-b7f9-dc3c7fc88f60"
+  ]
+}

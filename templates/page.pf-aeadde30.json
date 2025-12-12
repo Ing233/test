@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "pf-aeadde30": {
+      "type": "pf-aeadde30",
+      "settings": {}
+    }
+  },
+  "order": [
+    "pf-aeadde30"
+  ]
+}

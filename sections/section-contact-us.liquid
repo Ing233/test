@@ -1,0 +1,672 @@
+<style>
+	#nebula_div_btn,
+	#nebula_div_btn--close,
+	#ql-contact-us{
+  
+		border: none;
+		cursor: pointer !important;
+		width: auto;
+		height: auto;
+		border-radius: {{section.settings.q_border_radius}}px;
+		margin-bottom: 0px !important;
+		filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 0px 1px);
+		margin: 0px 10px;
+		outline: none;
+		padding: 11px 20px;
+		font-size: 15px;
+		box-sizing: border-box;
+		text-align: center;
+		transition: filter 0.3s ease-out 0s;
+		font-family: Arial;
+		font-weight: bold;
+		user-select: none;
+  
+  
+		{% if section.settings.btn_p_color != 'rgba(0,0,0,0)' %}
+		  color: {{section.settings.btn_p_color}};
+		{% endif %}
+  
+		{% if section.settings.btn_p_bg  != 'rgba(0,0,0,0)' %}
+		  background: {{section.settings.btn_p_bg}};
+		{% endif %}
+	}
+
+	div#ql-contact-us {
+		display: flex;
+		overflow: visible;
+		position: fixed;
+		flex-direction: column;
+		align-items: flex-end;
+		justify-content: center;
+		bottom: calc({{section.settings.q_bottom}}% + 44px);
+		right: 0;
+	}
+	#nebula_div_btn:hover{
+	  {% if section.settings.btn_c_color  != 'rgba(0,0,0,0)' %}
+		  color: {{section.settings.btn_c_color}};
+		{% endif %}
+  
+		{% if section.settings.btn_c_bg != 'rgba(0,0,0,0)' %}
+		  background: {{section.settings.btn_c_bg}};
+		{% endif %}
+	}
+  
+	#nebula_div_btn:hover svg .cls-1 {
+		fill: {{section.settings.btn_c_color}};
+	}
+	.ql-contact-box{
+	  
+	  display: flex;
+	  overflow: visible;
+	  position: fixed;
+	  flex-direction: column;
+	  align-items: flex-end;
+	  justify-content: center;
+	  bottom: {{section.settings.q_bottom}}% !important;
+	  {{section.settings.q_x}}: 0;
+	  
+	}
+  
+	.ql-pic-icon{
+	  text-align: center;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+	.dir_column1{
+	  width: 0;
+	  transform: rotate(90deg);
+	  transform-origin: top center;
+	}
+	.dir_column2{
+	  width: 0;
+	  transform: rotate(-90deg);
+	  transform-origin: -2rem 0.9rem;
+	}
+
+  #ql-contact-us .ql-blocks-conten{
+    padding-bottom: {{section.settings.content_padding}}px;
+  }
+  
+  #ql-contact-us main.page-content{
+	width: {{section.settings.content_width}}px;
+	height: {{section.settings.content_height}}px;
+  }
+  #ql-contact-us .heading-text{
+	font-size: {{section.settings.h_font_size}}px;
+  }
+  #ql-contact-us .ql-content-subtitle{
+		font-size: {{section.settings.subh_font_size}}px;
+	}
+#ql-contact-us main.page-content, #contact-us--content .ql-block .c-icon{
+	background-color: {{section.settings.content_bg}};
+	}
+	.ql-content-title>*,.ql-content-subtitle{
+		color: {{section.settings.content_color}};
+	}
+
+	#ql-contact-us ul.ql-block>li>a, #ql-contact-us ul.ql-block svg path{
+		font-size: {{section.settings.block_font_size}}px;
+		color: {{section.settings.block_color}};
+	}
+	#ql-contact-us .ql_popup-content--show>h2,
+	#ql-contact-us .ql_popup-content--show>h2.faqs-title{
+		font-size: {{section.settings.pop_font_size}}px;
+		color: {{section.settings.pop_color}};
+		padding-top: {{section.settings.padding_top}}px;
+	}
+
+  @media (max-width: 768px){
+	#ql-contact-us .heading-text{
+		font-size: {{section.settings.mb_h_font_size}}px;
+	}
+	#ql-contact-us .ql-content-subtitle{
+		font-size: {{section.settings.mb_subh_font_size}}px;
+	}
+    .ql-contact-box{
+      visibility: hidden;
+    }
+    .scrolled-down .ql-contact-box {
+      visibility: visible;
+    }
+
+	#ql-contact-us .ql_popup-content--show>h2.faqs-title{
+		font-size: {{section.settings.mb_pop_font_size}}px;
+	}
+  }
+  </style>
+  <section class="section-{{ section.id }}" data-freeze-scroll="false" data-section-id="{{ section.id }}"
+	data-section-type="newsletter-popup">
+	<div class="ql-contact-box open {{section.settings.q_orientation}}">
+	  <button id="nebula_div_btn">
+		<svg xmlns="http://www.w3.org/2000/svg" width="36" height="32.88" viewBox="0 0 36 32.88"
+		  style="margin-right: 5px;width: 20px;height: 20px;">
+		  <defs>
+			<style>
+			  .cls-1 {
+				fill: #fff;
+				fill-rule: evenodd;
+			  }
+			</style>
+		  </defs>
+		  <path id="形状_1" data-name="形状 1" class="cls-1"
+			d="M10829,1875.81c-9.9,0-18,7.1-18,15.85a14.549,14.549,0,0,0,3.8,9.75c0.5,0.57-1.1,4.47-2.1,6.63a0.411,0.411,0,0,0,.6.54c2-1.35,5.7-3.71,6.4-3.36a19.688,19.688,0,0,0,9.3,2.28c9.9,0,18-7.09,18-15.84S10838.9,1875.81,10829,1875.81Zm-8,17.83a1.98,1.98,0,1,1,2-1.98A2,2,0,0,1,10821,1893.64Zm8,0a1.98,1.98,0,1,1,2-1.98A2,2,0,0,1,10829,1893.64Zm8,0a1.98,1.98,0,1,1,2-1.98A2,2,0,0,1,10837,1893.64Z"
+			transform="translate(-10811 -1875.81)" style="fill: #fff;" />
+		</svg>
+		{{section.settings.q_name}}
+	  </button>
+	</div>
+	<div class="ql-contact-box close {{section.settings.q_orientation}}">
+	  <button id="nebula_div_btn--close">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+		  <path d="M0-.25H24v24H0Z" transform="translate(0 0.25)" style="fill:none" />
+		  <polyline points="6.61 8.74 12.01 14.14 17.41 8.74"
+			style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:8;stroke-width:2px" />
+		</svg>
+	  </button>
+	</div>
+	<div id="ql-contact-us">
+		<main class="page-content">
+		  <a href="#" data-modal-close class="modal-close contact-us--close">
+			<svg xmlns="http://www.w3.org/2000/svg" width="29.999" height="29.999" viewBox="0 0 35.94 35.94">
+				<defs>
+				  <style>
+					.cls-1 {
+					  fill: #fff;
+					  fill-rule: evenodd;
+					}
+				  </style>
+				</defs>
+				<path id="矩形_3_拷贝_3" data-name="矩形 3 拷贝 3" class="cls-1" d="M8978.32,4627.32a1.008,1.008,0,0,1,1.42,0l33.94,33.94a1,1,0,1,1-1.42,1.42l-33.94-33.94A1.008,1.008,0,0,1,8978.32,4627.32Zm0,33.94,33.94-33.94a1,1,0,1,1,1.42,1.42l-33.94,33.94A1,1,0,1,1,8978.32,4661.26Z" transform="translate(-8978.03 -4627.03)" style="stroke: #fff;">
+			  </svg>
+		  </a>
+		  <div id="contact-us--content">
+        <div class="ql-content-title">
+          <h3>
+			<span class="ql_revert-back">{% render 'svg-chevron-left' %}</span>
+			<span class="heading-text">{{section.settings.content_heading}}</span>
+			</h3>
+        </div>
+        <div class="contact-us__content">
+          <div class="ql-blocks-conten">
+          <h2 class="ql-content-subtitle">{{section.settings.content_subheading}}</h2>
+          <ul class="ql-block faqs-block">
+            {% for block in section.blocks %}
+            {% case block.type %}
+            {% when 'faqs' %}
+            <li>
+            <a href="javascript:;" aria-haspopup="true" data-title="{{block.settings.faqs_title}}"><span>{{block.settings.faqs_title}}</span><span class="arr">{% render 'svg-chevron-right' %}</span></a>
+            <ul>
+              <li class="ql_popup-content">
+                <h2 class="faqs-title">{{block.settings.faqs_title}}</h2>
+                <div class="faqs-content">
+                  {{block.settings.faqs_content}}
+                </div>
+              </li>
+            </ul>
+            </li>
+            {% endcase %}
+            {% endfor %}
+          </ul>
+          {% for block in section.blocks %}
+    
+          {% case block.type %}
+          {%- when '@app' -%}
+          {% render block %}
+          {% when 'orders' %}
+          <ul class="ql-block orders-block">
+            <li>
+            <a href="javascript:;" aria-haspopup="true" data-title="{{block.settings.b_title}}">
+				<span style="display: flex;align-items: center;">
+					<span class="c-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30" fill="none">
+							<path d="M27.73 5.32864L15.9516 0.933322C15.6455 0.820119 15.3292 0.763453 15.0028 0.763322C14.6742 0.763019 14.3561 0.820593 14.0484 0.936042L2.26436 5.35409C2.13555 5.40243 2.01113 5.46021 1.8911 5.52743C1.77106 5.59465 1.65678 5.67054 1.54826 5.7551C1.43973 5.83966 1.33821 5.93192 1.24369 6.03188C1.14916 6.13185 1.06272 6.23837 0.98436 6.35145C0.905999 6.46452 0.836616 6.58287 0.776211 6.70648C0.715806 6.83009 0.665071 6.95754 0.624006 7.08884C0.582941 7.22015 0.552015 7.3538 0.531228 7.4898C0.510441 7.62579 0.500032 7.76258 0.500001 7.90016L0.500001 20.1656C0.49989 20.2879 0.508012 20.4097 0.524367 20.531C0.540723 20.6522 0.565164 20.7718 0.597689 20.8898C0.630215 21.0078 0.67053 21.123 0.718633 21.2355C0.766736 21.348 0.822191 21.4568 0.884998 21.5618C0.947805 21.6668 1.01739 21.7671 1.09376 21.8628C1.17013 21.9584 1.25258 22.0484 1.34111 22.1329C1.42965 22.2173 1.52347 22.2954 1.62257 22.3672C1.72167 22.439 1.82515 22.5038 1.933 22.5616L13.7595 28.9137C13.8551 28.9649 13.9534 29.0102 14.0543 29.0497C14.1552 29.0891 14.2582 29.1225 14.3631 29.1497C14.468 29.1769 14.5742 29.1977 14.6817 29.2122C14.7891 29.2266 14.897 29.2347 15.0054 29.2363C15.1138 29.2379 15.2219 29.233 15.3297 29.2217C15.4375 29.2103 15.5443 29.1926 15.65 29.1686C15.7557 29.1445 15.8595 29.1142 15.9616 29.0778C16.0637 29.0413 16.1632 28.9989 16.2602 28.9505L27.9962 23.0826C28.1085 23.0263 28.2165 22.9626 28.3201 22.8914C28.4236 22.8202 28.5218 22.7422 28.6145 22.6575C28.7072 22.5727 28.7937 22.4819 28.8739 22.3851C28.954 22.2883 29.0272 22.1865 29.0933 22.0797C29.1594 21.9727 29.2177 21.8618 29.2684 21.7469C29.3191 21.6319 29.3617 21.5139 29.3961 21.3931C29.4305 21.2722 29.4564 21.1496 29.4738 21.0252C29.4912 20.9007 29.4999 20.7756 29.5 20.65L29.5 7.87747C29.5001 7.7396 29.4897 7.60253 29.4688 7.46625C29.448 7.32996 29.417 7.19603 29.3758 7.06446C29.3347 6.93289 29.2838 6.8052 29.2232 6.68137C29.1626 6.55754 29.093 6.43901 29.0143 6.32577C28.9356 6.21253 28.8489 6.10589 28.7541 6.00585C28.6592 5.9058 28.5573 5.81351 28.4484 5.72896C28.3395 5.64441 28.2249 5.56859 28.1044 5.50148C27.984 5.43437 27.8592 5.37676 27.73 5.32864ZM14.6829 2.63254C14.7852 2.59473 14.8909 2.57583 15 2.57583C15.1091 2.57583 15.2149 2.59473 15.3172 2.63254L25.6711 6.49547C25.7037 6.50752 25.7338 6.52419 25.7613 6.54549C25.7888 6.5668 25.8124 6.59174 25.8323 6.62032C25.8521 6.64891 25.8672 6.67981 25.8775 6.71303C25.8878 6.74625 25.8929 6.78025 25.8927 6.81504C25.8926 6.84983 25.8872 6.88379 25.8766 6.91692C25.866 6.95005 25.8507 6.98082 25.8306 7.00923C25.8105 7.03764 25.7867 7.06238 25.759 7.08344C25.7313 7.1045 25.701 7.12091 25.6683 7.13268L22.3633 8.31636C22.3103 8.33479 22.2557 8.34329 22.1996 8.34184C22.1435 8.34039 22.0895 8.32909 22.0375 8.30794L11.613 3.99475C11.5913 3.98618 11.574 3.97223 11.5611 3.9529C11.5481 3.93356 11.5418 3.91225 11.5421 3.88898C11.5424 3.8657 11.5493 3.84457 11.5628 3.82558C11.5763 3.80659 11.5939 3.7931 11.6158 3.78511L14.6829 2.63254ZM14.0938 25.8977C14.0938 25.9269 14.0919 25.9561 14.0881 25.9852C14.0843 26.0142 14.0787 26.0428 14.0712 26.0712C14.0637 26.0995 14.0545 26.1272 14.0434 26.1544C14.0323 26.1814 14.0196 26.2077 14.0051 26.2332C13.9906 26.2586 13.9746 26.2831 13.9569 26.3065C13.9393 26.3299 13.9203 26.352 13.8998 26.373C13.8793 26.3939 13.8575 26.4134 13.8345 26.4315C13.8115 26.4496 13.7874 26.4662 13.7622 26.4812C13.7371 26.4962 13.7111 26.5095 13.6842 26.5211C13.6573 26.5327 13.6297 26.5426 13.6016 26.5507C13.5735 26.5587 13.5449 26.565 13.5159 26.5694C13.487 26.5737 13.4579 26.5762 13.4286 26.5768C13.3993 26.5774 13.3701 26.5762 13.341 26.573C13.3119 26.5698 13.2831 26.5648 13.2546 26.5579C13.2261 26.551 13.1982 26.5423 13.1709 26.5318C13.1436 26.5213 13.117 26.5091 13.0912 26.4952L2.79108 20.9643C2.71882 20.9255 2.65302 20.8779 2.59367 20.8214C2.53433 20.7648 2.48359 20.7013 2.44145 20.631C2.39931 20.5607 2.3673 20.486 2.34541 20.407C2.32352 20.328 2.31254 20.2475 2.31247 20.1656L2.31247 9.30191C2.31245 9.27475 2.31405 9.24769 2.31728 9.22072C2.3205 9.19375 2.32532 9.16708 2.33175 9.14069C2.33818 9.1143 2.34615 9.0884 2.35568 9.06297C2.36521 9.03754 2.37623 9.01276 2.38873 8.98865C2.40123 8.96454 2.41513 8.94127 2.43042 8.91882C2.44571 8.89638 2.46228 8.87493 2.48015 8.85447C2.49802 8.83402 2.51704 8.8147 2.53722 8.79653C2.5574 8.77835 2.57859 8.76144 2.6008 8.74581C2.62301 8.73018 2.64607 8.71593 2.66998 8.70306C2.69389 8.69019 2.71849 8.6788 2.74378 8.66888C2.76906 8.65896 2.79484 8.65059 2.82113 8.64376C2.84742 8.63693 2.87402 8.6317 2.90093 8.62806C2.92784 8.62442 2.95488 8.6224 2.98203 8.62201C3.00918 8.62162 3.03627 8.62284 3.06328 8.62569C3.09029 8.62854 3.11703 8.633 3.1435 8.63906C3.16997 8.64511 3.19599 8.65273 3.22155 8.66191L13.1931 12.2217C13.2588 12.2451 13.3223 12.2734 13.3836 12.3066C13.4449 12.3397 13.5034 12.3773 13.5589 12.4195C13.6144 12.4616 13.6664 12.5077 13.7148 12.5579C13.7633 12.608 13.8076 12.6616 13.8478 12.7186C13.888 12.7755 13.9236 12.8352 13.9546 12.8976C13.9856 12.96 14.0117 13.0245 14.0328 13.0909C14.0539 13.1573 14.0697 13.225 14.0804 13.2939C14.0911 13.3628 14.0965 13.4321 14.0965 13.5018L14.0965 25.8977L14.0938 25.8977ZM14.0853 10.6188L4.36 7.14386C4.32721 7.13224 4.29693 7.11596 4.26916 7.09502C4.24139 7.07408 4.2174 7.04945 4.1972 7.02114C4.17701 6.99282 4.16153 6.96212 4.15078 6.92904C4.14003 6.89596 4.1345 6.86203 4.13419 6.82724C4.13388 6.79246 4.13881 6.75844 4.14897 6.72517C4.15913 6.6919 4.17405 6.66093 4.19374 6.63226C4.21343 6.60359 4.23698 6.57854 4.26437 6.55711C4.29177 6.53568 4.32176 6.51886 4.35433 6.50666L8.69311 4.87824C8.74666 4.85796 8.80207 4.84831 8.85933 4.84928C8.91659 4.85026 8.97163 4.8618 9.02446 4.8839L19.3811 9.1689C19.403 9.17787 19.4203 9.19224 19.4332 9.21201C19.4461 9.23178 19.4522 9.25347 19.4516 9.27706C19.4509 9.30065 19.4437 9.32197 19.4298 9.34103C19.4159 9.36009 19.3978 9.37352 19.3755 9.38131L15.9119 10.6188C15.7654 10.6715 15.6155 10.7112 15.4622 10.7379C15.3088 10.7647 15.1543 10.7781 14.9986 10.7781C14.8429 10.7781 14.6884 10.7647 14.5351 10.7379C14.3818 10.7112 14.2318 10.6715 14.0853 10.6188ZM27.6875 20.65C27.6878 20.7342 27.6766 20.8168 27.6537 20.8978C27.6308 20.9788 27.5972 21.0552 27.5529 21.1268C27.5086 21.1983 27.4553 21.2624 27.393 21.3191C27.3307 21.3757 27.2618 21.4226 27.1863 21.4599L16.889 26.6084C16.8632 26.6213 16.8367 26.6325 16.8094 26.6421C16.7822 26.6516 16.7545 26.6594 16.7262 26.6654C16.698 26.6714 16.6695 26.6755 16.6408 26.6779C16.612 26.6803 16.5832 26.6808 16.5544 26.6795C16.5256 26.6781 16.497 26.675 16.4685 26.6701C16.4401 26.6651 16.4121 26.6583 16.3845 26.6499C16.357 26.6413 16.3301 26.6311 16.3038 26.6191C16.2775 26.6071 16.2521 26.5936 16.2276 26.5784C16.2031 26.5632 16.1796 26.5465 16.1572 26.5283C16.1348 26.5101 16.1137 26.4905 16.0938 26.4697C16.0739 26.4488 16.0553 26.4267 16.0382 26.4035C16.0211 26.3803 16.0056 26.356 15.9916 26.3308C15.9776 26.3056 15.9652 26.2796 15.9545 26.2528C15.9438 26.226 15.9349 26.1986 15.9277 26.1707C15.9205 26.1427 15.9151 26.1144 15.9115 26.0858C15.9079 26.0572 15.9061 26.0284 15.9062 25.9996L15.9062 13.5048C15.9063 13.435 15.9116 13.3657 15.9223 13.2969C15.933 13.2279 15.9489 13.1603 15.97 13.0939C15.9911 13.0274 16.0171 12.963 16.0481 12.9006C16.0792 12.8381 16.1148 12.7784 16.155 12.7215C16.1952 12.6645 16.2395 12.6109 16.2879 12.5608C16.3364 12.5106 16.3884 12.4645 16.4439 12.4224C16.4994 12.3802 16.5578 12.3426 16.6191 12.3095C16.6804 12.2763 16.7439 12.2481 16.8096 12.2247L20.7406 10.8198C20.7492 10.8168 20.758 10.8149 20.767 10.8141C20.776 10.8131 20.785 10.8133 20.7939 10.8147C20.8029 10.8159 20.8116 10.8183 20.82 10.8217C20.8284 10.8251 20.8363 10.8294 20.8436 10.8347C20.851 10.8399 20.8576 10.846 20.8635 10.853C20.8694 10.8598 20.8744 10.8673 20.8785 10.8754C20.8826 10.8834 20.8856 10.8919 20.8877 10.9008C20.8898 10.9096 20.8907 10.9185 20.8906 10.9276L20.8906 16.5265C20.8908 16.5457 20.8934 16.5647 20.8984 16.5834C20.9033 16.602 20.9105 16.6198 20.92 16.6366C20.9295 16.6534 20.9409 16.6687 20.9542 16.6827C20.9675 16.6966 20.9824 16.7086 20.9988 16.7188C21.0152 16.729 21.0326 16.737 21.051 16.7428C21.0694 16.7485 21.0882 16.7519 21.1075 16.7529C21.1268 16.7539 21.1459 16.7525 21.1648 16.7487C21.1837 16.7449 21.2018 16.7387 21.2192 16.7303L22.4539 16.1131C22.4914 16.0941 22.5255 16.0704 22.5564 16.042C22.5873 16.0136 22.6138 15.9815 22.6358 15.9458C22.6577 15.91 22.6744 15.8719 22.6859 15.8315C22.6974 15.7911 22.7031 15.75 22.7031 15.708L22.7031 10.4404C22.7032 10.3937 22.7104 10.348 22.7245 10.3035C22.7386 10.259 22.7591 10.2176 22.786 10.1794C22.8128 10.1411 22.8447 10.1078 22.8818 10.0794C22.9189 10.051 22.9594 10.0288 23.0033 10.0128L26.7784 8.6647C26.804 8.65557 26.83 8.648 26.8565 8.64199C26.883 8.63598 26.9097 8.63156 26.9367 8.62874C26.9637 8.62593 26.9908 8.62473 27.0179 8.62516C27.045 8.62559 27.072 8.62763 27.0989 8.63129C27.1258 8.63495 27.1524 8.6402 27.1787 8.64704C27.205 8.65389 27.2307 8.66227 27.256 8.6722C27.2813 8.68213 27.3058 8.69352 27.3297 8.70639C27.3536 8.71926 27.3767 8.7335 27.3989 8.74913C27.4211 8.76476 27.4423 8.78166 27.4624 8.79982C27.4826 8.81799 27.5016 8.83729 27.5195 8.85773C27.5374 8.87816 27.5539 8.89959 27.5692 8.92202C27.5845 8.94445 27.5984 8.9677 27.6109 8.99179C27.6234 9.01588 27.6345 9.04063 27.644 9.06604C27.6535 9.09145 27.6615 9.11733 27.668 9.1437C27.6745 9.17007 27.6793 9.19672 27.6826 9.22367C27.6859 9.25062 27.6875 9.27766 27.6875 9.30481L27.6875 20.65Z" fill="#FFFFFF">
+							</path>
+							</svg>
+					</span>
+					<span style="display: grid; align-items:center; justify-content: center;">
+						<span class="heading">
+              {{block.settings.b_title}}
+            </span>
+            <span class="subheading">
+              {{block.settings.b_subheading}}
+              
+            </span>
+					</span>
+				</span>
+				<span class="arr">{% render 'svg-chevron-right' %}</span>
+			</a>
+            <ul>
+              <li class="ql_popup-content">
+                <h2>Sign in</h2>
+                <div>
+                  <div class="order-select">
+                    <label><input type="radio" name="order" value="email">Email</label>
+                    <label><input type="radio" name="order" value="sms">SMS</label>
+                  </div>
+                  <div class="customer_email-input">
+                    <label for="customer-email">Your email</label>
+                    <input type="text" name="email" class="customer-email">
+                  </div>
+                  <div class="ql-tips">Can't sign in? <a class="show_concat_us" href="javascript:;">Chat with us</a></div>
+                  <a href="{{shop.url}}/account" class="order-submit button">Sign in</a>
+                </div>
+              </li>
+            </ul>
+            </li>
+    
+          </ul>
+          {% when 'concat_us' %}
+          <ul class="ql-block concat_us-block">
+            <li>
+            <a href="javascript:;" aria-haspopup="true" data-title="{{block.settings.b_title}}">
+              <span style="display: flex;align-items: center;">
+				<span class="c-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30" fill="none">
+						<path d="M29.9082 15.2008C29.9084 15.3752 29.9011 15.5493 29.8863 15.7231C29.8716 15.8969 29.8494 16.0698 29.8198 16.2417C29.7902 16.4136 29.7533 16.5839 29.709 16.7526C29.6648 16.9213 29.6135 17.0879 29.555 17.2522C29.4965 17.4165 29.431 17.578 29.3586 17.7367C29.2863 17.8954 29.2073 18.0507 29.1216 18.2026C29.0359 18.3545 28.9438 18.5025 28.8454 18.6466C28.747 18.7906 28.6427 18.9301 28.5323 19.0652C28.4219 19.2003 28.306 19.3304 28.1844 19.4555C28.0629 19.5806 27.9362 19.7003 27.8044 19.8145C27.6726 19.9288 27.5362 20.0372 27.3951 20.1397C27.254 20.2422 27.1088 20.3385 26.9594 20.4286C26.81 20.5187 26.6571 20.6023 26.5005 20.6792C26.344 20.7561 26.1845 20.8262 26.0219 20.8895C25.8594 20.9528 25.6944 21.0089 25.527 21.058C25.3597 21.1071 25.1905 21.149 25.0195 21.1836L25.0195 9.2179C25.1905 9.25266 25.3596 9.29467 25.5268 9.34393C25.6941 9.39319 25.859 9.4495 26.0214 9.51289C26.1839 9.57627 26.3433 9.64647 26.4997 9.72352C26.6562 9.80056 26.8091 9.88414 26.9583 9.97428C27.1076 10.0644 27.2527 10.1608 27.3937 10.2633C27.5348 10.3659 27.6712 10.4743 27.8029 10.5886C27.9347 10.7029 28.0613 10.8225 28.1827 10.9476C28.3042 11.0727 28.4201 11.2028 28.5304 11.3378C28.6408 11.4729 28.7451 11.6124 28.8435 11.7563C28.9419 11.9003 29.034 12.0482 29.1197 12.2001C29.2054 12.352 29.2845 12.5072 29.3569 12.6658C29.4293 12.8245 29.4948 12.9859 29.5533 13.1502C29.6119 13.3144 29.6634 13.4808 29.7077 13.6495C29.7521 13.8182 29.7891 13.9884 29.8188 14.1602C29.8486 14.3321 29.8709 14.5049 29.8858 14.6786C29.9008 14.8523 29.9082 15.0264 29.9082 15.2008Z" fill="#FFFFFF">
+						</path>
+						<path d="M0.0917922 15.2007C0.0916203 15.0263 0.098919 14.8522 0.113688 14.6784C0.128457 14.5046 0.150642 14.3317 0.180243 14.1598C0.209845 13.9879 0.246754 13.8176 0.29097 13.6489C0.335186 13.4802 0.386547 13.3136 0.445054 13.1493C0.50356 12.985 0.568996 12.8235 0.641362 12.6648C0.713727 12.5061 0.792757 12.3508 0.878451 12.1989C0.964145 12.047 1.05619 11.899 1.15458 11.7549C1.25297 11.6109 1.35735 11.4714 1.46771 11.3363C1.57808 11.2012 1.69403 11.0711 1.81556 10.946C1.9371 10.8209 2.06376 10.7012 2.19556 10.587C2.32736 10.4727 2.46381 10.3643 2.60491 10.2618C2.74601 10.1593 2.89125 10.0629 3.04061 9.97285C3.18998 9.88277 3.34293 9.79926 3.49946 9.72231C3.656 9.64536 3.81554 9.57525 3.97808 9.51198C4.14064 9.44873 4.3056 9.39254 4.47296 9.34344C4.64034 9.29433 4.8095 9.25248 4.98046 9.2179L4.98046 21.1836C4.80958 21.1488 4.6405 21.1068 4.47322 21.0576C4.30594 21.0083 4.14108 20.952 3.97862 20.8886C3.81617 20.8252 3.65672 20.755 3.50028 20.678C3.34384 20.6009 3.19098 20.5173 3.0417 20.4272C2.89242 20.3371 2.74727 20.2407 2.60625 20.1381C2.46523 20.0356 2.32885 19.9272 2.19711 19.8129C2.06538 19.6986 1.93877 19.579 1.81729 19.4539C1.69581 19.3288 1.5799 19.1987 1.46956 19.0637C1.35922 18.9286 1.25486 18.7891 1.15647 18.6451C1.05809 18.5012 0.966037 18.3533 0.880327 18.2014C0.794614 18.0495 0.715552 17.8943 0.64314 17.7356C0.570728 17.577 0.505232 17.4156 0.446651 17.2513C0.38807 17.0871 0.33662 16.9207 0.2923 16.752C0.24798 16.5833 0.210952 16.4131 0.181217 16.2412C0.151483 16.0694 0.12915 15.8966 0.114218 15.7229C0.0992865 15.5492 0.0918112 15.3751 0.0917922 15.2007Z" fill="#FFFFFF">
+						</path>
+						<path stroke="rgba(255, 255, 255, 1.00)" stroke-width="2" d="M26.0773 16.333L26.0773 11.3355C26.0731 11.0044 26.0514 10.6745 26.0124 10.3457C25.9733 10.0169 25.9169 9.69106 25.8433 9.36823C25.7697 9.04541 25.6792 8.72737 25.5719 8.41412C25.4646 8.10088 25.341 7.79417 25.2013 7.49401C25.0614 7.19386 24.9062 6.90193 24.7356 6.61821C24.5648 6.3345 24.3796 6.0606 24.1799 5.79651C23.9801 5.53243 23.767 5.27963 23.5404 5.03811C23.3139 4.79661 23.0753 4.56774 22.8245 4.3515C22.5566 4.11751 22.2787 3.89613 21.9907 3.68735C21.7027 3.47858 21.4058 3.28327 21.1001 3.10141C20.7943 2.91957 20.481 2.75193 20.1601 2.5985C19.8391 2.44507 19.5119 2.30649 19.1784 2.18274C18.8449 2.059 18.5065 1.9506 18.1631 1.85755C17.8198 1.7645 17.473 1.68719 17.1225 1.6256C16.7722 1.56401 16.4198 1.51841 16.0654 1.48879C15.7109 1.45917 15.3558 1.44566 15.0001 1.44825C8.90756 1.44825 3.92285 5.89751 3.92285 11.3355L3.92285 16.7285C3.92285 22.1665 8.90756 26.6158 15.0001 26.6158C15.3424 26.6158 15.6748 26.5978 16.0071 26.5708">
+						</path>
+						<circle cx="16.97268922607422" cy="26.544077470703126" r="2.00767" fill="#FFFFFF">
+						</circle>
+						</svg>	
+				</span>
+				<span>
+					{{block.settings.b_title}}
+				</span>
+			</span>
+              <span class="arr" style="display: inline-block;padding-right: 10px;width: 24px;height: 24px;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" t="1750224835397" class="icon" viewBox="0 0 1025 1024" version="1.1" p-id="20687" width="200.1953125" height="200"><path d="M1008.00076 6.285714q18.857143 13.714286 15.428571 36.571429l-146.285714 877.714286q-2.857143 16.571429-18.285714 25.714286-8 4.571429-17.714286 4.571429-6.285714 0-13.714286-2.857143l-258.857143-105.714286-138.285714 168.571429q-10.285714 13.142857-28 13.142857-7.428571 0-12.571429-2.285714-10.857143-4-17.428571-13.428571t-6.571429-20.857143l0-199.428571 493.714286-605.142857-610.857143 528.571429-225.714286-92.571429q-21.142857-8-22.857143-31.428571-1.142857-22.857143 18.285714-33.714286l950.857143-548.571429q8.571429-5.142857 18.285714-5.142857 11.428571 0 20.571429 6.285714z" p-id="20688" fill="#1b1b1b"/></svg>
+              </span>
+            </a>
+            <ul>
+              <li class="ql_popup-content">
+                <h2>{{block.settings.b_title}}</h2>
+                <div class="concat-content">
+                  <t-contact-us data-url="{{block.settings.b_url}}">
+
+                  </t-contact-us>
+                </div>
+              
+              </li>
+            </ul>
+            </li>
+    
+          </ul>
+          {% when 'follow' %}
+          <ul class="ql-block follow-block">
+            <li>
+            <a href="{{block.settings.url}}" aria-haspopup="true" data-title="{{block.settings.b_title}}">
+              <span style="display: flex;align-items: center;">
+                <span class="c-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30" fill="none">
+						<path fill="rgba(255, 255, 255, 1.00)" d="M10 1.5L20 1.5C24.6944 1.5 28.5 5.30558 28.5 10L28.5 20C28.5 24.6944 24.6944 28.5 20 28.5L10 28.5C5.30558 28.5 1.5 24.6944 1.5 20L1.5 10C1.5 5.30558 5.30558 1.5 10 1.5ZM10 3.5C6.41015 3.5 3.5 6.41015 3.5 10L3.5 20C3.5 23.5898 6.41015 26.5 10 26.5L20 26.5C23.5898 26.5 26.5 23.5898 26.5 20L26.5 10C26.5 6.41015 23.5898 3.5 20 3.5L10 3.5Z">
+						</path>
+						<circle cx="15" cy="15" r="5.5" stroke="rgba(255, 255, 255, 1.00)" stroke-width="2">
+						</circle>
+						<circle cx="22.5" cy="8.5" r="1.5" fill="#FFFFFF">
+						</circle>
+						</svg>	
+				</span>
+                <span>{{block.settings.b_title}}</span>
+              </span>
+              <span class="arr">{% render 'svg-chevron-right' %}</span>
+            </a>
+
+            </li>
+    
+          </ul>
+    
+          {% endcase %}
+          {% endfor %}
+          </div>
+          <div class="ql-block__show-content">
+
+          </div>
+        </div>
+
+		  </div>
+		</main>
+	  </div>
+  </section>
+  
+  
+  
+  
+  {% schema %}
+  {
+	"name": "Page Dialog",
+	"class": "section-page-dialog",
+	"limit": 2,
+	"settings": [
+	  {
+		"type": "header",
+		"content": "Button"
+	  },
+	  {
+		"type": "text",
+		"id": "q_name",
+		"label": "按钮名",
+		"default": "Contact Us"
+	  },
+	  {
+		"type": "select",
+		"id": "q_x",
+		"label": "Position",
+		"options": [
+		  {
+			"value": "left",
+			"label": "Left"
+		  },
+		  {
+			"value": "right",
+			"label": "Right"
+		  }
+		],
+		"default": "right"
+	  },
+	  {
+		"type": "range",
+		"id": "q_bottom",
+		"min": 0,
+		"max": 100,
+		"step": 1,
+		"unit": "%",
+		"label": "Bottom",
+		"default": 10
+	  },
+	  {
+		"type": "range",
+		"id": "q_border_radius",
+		"min": 0,
+		"max": 100,
+		"step": 1,
+		"unit": "px",
+		"label": "Border Radius",
+		"default": 5
+	  },
+	  {
+		"type": "select",
+		"id": "q_orientation",
+		"label": "Orientation",
+		"options": [
+		  {
+			"value": "dir_row",
+			"label": "Orientation1"
+		  },
+		  {
+			"value": "dir_column1",
+			"label": "Orientationn2"
+		  },
+		  {
+			"value": "dir_column2",
+			"label": "Orientation3"
+		  }
+		],
+		"default": "dir_column2"
+	  },
+	  {
+		"type": "header",
+		"content": "Primary Buttons"
+	  },
+	  {
+		"type": "color",
+		"id": "btn_p_color",
+		"label": "Button Color"
+	  },
+	  {
+		"type": "color",
+		"id": "btn_p_bg",
+		"label": "Button Background"
+	  },
+	  {
+		"type": "header",
+		"content": "Secondary Buttons"
+	  },
+	  {
+		"type": "color",
+		"id": "btn_c_color",
+		"label": "Button Color"
+	  },
+	  {
+		"type": "color",
+		"id": "btn_c_bg",
+		"label": "Button Background"
+	  },
+	  {
+		"type": "header",
+		"content": "Content"
+	  },
+	  {
+		"type": "color",
+		"id": "content_bg",
+		"label": "Content background color"
+	  },
+	  {
+		"type": "color",
+		"id": "content_color",
+		"label": "Heading and subheading color"
+	  },
+	  {
+		"type": "text",
+		"id": "content_heading",
+		"label": "Heading",
+		"default": "CRZ YOGA"
+	  },
+	  {
+		"type": "range",
+		"id": "h_font_size",
+		"min": 10,
+		"max": 40,
+		"step": 1,
+		"unit": "px",
+		"label": "Heading font size (PC)",
+		"default": 21
+	  },
+	  {
+		"type": "range",
+		"id": "mb_h_font_size",
+		"min": 10,
+		"max": 40,
+		"step": 1,
+		"unit": "px",
+		"label": "Heading font size (MB)",
+		"default": 21
+	  },
+	  {
+		"type": "text",
+		"id": "content_subheading",
+		"default": "How can we help?",
+		"label": "subHeading"
+	  },
+	  {
+		"type": "range",
+		"id": "subh_font_size",
+		"min": 10,
+		"max": 40,
+		"step": 1,
+		"unit": "px",
+		"label": "subHeading font size (PC)",
+		"default": 27
+	  },
+	  {
+		"type": "range",
+		"id": "mb_subh_font_size",
+		"min": 10,
+		"max": 40,
+		"step": 1,
+		"unit": "px",
+		"label": "subHeading font size (MB)",
+		"default": 27
+	  },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 200,
+      "max": 400,
+      "step": 2,
+      "unit": "px",
+      "label": "弹窗宽度",
+      "default": 300
+	},
+	{
+		"type": "range",
+		"id": "content_height",
+		"min": 500,
+		"max": 1000,
+		"step": 5,
+		"unit": "px",
+		"label": "弹窗高度",
+		"default": 500
+	},
+    {
+     "type": "range",
+     "id": "content_padding",
+     "min": 30,
+     "max": 130,
+     "step": 1,
+     "unit": "px",
+     "label": "Padding Bottom",
+     "default": 50
+    },
+	{
+		"type": "header",
+		"content": "Block content"
+	},
+	{
+		"type": "range",
+		"id": "block_font_size",
+		"min": 10,
+		"max": 40,
+		"step": 1,
+		"unit": "px",
+		"label": "Font size",
+		"default": 15
+	  },
+	  {
+		"type": "color",
+		"id": "block_color",
+		"label": "Color"
+	  },
+	  {
+		"type": "range",
+		"id": "pop_font_size",
+		"min": 10,
+		"max": 40,
+		"step": 1,
+		"unit": "px",
+		"label": "Font size (详情页标题) PC",
+		"default": 27
+	  },
+	  {
+		"type": "range",
+		"id": "mb_pop_font_size",
+		"min": 10,
+		"max": 40,
+		"step": 1,
+		"unit": "px",
+		"label": "Font size (详情页标题) MB",
+		"default": 27
+	  },
+	  {
+		"type": "range",
+		"id": "padding_top",
+		"min": 10,
+		"max": 100,
+		"step": 1,
+		"unit": "px",
+		"label": "Padding top",
+		"default": 20
+	  },
+	  {
+		"type": "color",
+		"id": "pop_color",
+		"label": "Color (详情页标题)"
+	  },
+	],
+	"blocks": [
+	  {
+		"type": "faqs",
+		"name": "FAQS",
+		"settings": [
+		  {
+			"type": "text",
+			"id": "faqs_title",
+			"label": "Heading",
+			"default": "FAQS heading"
+		  },
+		  {
+			"type": "textarea",
+			"id": "faqs_content",
+			"label": "Content (html)",
+			"default": "<p>FAQS content</p>"
+		  }
+		]
+	  },
+	  {
+		"type": "orders",
+		"name": "Orders",
+		"settings": [
+		  {
+			"type": "text",
+			"id": "b_title",
+			"label": "Heading",
+			"default": "Orders"
+		  },
+			{
+			"type": "text",
+			"id": "b_subheading",
+			"label": "Subheading",
+			"default": "message"
+			},
+			{
+				"type": "url",
+				"id": "b_url",
+				"label": "Link"
+			   }
+		]
+	  },
+	  {
+		"type": "concat_us",
+		"name": "Contact Us",
+		"settings": [
+		  {
+			"type": "text",
+			"id": "b_title",
+			"label": "Heading",
+			"default": "Contact Us"
+		  },
+      {
+       "type": "url",
+       "id": "b_url",
+       "label": "Link"
+      }
+		]
+	  },
+	  {
+		"type": "follow",
+		"name": "Follow information",
+		"settings": [
+		  {
+			"type": "text",
+			"id": "b_title",
+			"label": "Heading",
+			"default": "Follow information"
+		  },
+		  {
+			"type": "url",
+			"id": "url",
+			"label": "Url"
+		  }
+		]
+	  }
+	],
+	"presets": [
+	  {
+		"name": "Page Dialog"
+	  }
+	]
+  }
+  {% endschema %}

@@ -1,0 +1,209 @@
+<style>
+  .product-list .collection-block .image .rimage__image {
+      object-fit: contain;
+  }
+  .product-block:hover.hover-info .image-inner:after, 
+  .collection-block:hover.hover-info .image-inner:after {
+      box-shadow: inset 0 0 150px transparent;
+  }
+  .product-slider .swiper-container .swiper-button-next {
+      margin-right: 10px;
+  }
+  .swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
+      opacity: 0!important;
+      cursor: auto;
+  }
+  .product-slider .product-list {
+      padding-bottom: 0px;
+  }
+  .product-slider .swiper-container .swiper-wrapper {
+      margin: 0;
+  }
+  .section-spacing {
+      padding-top: 0px;
+      padding-bottom: 0px;
+  }
+  ql-img-list.product-slider {
+      width: 100%;
+      z-index: 1000;
+      background: #fff;
+      position: relative;
+  }   
+  
+  /* 图片 */
+  .product-list .collection-block .image {
+      padding-top: 100%;
+  }
+  
+  
+  /* 分页 */
+  .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal .swiper-pagination-bullets {
+      bottom: 0px;
+  }
+  .swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet {
+      margin: 0 5px;
+      width: 20px;
+      border-radius: 0;
+      height: 5px;
+  }
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next,
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev {
+      background: rgba(0, 0, 0, .4);
+  }
+  
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main {
+      background: #000;
+  }
+  @media (min-width: 768px) {
+      .section-spacing {
+          padding-top: 0px;
+          padding-bottom: 0px;
+      }
+  }
+  </style>
+  
+  <ql-img-list class="product-slider" data-fixed="{{section.settings.fixed}}">
+  
+  <div class="half-gutter section-spacing" data-section-type="collection-list" data-cc-animate>
+    {% assign animation_type = "cc-fade-in-up" %}
+  
+      <div class="swiper-container product-list product-list--carousel" 
+      data-products-in-view="{{ section.settings.grid }}" data-mb-products-in-view="{{section.settings.grid_mobile}}">
+  
+        <div class="swiper-wrapper" data-normheights=".image" data-normheights-inner="img">
+          {% for block in section.blocks %}
+          
+              {% if block.settings.image != blank %}
+                   {% assign image = block.settings.image %}
+                  <div class="swiper-slide" {{ block.shopify_attributes }}>
+                  
+                      <div class="product-block collection-block hover-{{ settings.collection_hover_effect }} {{ product_class }}" data-loop-index="{{ forloop.index }}"
+                              {% if animate %}data-cc-animate="{{ animation_type }}" data-cc-animate-delay="{{ forloop.index | times: 0.1 }}s" {% endif %}>
+                          <div class="product-block__inner">
+                          <div class="image">
+                              <a data-cc-animate-click class="image-inner" href="{% if block.settings.url %}{{ block.settings.url }}{% else %}javascript:;{% endif %}">
+                                  {%- if aspect_ratio -%}
+                                      {%- assign cover = true -%}
+                                  {%- else -%}
+                                      {%- assign aspect_ratio = image.aspect_ratio -%}
+                                      {%- assign cover = false -%}
+                                  {%- endif -%}
+                                  <div class="rimage-outer-wrapper" style="max-width: 200px"
+                                      {% if animateZoom %}data-cc-animate="cc-zoom-out"{% endif %}
+                                  >
+                                      <div class="rimage-wrapper lazyload--placeholder" style="padding-top:{{ 1 | divided_by: aspect_ratio | times: 100 }}%">
+                                      {% if initial %}
+                                          <img class="rimage__image lazyload fade-in {% if cover %}cover{% endif %}" data-src="{{ image | img_url: initial }}" alt="{{ image.alt | escape }}">
+                                          {% assign initial = false %}
+                                      {% endif %}
+                                      {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                                      <img class="rimage__image lazyload{% if manual_image_load %}--manual{% endif %} fade-in {% if cover %}cover{% endif %}"
+                                          data-src="{{ img_url }}"
+                                          data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                          data-aspectratio="{{ image.aspect_ratio }}"
+                                          data-sizes="auto"
+                                          alt="{{ image.alt | escape }}"
+                                          width="{{ image.width }}"
+                                          height="{{ image.height }}"
+                                          {% if cover %}data-parent-fit="cover"{% endif %}>
+                                  
+                                      <noscript>
+                                          {% assign img_url = image | img_url: '1024x1024' %}
+                                          <img src="{{ img_url }}" alt="{{ image.alt | escape }}" class="rimage__image">
+                                      </noscript>
+                                      </div>
+                                  </div>
+                              </a>
+                          </div>
+                          <div class="caption upper">   
+                              <a data-cc-animate-click href="{{ block.settings.url }}" class="title h2"></a>        
+                          </div>
+                          </div>
+                      </div>
+                  
+                  </div>
+              {% else %}
+                  {% render 'onboarding-collection-block', i: forloop.index, product_class: product_class, animate: forloop.index, animation_type: animation_type, %}
+              {% endif %}
+          
+          {% endfor %}
+        </div>
+  
+        <div class="swiper-pagination"></div>
+        <a href="#" class="swiper-button-prev" aria-label="{{ 'general.accessibility_labels.previous' | t | escape }}">{% render 'svg-chevron-left' %}</a>
+        <a href="#" class="swiper-button-next" aria-label="{{ 'general.accessibility_labels.next' | t | escape }}">{% render 'svg-chevron-right' %}</a>
+      </div>
+  
+  </div>
+  
+  </ql-img-list>
+  
+  
+  
+  {% schema %}
+    {
+      "name": "Image list",
+      "class": "section-collection-list",
+      "max_blocks": 20,
+      "settings": [
+      {
+         "type": "checkbox",
+         "id": "fixed",
+         "label": "是否置顶",
+         "default": false
+      },
+        {
+          "type": "range",
+          "id": "grid",
+          "label": "PC 单行显示个数",
+          "min": 2,
+          "max": 12,
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "grid_mobile",
+          "label": "移动端单行显示个数",
+          "min": 2,
+          "max": 12,
+          "default": 3
+        }
+      ],
+      "blocks": [
+        {
+         "type": "item",
+          "name": "Item",
+          "settings": [
+          {
+             "type": "text",
+             "id": "title",
+             "label": "title",
+             "default": "item"
+          },
+            {
+               "type": "url",
+                "id": "url",
+                "label": "链接"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "图片"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Image list",
+          "settings": {},
+          "blocks": [
+              { "type": "item" },
+              { "type": "item" },
+              { "type": "item" }
+          ]
+        }
+      ]
+    }
+  {% endschema %}
+  

@@ -1,0 +1,55 @@
+<style>
+  #page-content .content{
+    padding: 25px 0 50px;
+  }
+  #page-content .content>div {
+    margin: 0 50px;
+}
+  .feature-header {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 39.2px;
+    color: rgba(0, 0, 0, 1);
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    margin-right: 25px !important;
+    padding-bottom: 0.3em;
+}
+
+  @media only screen and (max-width: 749px){
+    #page-content .content>div {
+        margin: 0;
+    }
+    #page-content .content {
+        padding: 25px 20px 50px;
+    }
+    #ql-discount-dialog #page-content{
+      width: 100% !important;
+    }
+  }
+</style>
+{% if section.settings.show_page_content %}
+  <div class="central content py-medium">
+    <div class="feature-header" data-cc-animate>{{ page.title }}</div>
+
+    <div class="rte" data-cc-animate data-cc-animate-delay="0.2s">
+      {{ page.content }}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_page_content",
+      "label": "Show page content",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
